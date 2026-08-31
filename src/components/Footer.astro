@@ -1,27 +1,45 @@
 ---
 // Footer.astro
 const causes = [
-  { label: 'Food Security', href: '/food-security/', icon: '🌾' },
-  { label: 'Footpath Movement', href: '/footpath/', icon: '🚶' },
-  { label: 'Intersectional Justice', href: '/intersectional-justice/', icon: '⚖️' },
+  { label: 'Food Security', href: '/food-security/', icon: '🌾', tag: 'food' },
+  { label: 'Footpath Movement', href: '/footpath/', icon: '🚶', tag: 'foot' },
+  { label: 'Intersectional Justice', href: '/intersectional-justice/', icon: '⚖️', tag: 'just' },
 ];
 ---
 
 <footer class="footer" role="contentinfo">
+  <!-- Gradient divider -->
+  <div class="footer__gradient-rule" aria-hidden="true"></div>
+
   <div class="container">
     <div class="footer__grid">
       <!-- Brand -->
       <div class="footer__brand">
         <a href="/" class="footer__logo" aria-label="Home">
-          <span class="footer__logo-mark" aria-hidden="true">◈</span>
+          <span class="footer__logo-mark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M11 2L13.5 8.5H20.5L14.75 12.75L17 19.5L11 15.25L5 19.5L7.25 12.75L1.5 8.5H8.5L11 2Z" fill="currentColor"/>
+            </svg>
+          </span>
           <span>Paras<span class="footer__logo-accent">Activist</span></span>
         </a>
         <p class="footer__tagline">
-          Three movements. One commitment. <strong>Evidence over propaganda.</strong>
+          Three movements. One commitment.<br/>
+          <strong>Evidence over propaganda.</strong>
         </p>
-        <div class="footer__pledge-badge" role="note" aria-label="Privacy pledge">
-          <span aria-hidden="true">🔒</span>
-          Zero cookies · Zero tracking · Zero ads
+        <div class="footer__pledge-chips" role="note" aria-label="Privacy pledge">
+          <span class="footer__chip">
+            <span class="footer__chip-dot" aria-hidden="true"></span>
+            No cookies
+          </span>
+          <span class="footer__chip">
+            <span class="footer__chip-dot" aria-hidden="true"></span>
+            No trackers
+          </span>
+          <span class="footer__chip">
+            <span class="footer__chip-dot" aria-hidden="true"></span>
+            No ads
+          </span>
         </div>
       </div>
 
@@ -31,7 +49,7 @@ const causes = [
         <ul role="list">
           {causes.map(c => (
             <li>
-              <a href={c.href} class="footer__link">
+              <a href={c.href} class={`footer__link footer__link--${c.tag}`}>
                 <span aria-hidden="true">{c.icon}</span> {c.label}
               </a>
             </li>
@@ -92,10 +110,28 @@ const causes = [
 <style>
   .footer {
     background: var(--clr-bg-surface);
-    border-top: 1px solid var(--clr-border);
     padding-top: var(--space-16);
     padding-bottom: var(--space-8);
     margin-top: var(--space-20);
+    position: relative;
+  }
+
+  .footer__gradient-rule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--clr-border) 15%,
+      rgba(245,166,35,0.3) 35%,
+      var(--clr-accent) 50%,
+      rgba(245,166,35,0.3) 65%,
+      var(--clr-border) 85%,
+      transparent 100%
+    );
   }
 
   .footer__grid {
@@ -124,37 +160,55 @@ const causes = [
     font-size: 1.125rem;
     text-decoration: none;
     color: var(--clr-text);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     margin-bottom: var(--space-4);
+    transition: opacity var(--duration-fast) var(--ease-out);
   }
   .footer__logo:hover { color: var(--clr-text); opacity: 0.8; }
 
-  .footer__logo-mark { color: var(--clr-accent); }
+  .footer__logo-mark { color: var(--clr-accent); display: flex; align-items: center; }
   .footer__logo-accent { color: var(--clr-accent); }
 
   .footer__tagline {
     color: var(--clr-text-muted);
     font-size: 0.9375rem;
-    line-height: 1.6;
-    max-width: 32ch;
+    line-height: 1.65;
+    max-width: 30ch;
     margin-bottom: var(--space-5);
   }
+  .footer__tagline strong { color: var(--clr-text); }
 
-  .footer__pledge-badge {
+  /* Pledge chips */
+  .footer__pledge-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .footer__chip {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
-    background: var(--clr-accent-glow);
-    border: 1px solid rgba(245,166,35,0.3);
+    gap: 6px;
+    background: var(--clr-bg-elevated);
+    border: 1px solid var(--clr-border);
     border-radius: var(--radius-full);
-    padding: var(--space-2) var(--space-4);
-    font-size: 0.8rem;
+    padding: 4px var(--space-3);
+    font-size: 0.75rem;
     font-weight: 600;
-    color: var(--clr-accent);
+    color: var(--clr-text-muted);
+  }
+
+  .footer__chip-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--clr-success);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 5px rgba(74,222,128,0.5);
   }
 
   .footer__col-title {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -174,6 +228,9 @@ const causes = [
     transition: color var(--duration-fast) var(--ease-out);
   }
   .footer__link:hover { color: var(--clr-accent); }
+  .footer__link--food:hover { color: var(--clr-food); }
+  .footer__link--foot:hover { color: var(--clr-foot); }
+  .footer__link--just:hover { color: var(--clr-just); }
 
   .footer__bottom {
     padding-top: var(--space-8);

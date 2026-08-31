@@ -92,5 +92,56 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     <slot />
   </main>
   <Footer />
+
+  <!-- Scroll-reveal: Intersection Observer -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -48px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+
+  <!-- Stat counter: animates [data-count] numbers when revealed -->
+  <script>
+    function animateCount(el: HTMLElement) {
+      const target = parseFloat(el.dataset.count || '0');
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+      const isFloat = el.dataset.count?.includes('.');
+
+      function step(now: number) {
+        const elapsed = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - elapsed, 3); // ease-out cubic
+        const current = target * eased;
+        el.textContent = prefix + (isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString('en-IN')) + suffix;
+        if (elapsed < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const countObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target as HTMLElement);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    document.querySelectorAll('[data-count]').forEach((el) => countObserver.observe(el));
+  </script>
 </body>
 </html>
+

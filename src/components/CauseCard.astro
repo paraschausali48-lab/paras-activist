@@ -13,27 +13,43 @@ interface Props {
 }
 
 const { title, href, description, stat, statLabel, icon, tag, mythsHref, dataHref } = Astro.props;
+
+// Extract numeric value and affixes for the counter animation
+// e.g. "₹92,000 Cr" → prefix "₹", count "92000", suffix " Cr"
+// e.g. "17%" → prefix "", count "17", suffix "%"
+// We'll do a simple parse: grab all digits (including decimals), everything before is prefix, after is suffix
+const match = stat.replace(/,/g, '').match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+const statPrefix = match ? match[1] : '';
+const statCount  = match ? match[2] : '';
+const statSuffix = match ? match[3] : '';
 ---
 
-<article class={`cause-card cause-card--${tag}`} aria-label={title}>
-  <div class="cause-card__icon" aria-hidden="true">{icon}</div>
+<article class={`cause-card cause-card--${tag} reveal`} aria-label={title}>
+  <!-- Coloured top accent bar -->
+  <div class="cause-card__accent-bar" aria-hidden="true"></div>
 
-  <div class="cause-card__tag">
+  <div class="cause-card__header">
+    <div class="cause-card__icon" aria-hidden="true">{icon}</div>
     <span class={`tag tag--${tag}`}>{title}</span>
   </div>
 
   <div class="cause-card__stat">
-    <div class="cause-card__stat-number">{stat}</div>
+    <div class="cause-card__stat-number"
+      data-count={statCount}
+      data-prefix={statPrefix}
+      data-suffix={statSuffix}
+      aria-label={stat}
+    >{stat}</div>
     <div class="cause-card__stat-label">{statLabel}</div>
   </div>
 
   <p class="cause-card__description">{description}</p>
 
   <div class="cause-card__actions">
-    <a href={mythsHref} class="btn btn-outline cause-card__btn">
+    <a href={mythsHref} class="btn btn-outline cause-card__btn" tabindex="0">
       Myth vs. Fact
     </a>
-    <a href={dataHref} class="btn btn-ghost cause-card__btn">
+    <a href={dataHref} class="btn btn-ghost cause-card__btn" tabindex="0">
       View Data →
     </a>
   </div>
@@ -46,73 +62,147 @@ const { title, href, description, stat, statLabel, icon, tag, mythsHref, dataHre
     position: relative;
     background: var(--clr-bg-surface);
     border: 1px solid var(--clr-border);
+    border-top: none; /* top border replaced by accent bar */
     border-radius: var(--radius-xl);
-    padding: var(--space-8);
+    padding: var(--space-7, 1.75rem) var(--space-8);
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-5);
     transition: all var(--duration-normal) var(--ease-out);
     overflow: hidden;
   }
 
+  /* Coloured top accent bar — always visible */
+  .cause-card__accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    transition: height var(--duration-normal) var(--ease-out),
+                opacity var(--duration-normal) var(--ease-out);
+    opacity: 0.7;
+  }
+
+  .cause-card--food .cause-card__accent-bar { background: var(--clr-food); }
+  .cause-card--foot .cause-card__accent-bar { background: var(--clr-foot); }
+  .cause-card--just .cause-card__accent-bar { background: var(--clr-just); }
+
+  /* Radial colour wash on hover */
   .cause-card::before {
     content: '';
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: opacity var(--duration-normal) var(--ease-out);
+    transition: opacity var(--duration-slow) var(--ease-out);
+    pointer-events: none;
   }
 
-  .cause-card--food::before { background: radial-gradient(ellipse at top left, var(--clr-food-bg) 0%, transparent 60%); }
-  .cause-card--foot::before { background: radial-gradient(ellipse at top left, var(--clr-foot-bg) 0%, transparent 60%); }
-  .cause-card--just::before { background: radial-gradient(ellipse at top left, var(--clr-just-bg) 0%, transparent 60%); }
+  .cause-card--food::before { background: radial-gradient(ellipse at top left, rgba(74,222,128,0.06) 0%, transparent 55%); }
+  .cause-card--foot::before { background: radial-gradient(ellipse at top left, rgba(96,165,250,0.06) 0%, transparent 55%); }
+  .cause-card--just::before { background: radial-gradient(ellipse at top left, rgba(192,132,252,0.06) 0%, transparent 55%); }
 
   .cause-card:hover::before { opacity: 1; }
 
-  .cause-card--food:hover { border-color: var(--clr-food); }
-  .cause-card--foot:hover { border-color: var(--clr-foot); }
-  .cause-card--just:hover { border-color: var(--clr-just); }
+  .cause-card--food:hover {
+    border-color: rgba(74,222,128,0.35);
+    box-shadow: var(--shadow-food);
+  }
+  .cause-card--foot:hover {
+    border-color: rgba(96,165,250,0.35);
+    box-shadow: var(--shadow-foot);
+  }
+  .cause-card--just:hover {
+    border-color: rgba(192,132,252,0.35);
+    box-shadow: var(--shadow-just);
+  }
+
+  .cause-card--food:hover .cause-card__accent-bar,
+  .cause-card--foot:hover .cause-card__accent-bar,
+  .cause-card--just:hover .cause-card__accent-bar {
+    height: 4px;
+    opacity: 1;
+  }
 
   .cause-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+  }
+
+  /* Header row */
+  .cause-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
   }
 
   .cause-card__icon {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     line-height: 1;
+    transition: transform var(--duration-normal) var(--ease-spring);
+  }
+  .cause-card:hover .cause-card__icon {
+    transform: scale(1.12) rotate(-4deg);
   }
 
+  /* Stat */
   .cause-card__stat {
-    padding: var(--space-4) 0;
+    padding-block: var(--space-3) 0;
+    position: relative;
+    z-index: 1;
   }
 
   .cause-card__stat-number {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
     font-weight: 900;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     line-height: 1;
-    margin-bottom: var(--space-1);
+    margin-bottom: var(--space-2);
+    transition: transform var(--duration-fast) var(--ease-out);
   }
 
-  .cause-card--food .cause-card__stat-number { color: var(--clr-food); }
-  .cause-card--foot .cause-card__stat-number { color: var(--clr-foot); }
-  .cause-card--just .cause-card__stat-number { color: var(--clr-just); }
+  .cause-card--food .cause-card__stat-number {
+    background: linear-gradient(135deg, var(--clr-food) 0%, #86efac 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cause-card--foot .cause-card__stat-number {
+    background: linear-gradient(135deg, var(--clr-foot) 0%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cause-card--just .cause-card__stat-number {
+    background: linear-gradient(135deg, var(--clr-just) 0%, #e9d5ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cause-card:hover .cause-card__stat-number {
+    transform: scale(1.03);
+  }
 
   .cause-card__stat-label {
-    font-size: 0.85rem;
+    font-size: 0.8125rem;
     color: var(--clr-text-muted);
-    max-width: 28ch;
-    line-height: 1.4;
+    max-width: 30ch;
+    line-height: 1.45;
   }
 
+  /* Description */
   .cause-card__description {
     font-size: 0.9375rem;
     color: var(--clr-text-muted);
-    line-height: 1.6;
+    line-height: 1.65;
     flex: 1;
+    position: relative;
+    z-index: 1;
   }
 
+  /* Actions */
   .cause-card__actions {
     display: flex;
     gap: var(--space-3);
@@ -122,7 +212,7 @@ const { title, href, description, stat, statLabel, icon, tag, mythsHref, dataHre
   }
 
   .cause-card__btn {
-    font-size: 0.8rem;
+    font-size: 0.8125rem;
     padding: var(--space-2) var(--space-4);
   }
 

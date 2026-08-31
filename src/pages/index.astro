@@ -40,6 +40,33 @@ const causes = [
   },
 ];
 
+const pillars = [
+  {
+    n: '01',
+    icon: '📚',
+    title: 'Evidence First',
+    text: 'Every claim links to a government report, peer-reviewed paper, or independently verified NGO data. No exceptions.',
+  },
+  {
+    n: '02',
+    icon: '📲',
+    title: 'Mobile Native',
+    text: 'Designed for 4G India. Fast loading, WhatsApp-optimised link previews, and downloadable share cards.',
+  },
+  {
+    n: '03',
+    icon: '🔒',
+    title: 'Zero Tracking',
+    text: 'No cookies, no analytics, no fingerprinting. This is a strictly read-only educational resource.',
+  },
+  {
+    n: '04',
+    icon: '✏️',
+    title: 'Open Corrections',
+    text: 'All factual errors are corrected publicly, with a correction log and update date on every article.',
+  },
+];
+
 const pageDescription = 'Three grassroots movements. One commitment: evidence over propaganda. Food security, safe pedestrian infrastructure, and intersectional justice — rigorously cited, freely shareable.';
 ---
 
@@ -48,71 +75,104 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
   description={pageDescription}
   ogImage="/og/home.png"
 >
-  <!-- Hero -->
+  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
   <section class="hero" aria-label="Site introduction">
+    <!-- Mesh gradient background -->
+    <div class="hero__mesh" aria-hidden="true">
+      <div class="hero__mesh-orb hero__mesh-orb--1"></div>
+      <div class="hero__mesh-orb hero__mesh-orb--2"></div>
+      <div class="hero__mesh-orb hero__mesh-orb--3"></div>
+      <div class="hero__grid"></div>
+    </div>
+
     <div class="container">
       <div class="hero__inner">
-        <div class="hero__label tag tag--accent">
-          <span aria-hidden="true">◈</span>
-          Evidence-Based Activism
+        <!-- Eyebrow label -->
+        <div class="hero__eyebrow">
+          <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+          <span>Evidence-Based Activism · India</span>
         </div>
 
+        <!-- Headline -->
         <h1 class="hero__heading">
           Three movements.<br />
-          <span class="hero__heading-accent">One commitment to truth.</span>
+          <span class="hero__heading-gradient">One commitment to truth.</span>
         </h1>
 
+        <!-- Sub -->
         <p class="hero__sub">
           This site exists to counter propaganda with evidence. No advertising, no political funding, no data collection.
           Just rigorously cited facts — formatted for WhatsApp and Telegram sharing across India.
         </p>
 
+        <!-- CTAs -->
         <div class="hero__actions">
-          <a href="/food-security/" class="btn btn-primary" id="hero-cta-food">
-            🌾 Start with Food Security
+          <a href="/food-security/" class="btn btn-primary hero__cta-primary" id="hero-cta-food">
+            <span aria-hidden="true">🌾</span> Start with Food Security
           </a>
           <a href="/about" class="btn btn-outline" id="hero-cta-about">
             Read our Pledge
           </a>
         </div>
 
+        <!-- Share prompt -->
         <div class="hero__share-note">
-          <p>📲 Share this site</p>
+          <span class="hero__share-label" aria-hidden="true">📲 Share this site</span>
           <ShareButtons title="Paras Activist — Evidence over propaganda" url="https://parasactivist.in" />
         </div>
-      </div>
 
-      <!-- Decorative grid lines -->
-      <div class="hero__deco" aria-hidden="true">
-        <div class="hero__deco-grid"></div>
-        <div class="hero__deco-glow"></div>
+        <!-- Floating stat chips -->
+        <div class="hero__stat-chips" aria-label="Key statistics">
+          <div class="hero__stat-chip hero__stat-chip--food">
+            <span class="hero__stat-chip-value" data-count="111" data-suffix="th">111th</span>
+            <span class="hero__stat-chip-label">Global Hunger Index</span>
+          </div>
+          <div class="hero__stat-chip hero__stat-chip--foot">
+            <span class="hero__stat-chip-value" data-count="17" data-suffix="%">17%</span>
+            <span class="hero__stat-chip-label">Pedestrian deaths</span>
+          </div>
+          <div class="hero__stat-chip hero__stat-chip--just">
+            <span class="hero__stat-chip-value">57K+</span>
+            <span class="hero__stat-chip-label">SC crimes reported</span>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero__scroll-hint" aria-hidden="true">
+      <span class="hero__scroll-line"></span>
     </div>
   </section>
 
-  <!-- Cause Cards -->
+  <!-- ══════════════════════════ CAUSE CARDS ════════════════════════════ -->
   <section class="causes section" aria-label="Three causes">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">The Platform</span>
         <h2>The Three Movements</h2>
         <p class="section-sub">
           Each cause stands independently. Together they represent a vision of a more just, accessible, and equitable India.
         </p>
       </div>
 
-      <div class="causes__grid stagger">
-        {causes.map(cause => (
-          <CauseCard {...cause} />
+      <div class="causes__grid">
+        {causes.map((cause, i) => (
+          <div class={`reveal reveal-delay-${i + 1}`}>
+            <CauseCard {...cause} />
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Why This Site Section -->
+  <!-- ══════════════════════════ WHY SECTION ════════════════════════════ -->
   <section class="why section--sm" aria-label="Why this site exists">
     <div class="container">
       <div class="why__inner">
-        <div class="why__text">
+
+        <div class="why__text reveal">
+          <span class="section-eyebrow">Our Purpose</span>
           <h2>Why this site exists</h2>
           <p>
             Propaganda thrives in information vacuums. When people lack access to verified, citable, shareable data, misinformation fills the gap.
@@ -130,45 +190,42 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
         </div>
 
         <div class="why__pillars">
-          <div class="pillar">
-            <div class="pillar__icon" aria-hidden="true">📚</div>
-            <h3 class="pillar__title">Evidence First</h3>
-            <p class="pillar__text">Every claim links to a government report, peer-reviewed paper, or independently verified NGO data.</p>
-          </div>
-          <div class="pillar">
-            <div class="pillar__icon" aria-hidden="true">📲</div>
-            <h3 class="pillar__title">Mobile Native</h3>
-            <p class="pillar__text">Designed for 4G India. Fast loading, WhatsApp-optimised link previews, downloadable share cards.</p>
-          </div>
-          <div class="pillar">
-            <div class="pillar__icon" aria-hidden="true">🔒</div>
-            <h3 class="pillar__title">Zero Tracking</h3>
-            <p class="pillar__text">No cookies, no analytics, no fingerprinting. This is a read-only educational resource.</p>
-          </div>
-          <div class="pillar">
-            <div class="pillar__icon" aria-hidden="true">✏️</div>
-            <h3 class="pillar__title">Open Corrections</h3>
-            <p class="pillar__text">All factual errors are corrected publicly, with a correction log and update date on every article.</p>
-          </div>
+          {pillars.map((p, i) => (
+            <div class={`pillar reveal reveal-delay-${i + 1}`}>
+              <div class="pillar__number" aria-hidden="true">{p.n}</div>
+              <div class="pillar__body">
+                <div class="pillar__icon" aria-hidden="true">{p.icon}</div>
+                <h3 class="pillar__title">{p.title}</h3>
+                <p class="pillar__text">{p.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Share Toolkit CTA -->
-  <section class="share-cta section--sm" aria-label="Download share cards">
+  <!-- ═════════════════════════ SHARE CTA BANNER ═══════════════════════ -->
+  <section class="share-cta" aria-label="Download share cards">
+    <div class="share-cta__bg" aria-hidden="true">
+      <div class="share-cta__bg-glow"></div>
+    </div>
     <div class="container">
-      <div class="share-cta__inner">
-        <div class="share-cta__text">
-          <span class="tag tag--accent" aria-hidden="true">📲 Share Toolkit</span>
+      <div class="share-cta__inner reveal">
+        <div class="share-cta__left">
+          <span class="tag tag--accent">📲 Share Toolkit</span>
           <h2>Arm yourself with shareable evidence</h2>
           <p>
             Download pre-formatted WhatsApp image cards for every myth-buster, statistic, and fact sheet.
             Designed for Indian mobile screens. One tap to share.
           </p>
-          <a href="/share-toolkit" class="btn btn-primary" id="share-toolkit-cta">
+        </div>
+        <div class="share-cta__right">
+          <a href="/share-toolkit" class="btn btn-primary share-cta__btn" id="share-toolkit-cta">
             View Share Toolkit →
           </a>
+          <span class="share-cta__note">Free · No sign-up · No tracking</span>
         </div>
       </div>
     </div>
@@ -176,99 +233,230 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
 </BaseLayout>
 
 <style>
-  /* Hero */
+  /* ── Hero ─────────────────────────────────────────────────────────── */
   .hero {
     position: relative;
-    padding-block: var(--space-20) var(--space-16);
+    padding-block: clamp(5rem, 12vh, 7rem) clamp(4rem, 8vh, 6rem);
     overflow: hidden;
   }
 
-  .hero__inner {
-    position: relative;
-    z-index: 1;
-    max-width: 760px;
-  }
-
-  .hero__label {
-    display: inline-flex;
-    margin-bottom: var(--space-6);
-  }
-
-  .hero__heading {
-    font-size: clamp(2.25rem, 6vw, 4rem);
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: var(--space-6);
-  }
-
-  .hero__heading-accent {
-    background: linear-gradient(135deg, var(--clr-accent) 0%, #f97316 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero__sub {
-    font-size: clamp(1rem, 2vw, 1.1875rem);
-    color: var(--clr-text-muted);
-    max-width: 60ch;
-    line-height: 1.7;
-    margin-bottom: var(--space-8);
-  }
-
-  .hero__actions {
-    display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-    margin-bottom: var(--space-8);
-  }
-
-  .hero__share-note {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-  }
-  .hero__share-note p {
-    font-size: 0.875rem;
-    color: var(--clr-text-muted);
-    margin: 0;
-    white-space: nowrap;
-  }
-
-  /* Deco */
-  .hero__deco {
+  /* Mesh gradient orbs */
+  .hero__mesh {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
   }
 
-  .hero__deco-grid {
+  .hero__mesh-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    animation: pulseGlow 6s ease-in-out infinite alternate;
+  }
+
+  .hero__mesh-orb--1 {
+    width: 520px;
+    height: 520px;
+    top: -180px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(245,166,35,0.09) 0%, transparent 65%);
+    animation-delay: 0s;
+  }
+
+  .hero__mesh-orb--2 {
+    width: 380px;
+    height: 380px;
+    bottom: -60px;
+    left: -60px;
+    background: radial-gradient(circle, rgba(96,165,250,0.06) 0%, transparent 65%);
+    animation-delay: 2s;
+  }
+
+  .hero__mesh-orb--3 {
+    width: 280px;
+    height: 280px;
+    top: 40%;
+    left: 40%;
+    background: radial-gradient(circle, rgba(192,132,252,0.04) 0%, transparent 65%);
+    animation-delay: 4s;
+  }
+
+  .hero__grid {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(var(--clr-border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--clr-border) 1px, transparent 1px);
-    background-size: 64px 64px;
-    opacity: 0.35;
-    mask-image: radial-gradient(ellipse at 60% 40%, black 0%, transparent 70%);
+      linear-gradient(rgba(31,35,48,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31,35,48,0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 75% 80% at 70% 30%, black 0%, transparent 70%);
   }
 
-  .hero__deco-glow {
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 50vw;
-    height: 50vw;
-    max-width: 600px;
-    max-height: 600px;
-    background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 60%);
+  /* Hero content */
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  /* Eyebrow */
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-accent);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__eyebrow-dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
+    background: var(--clr-accent);
+    box-shadow: 0 0 10px var(--clr-accent);
+    animation: pulseGlow 2s ease-in-out infinite;
+    flex-shrink: 0;
   }
 
-  /* Section header */
+  /* Heading */
+  .hero__heading {
+    font-size: clamp(2.5rem, 7vw, 4.75rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-6);
+    color: var(--clr-text);
+  }
+
+  .hero__heading-gradient {
+    background: linear-gradient(135deg, var(--clr-accent) 0%, #f97316 55%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Sub */
+  .hero__sub {
+    font-size: clamp(1rem, 2.2vw, 1.1875rem);
+    color: var(--clr-text-muted);
+    max-width: 58ch;
+    line-height: 1.75;
+    margin-bottom: var(--space-8);
+  }
+
+  /* Actions */
+  .hero__actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-8);
+    align-items: center;
+  }
+
+  .hero__cta-primary {
+    font-size: 0.95rem;
+    padding: var(--space-3) var(--space-7, 1.75rem);
+  }
+
+  /* Share note */
+  .hero__share-note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-12);
+  }
+
+  .hero__share-label {
+    font-size: 0.82rem;
+    color: var(--clr-text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Stat chips */
+  .hero__stat-chips {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .hero__stat-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3) var(--space-4);
+    min-width: 100px;
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .hero__stat-chip:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero__stat-chip--food { border-left: 3px solid var(--clr-food); }
+  .hero__stat-chip--foot { border-left: 3px solid var(--clr-foot); }
+  .hero__stat-chip--just { border-left: 3px solid var(--clr-just); }
+
+  .hero__stat-chip-value {
+    font-size: 1.375rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .hero__stat-chip--food .hero__stat-chip-value { color: var(--clr-food); }
+  .hero__stat-chip--foot .hero__stat-chip-value { color: var(--clr-foot); }
+  .hero__stat-chip--just .hero__stat-chip-value { color: var(--clr-just); }
+
+  .hero__stat-chip-label {
+    font-size: 0.7rem;
+    color: var(--clr-text-subtle);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  /* Scroll hint */
+  .hero__scroll-hint {
+    position: absolute;
+    bottom: var(--space-6);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hero__scroll-line {
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--clr-accent), transparent);
+    margin: 0 auto;
+    animation: scrollHint 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollHint {
+    0%   { opacity: 1; transform: scaleY(1) translateY(0); }
+    100% { opacity: 0; transform: scaleY(0.6) translateY(16px); }
+  }
+
+  /* ── Section eyebrow ──────────────────────────────────────────────── */
+  .section-eyebrow {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clr-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  /* ── Section header ───────────────────────────────────────────────── */
   .section-header {
     text-align: center;
     margin-bottom: var(--space-12);
@@ -280,20 +468,31 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
     margin-inline: auto;
     font-size: 1.0625rem;
     margin-top: var(--space-4);
+    line-height: 1.75;
   }
 
-  /* Causes grid */
+  /* ── Causes grid ──────────────────────────────────────────────────── */
   .causes__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
   }
 
+  /* Make CauseCard fill height */
+  .causes__grid > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .causes__grid > div > :global(.cause-card) {
+    flex: 1;
+  }
+
   @media (max-width: 960px) {
     .causes__grid { grid-template-columns: 1fr; }
   }
 
-  /* Why */
+  /* ── Why section ──────────────────────────────────────────────────── */
   .why__inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -301,44 +500,139 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
     align-items: start;
   }
 
-  @media (max-width: 768px) {
-    .why__inner { grid-template-columns: 1fr; gap: var(--space-8); }
+  @media (max-width: 860px) {
+    .why__inner { grid-template-columns: 1fr; gap: var(--space-10); }
   }
 
-  .why__text h2 { margin-bottom: var(--space-4); }
-  .why__text p { color: var(--clr-text-muted); margin-bottom: var(--space-4); }
+  .why__text h2 { margin-bottom: var(--space-5); }
+  .why__text p  { color: var(--clr-text-muted); margin-bottom: var(--space-4); }
+  .why__text .section-eyebrow { margin-bottom: var(--space-3); }
 
+  /* Pillars — numbered horizontal list */
   .why__pillars {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
   }
 
   .pillar {
-    background: var(--clr-bg-surface);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-lg);
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: var(--space-4);
+    align-items: start;
     padding: var(--space-5);
-    transition: border-color var(--duration-normal) var(--ease-out);
+    border-radius: var(--radius-lg);
+    border: 1px solid transparent;
+    transition: all var(--duration-normal) var(--ease-out);
   }
-  .pillar:hover { border-color: var(--clr-accent); }
 
-  .pillar__icon { font-size: 1.5rem; margin-bottom: var(--space-3); }
-  .pillar__title { font-size: 0.9375rem; font-weight: 700; margin-bottom: var(--space-2); }
-  .pillar__text { font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.5; margin: 0; }
+  .pillar:hover {
+    background: var(--clr-bg-surface);
+    border-color: var(--clr-border);
+    transform: translateX(4px);
+  }
 
-  /* Share CTA */
+  .pillar__number {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--clr-accent);
+    padding-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pillar__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .pillar__icon {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-2);
+    line-height: 1;
+  }
+
+  .pillar__title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    margin-bottom: var(--space-1);
+    color: var(--clr-text);
+  }
+
+  .pillar__text {
+    font-size: 0.85rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Share CTA ────────────────────────────────────────────────────── */
   .share-cta {
+    position: relative;
+    padding-block: var(--space-16);
+    margin-top: var(--space-20);
+    overflow: hidden;
+  }
+
+  .share-cta__bg {
+    position: absolute;
+    inset: 0;
     background: var(--clr-bg-surface);
     border-top: 1px solid var(--clr-border);
     border-bottom: 1px solid var(--clr-border);
   }
 
-  .share-cta__inner {
-    max-width: 640px;
+  .share-cta__bg-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(245,166,35,0.06) 0%, transparent 70%);
   }
 
-  .share-cta__text { display: flex; flex-direction: column; gap: var(--space-4); }
-  .share-cta__text h2 { margin: 0; }
-  .share-cta__text p { color: var(--clr-text-muted); margin: 0; }
+  .share-cta__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+  }
+
+  .share-cta__left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    max-width: 520px;
+  }
+
+  .share-cta__left h2 { margin: 0; }
+  .share-cta__left p  { color: var(--clr-text-muted); margin: 0; line-height: 1.7; }
+
+  .share-cta__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .share-cta__btn {
+    font-size: 0.95rem;
+    padding: var(--space-3) var(--space-8);
+  }
+
+  .share-cta__note {
+    font-size: 0.75rem;
+    color: var(--clr-text-subtle);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 640px) {
+    .share-cta__inner { flex-direction: column; }
+    .share-cta__right { width: 100%; }
+    .share-cta__btn { width: 100%; justify-content: center; }
+    .hero__stat-chips { gap: var(--space-2); }
+  }
 </style>

@@ -13,11 +13,15 @@ function isActive(href: string) {
 }
 ---
 
-<header class="nav-header" role="banner">
+<header class="nav-header" id="nav-header" role="banner">
   <nav class="nav container" aria-label="Main navigation">
     <!-- Logo -->
     <a href="/" class="nav__logo" aria-label="Paras Activist — Home">
-      <span class="nav__logo-mark" aria-hidden="true">◈</span>
+      <span class="nav__logo-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M11 2L13.5 8.5H20.5L14.75 12.75L17 19.5L11 15.25L5 19.5L7.25 12.75L1.5 8.5H8.5L11 2Z" fill="currentColor"/>
+        </svg>
+      </span>
       <span class="nav__logo-text">Paras<span class="nav__logo-accent">Activist</span></span>
     </a>
 
@@ -68,11 +72,12 @@ function isActive(href: string) {
       {causes.map(cause => (
         <li>
           <a href={cause.href} class={`mobile-menu__link mobile-menu__link--${cause.tag}`}>
-            <span aria-hidden="true">{cause.icon}</span>
+            <span class="mobile-menu__link-icon" aria-hidden="true">{cause.icon}</span>
             {cause.label}
           </a>
         </li>
       ))}
+      <li class="mobile-menu__divider" aria-hidden="true"></li>
       <li><a href="/about" class="mobile-menu__link">About & Pledge</a></li>
       <li><a href="/sources" class="mobile-menu__link">Sources</a></li>
       <li><a href="/share-toolkit" class="mobile-menu__link">Share Toolkit</a></li>
@@ -81,6 +86,7 @@ function isActive(href: string) {
 </header>
 
 <script>
+  // Mobile menu toggle
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
   let isOpen = false;
@@ -106,6 +112,19 @@ function isActive(href: string) {
       document.body.style.overflow = '';
     });
   });
+
+  // Scroll shrink effect
+  const header = document.getElementById('nav-header');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current > 80) {
+      header?.classList.add('nav-header--scrolled');
+    } else {
+      header?.classList.remove('nav-header--scrolled');
+    }
+    lastScroll = current;
+  }, { passive: true });
 </script>
 
 <style>
@@ -113,10 +132,18 @@ function isActive(href: string) {
     position: sticky;
     top: 0;
     z-index: 900;
-    background: rgba(10, 12, 16, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(8, 10, 15, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--clr-border);
+    transition: background var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .nav-header--scrolled {
+    background: rgba(8, 10, 15, 0.96);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    border-bottom-color: rgba(245,166,35,0.1);
   }
 
   .nav {
@@ -134,17 +161,21 @@ function isActive(href: string) {
     text-decoration: none;
     color: var(--clr-text);
     font-weight: 800;
-    font-size: 1.125rem;
-    letter-spacing: -0.02em;
+    font-size: 1.15rem;
+    letter-spacing: -0.03em;
     flex-shrink: 0;
     transition: opacity var(--duration-fast) var(--ease-out);
   }
-  .nav__logo:hover { opacity: 0.8; color: var(--clr-text); }
+  .nav__logo:hover { opacity: 0.85; color: var(--clr-text); }
 
   .nav__logo-mark {
-    font-size: 1.25rem;
     color: var(--clr-accent);
-    line-height: 1;
+    display: flex;
+    align-items: center;
+    transition: transform var(--duration-normal) var(--ease-spring);
+  }
+  .nav__logo:hover .nav__logo-mark {
+    transform: rotate(18deg) scale(1.1);
   }
 
   .nav__logo-accent { color: var(--clr-accent); }
@@ -171,6 +202,7 @@ function isActive(href: string) {
     text-decoration: none;
     transition: all var(--duration-fast) var(--ease-out);
     white-space: nowrap;
+    position: relative;
   }
 
   .nav__link:hover, .nav__link--active {
@@ -178,18 +210,35 @@ function isActive(href: string) {
     background: var(--clr-bg-elevated);
   }
 
+  .nav__link--active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    border-radius: var(--radius-full);
+    background: var(--clr-accent);
+  }
+
   .nav__link--food:hover, .nav__link--food.nav__link--active {
     color: var(--clr-food);
     background: var(--clr-food-bg);
   }
+  .nav__link--food.nav__link--active::after { background: var(--clr-food); }
+
   .nav__link--foot:hover, .nav__link--foot.nav__link--active {
     color: var(--clr-foot);
     background: var(--clr-foot-bg);
   }
+  .nav__link--foot.nav__link--active::after { background: var(--clr-foot); }
+
   .nav__link--just:hover, .nav__link--just.nav__link--active {
     color: var(--clr-just);
     background: var(--clr-just-bg);
   }
+  .nav__link--just.nav__link--active::after { background: var(--clr-just); }
 
   /* Actions */
   .nav__actions {
@@ -210,20 +259,22 @@ function isActive(href: string) {
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 36px;
-    height: 36px;
-    background: transparent;
-    border: none;
+    width: 38px;
+    height: 38px;
+    background: var(--clr-bg-elevated);
+    border: 1px solid var(--clr-border);
     cursor: pointer;
     padding: var(--space-2);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     margin-left: auto;
+    transition: border-color var(--duration-fast) var(--ease-out);
   }
+  .nav__hamburger:hover { border-color: var(--clr-accent); }
 
   .hamburger-line {
     display: block;
     width: 100%;
-    height: 2px;
+    height: 1.5px;
     background: var(--clr-text-muted);
     border-radius: var(--radius-full);
     transition: all var(--duration-normal) var(--ease-out);
@@ -231,14 +282,16 @@ function isActive(href: string) {
   }
 
   .nav__hamburger--open .hamburger-line:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(6.5px) rotate(45deg);
+    background: var(--clr-text);
   }
   .nav__hamburger--open .hamburger-line:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
   }
   .nav__hamburger--open .hamburger-line:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-6.5px) rotate(-45deg);
+    background: var(--clr-text);
   }
 
   /* Mobile menu */
@@ -246,8 +299,9 @@ function isActive(href: string) {
     display: none;
     position: fixed;
     inset: 0;
-    top: calc(var(--nav-height) + 44px);
-    background: var(--clr-bg);
+    top: calc(var(--nav-height) + var(--banner-height));
+    background: rgba(8, 10, 15, 0.98);
+    backdrop-filter: blur(24px);
     z-index: 850;
     padding: var(--space-6);
     overflow-y: auto;
@@ -264,6 +318,13 @@ function isActive(href: string) {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    padding-top: var(--space-4);
+  }
+
+  .mobile-menu__divider {
+    height: 1px;
+    background: var(--clr-border);
+    margin-block: var(--space-2);
   }
 
   .mobile-menu__link {
@@ -271,7 +332,7 @@ function isActive(href: string) {
     align-items: center;
     gap: var(--space-3);
     padding: var(--space-4) var(--space-5);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     font-size: 1.0625rem;
     font-weight: 500;
     color: var(--clr-text-muted);
@@ -280,10 +341,14 @@ function isActive(href: string) {
     transition: all var(--duration-fast) var(--ease-out);
   }
 
-  .mobile-menu__link:hover,
-  .mobile-menu__link--food:hover { color: var(--clr-food); background: var(--clr-food-bg); border-color: var(--clr-food); }
-  .mobile-menu__link--foot:hover { color: var(--clr-foot); background: var(--clr-foot-bg); border-color: var(--clr-foot); }
-  .mobile-menu__link--just:hover { color: var(--clr-just); background: var(--clr-just-bg); border-color: var(--clr-just); }
+  .mobile-menu__link-icon {
+    font-size: 1.25rem;
+  }
+
+  .mobile-menu__link:hover { color: var(--clr-text); background: var(--clr-bg-elevated); }
+  .mobile-menu__link--food:hover { color: var(--clr-food); background: var(--clr-food-bg); border-color: rgba(74,222,128,0.2); }
+  .mobile-menu__link--foot:hover { color: var(--clr-foot); background: var(--clr-foot-bg); border-color: rgba(96,165,250,0.2); }
+  .mobile-menu__link--just:hover { color: var(--clr-just); background: var(--clr-just-bg); border-color: rgba(192,132,252,0.2); }
 
   @media (max-width: 768px) {
     .nav__links,

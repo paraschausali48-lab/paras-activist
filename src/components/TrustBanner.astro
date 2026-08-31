@@ -4,21 +4,36 @@
 
 <div class="trust-banner" id="trust-banner" role="banner" aria-label="Privacy notice">
   <div class="trust-banner__inner container">
-    <div class="trust-banner__content">
-      <span class="trust-banner__icon" aria-hidden="true">🔒</span>
-      <p>
-        <strong>Zero cookies. Zero trackers. Zero ads.</strong>
-        We collect no data. We receive no corporate or political funding.
-        <a href="/about#pledge">Read our pledge →</a>
-      </p>
+    <div class="trust-banner__pills">
+      <span class="trust-pill" aria-label="No cookies">
+        <span class="trust-pill__dot trust-pill__dot--green" aria-hidden="true"></span>
+        No cookies
+      </span>
+      <span class="trust-banner__sep" aria-hidden="true">·</span>
+      <span class="trust-pill" aria-label="No trackers">
+        <span class="trust-pill__dot trust-pill__dot--green" aria-hidden="true"></span>
+        No trackers
+      </span>
+      <span class="trust-banner__sep" aria-hidden="true">·</span>
+      <span class="trust-pill" aria-label="No ads">
+        <span class="trust-pill__dot trust-pill__dot--green" aria-hidden="true"></span>
+        No ads
+      </span>
+      <span class="trust-banner__sep trust-banner__sep--lg" aria-hidden="true">·</span>
+      <a href="/about#pledge" class="trust-banner__link" aria-label="Read our full privacy pledge">
+        Read our pledge →
+      </a>
     </div>
+
     <button
-      class="trust-banner__close btn-ghost"
+      class="trust-banner__close"
       id="trust-banner-close"
       aria-label="Dismiss privacy notice"
       type="button"
     >
-      ✕
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
     </button>
   </div>
 </div>
@@ -38,10 +53,10 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: linear-gradient(135deg, rgba(245,166,35,0.12) 0%, rgba(245,166,35,0.06) 100%);
-    border-bottom: 1px solid rgba(245,166,35,0.25);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(8, 10, 15, 0.88);
+    border-bottom: 1px solid rgba(245, 166, 35, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     transition: transform var(--duration-normal) var(--ease-out),
                 opacity var(--duration-normal) var(--ease-out);
   }
@@ -57,48 +72,83 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    padding-block: var(--space-3);
+    padding-block: 10px;
   }
 
-  .trust-banner__content {
+  .trust-banner__pills {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    font-size: 0.875rem;
-    color: var(--clr-text);
+    flex-wrap: wrap;
   }
 
-  .trust-banner__content p { margin: 0; }
-
-  .trust-banner__content strong {
-    color: var(--clr-accent);
+  .trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    letter-spacing: 0.01em;
   }
 
-  .trust-banner__content a {
-    color: var(--clr-accent);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .trust-banner__icon {
-    font-size: 1rem;
+  .trust-pill__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
     flex-shrink: 0;
   }
+
+  .trust-pill__dot--green {
+    background: var(--clr-success);
+    box-shadow: 0 0 6px var(--clr-food-glow);
+    animation: pulseGlow 2.5s ease-in-out infinite;
+  }
+
+  .trust-banner__sep {
+    color: var(--clr-border);
+    font-size: 0.75rem;
+    user-select: none;
+  }
+
+  .trust-banner__sep--lg {
+    margin-inline: var(--space-1);
+  }
+
+  .trust-banner__link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--clr-accent);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+    white-space: nowrap;
+  }
+  .trust-banner__link:hover { color: var(--clr-accent-bright); }
 
   .trust-banner__close {
-    flex-shrink: 0;
-    color: var(--clr-text-muted);
-    font-size: 0.875rem;
-    cursor: pointer;
-    padding: var(--space-2);
-    border-radius: var(--radius-sm);
-    transition: color var(--duration-fast) var(--ease-out),
-                background var(--duration-fast) var(--ease-out);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
     background: transparent;
-    border: none;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    color: var(--clr-text-subtle);
+    flex-shrink: 0;
+    transition: color var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
   }
   .trust-banner__close:hover {
     color: var(--clr-text);
-    background: rgba(255,255,255,0.05);
+    border-color: var(--clr-text-subtle);
+    background: var(--clr-bg-elevated);
+  }
+
+  @media (max-width: 480px) {
+    .trust-banner__sep--lg { display: none; }
+    .trust-banner__link { display: none; }
   }
 </style>

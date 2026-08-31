@@ -9,31 +9,42 @@ interface Props {
 const { myth, fact, sources } = Astro.props;
 ---
 
-<div class="myth-fact" role="group" aria-label="Myth versus Fact">
+<div class="myth-fact reveal" role="group" aria-label="Myth versus Fact">
+  <!-- MYTH -->
   <div class="myth-fact__myth">
     <div class="myth-fact__label myth-fact__label--myth">
-      <span aria-hidden="true">🔴</span>
+      <span class="myth-fact__label-dot" aria-hidden="true"></span>
       <span>MYTH</span>
     </div>
     <p class="myth-fact__text">{myth}</p>
   </div>
 
+  <!-- Arrow divider -->
   <div class="myth-fact__divider" aria-hidden="true">
-    <div class="myth-fact__divider-line"></div>
-    <span class="myth-fact__divider-icon">⟶</span>
-    <div class="myth-fact__divider-line"></div>
+    <div class="myth-fact__divider-track">
+      <div class="myth-fact__divider-line"></div>
+      <span class="myth-fact__divider-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 3v14M4 11l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <div class="myth-fact__divider-line"></div>
+    </div>
+    <span class="myth-fact__divider-label">FACT CHECK</span>
   </div>
 
+  <!-- FACT -->
   <div class="myth-fact__fact">
     <div class="myth-fact__label myth-fact__label--fact">
-      <span aria-hidden="true">✅</span>
+      <span class="myth-fact__label-dot" aria-hidden="true"></span>
       <span>FACT</span>
     </div>
     <p class="myth-fact__text">{fact}</p>
     {sources && (
-      <p class="myth-fact__sources">
-        <strong>Sources:</strong> {sources}
-      </p>
+      <div class="myth-fact__sources">
+        <span class="myth-fact__sources-label">Sources:</span>
+        {sources}
+      </div>
     )}
   </div>
 </div>
@@ -49,90 +60,181 @@ const { myth, fact, sources } = Astro.props;
     border-radius: var(--radius-xl);
     padding: var(--space-6);
     margin-block: var(--space-8);
-    transition: box-shadow var(--duration-normal) var(--ease-out);
+    transition: box-shadow var(--duration-normal) var(--ease-out),
+                border-color var(--duration-normal) var(--ease-out);
   }
 
   .myth-fact:hover {
     box-shadow: var(--shadow-lg);
+    border-color: rgba(245,166,35,0.15);
   }
 
-  @media (max-width: 700px) {
-    .myth-fact {
-      grid-template-columns: 1fr;
-    }
-    .myth-fact__divider {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
-
+  /* Myth side */
   .myth-fact__myth {
-    background: rgba(248, 113, 113, 0.05);
-    border: 1px solid rgba(248,113,113,0.2);
+    background: rgba(248, 113, 113, 0.04);
+    border: 1px solid rgba(248, 113, 113, 0.18);
+    border-left: 3px solid var(--clr-danger);
     border-radius: var(--radius-lg);
     padding: var(--space-5);
   }
 
+  /* Fact side */
   .myth-fact__fact {
-    background: rgba(74, 222, 128, 0.05);
-    border: 1px solid rgba(74,222,128,0.2);
+    background: rgba(74, 222, 128, 0.04);
+    border: 1px solid rgba(74, 222, 128, 0.18);
+    border-left: 3px solid var(--clr-success);
     border-radius: var(--radius-lg);
     padding: var(--space-5);
   }
 
+  /* Label row */
   .myth-fact__label {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     margin-bottom: var(--space-3);
   }
 
-  .myth-fact__label--myth { color: var(--clr-danger); }
-  .myth-fact__label--fact { color: var(--clr-success); }
+  .myth-fact__label-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .myth-fact__label--myth {
+    color: var(--clr-danger);
+  }
+  .myth-fact__label--myth .myth-fact__label-dot {
+    background: var(--clr-danger);
+    box-shadow: 0 0 6px rgba(248,113,113,0.5);
+  }
+
+  .myth-fact__label--fact {
+    color: var(--clr-success);
+  }
+  .myth-fact__label--fact .myth-fact__label-dot {
+    background: var(--clr-success);
+    box-shadow: 0 0 6px rgba(74,222,128,0.5);
+  }
 
   .myth-fact__text {
     font-size: 0.9375rem;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--clr-text);
     margin: 0;
   }
 
   .myth-fact__sources {
     margin-top: var(--space-4);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--clr-text-muted);
     line-height: 1.5;
-    border-top: 1px dashed var(--clr-border);
+    border-top: 1px dashed rgba(255,255,255,0.08);
     padding-top: var(--space-3);
   }
 
+  .myth-fact__sources-label {
+    font-weight: 700;
+    color: var(--clr-text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.7rem;
+    display: block;
+    margin-bottom: var(--space-1);
+  }
+
+  /* Divider */
   .myth-fact__divider {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-2);
+    padding-inline: var(--space-2);
+  }
+
+  .myth-fact__divider-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
   }
 
   .myth-fact__divider-line {
-    width: 2px;
-    flex: 1;
-    background: var(--clr-border);
-    min-height: 24px;
+    width: 1px;
+    height: 28px;
+    background: linear-gradient(to bottom, transparent, var(--clr-border));
+  }
+
+  .myth-fact__divider-line:last-child {
+    background: linear-gradient(to bottom, var(--clr-border), transparent);
   }
 
   .myth-fact__divider-icon {
-    font-size: 1.25rem;
-    color: var(--clr-text-subtle);
-    transform: rotate(90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-full);
+    background: var(--clr-bg-elevated);
+    color: var(--clr-accent);
+    transition: all var(--duration-normal) var(--ease-out);
   }
 
-  @media (max-width: 700px) {
-    .myth-fact__divider-line { width: 32px; height: 2px; flex: none; }
-    .myth-fact__divider-icon { transform: rotate(0deg); }
+  .myth-fact:hover .myth-fact__divider-icon {
+    background: var(--clr-accent-glow);
+    border-color: var(--clr-accent);
+    transform: scale(1.05);
+  }
+
+  .myth-fact__divider-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--clr-text-subtle);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Stack on mobile */
+  @media (max-width: 680px) {
+    .myth-fact {
+      grid-template-columns: 1fr;
+      padding: var(--space-5);
+    }
+
+    .myth-fact__divider {
+      flex-direction: row;
+      justify-content: center;
+      padding-block: 0;
+      padding-inline: var(--space-4);
+    }
+
+    .myth-fact__divider-track {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .myth-fact__divider-line {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--clr-border));
+    }
+
+    .myth-fact__divider-line:last-child {
+      background: linear-gradient(to right, var(--clr-border), transparent);
+    }
+
+    .myth-fact__divider-icon svg {
+      transform: rotate(-90deg);
+    }
+
+    .myth-fact__divider-label { display: none; }
   }
 </style>
