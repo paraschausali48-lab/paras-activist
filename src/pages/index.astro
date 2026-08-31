@@ -1,0 +1,344 @@
+---
+// src/pages/index.astro — Homepage (The Hub)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CauseCard from '../components/CauseCard.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+
+const causes = [
+  {
+    title: 'Food Security',
+    href: '/food-security/',
+    mythsHref: '/food-security/myths/',
+    dataHref: '/food-security/data/',
+    description: 'India is the world\'s second-largest food producer. Yet it ranks 111th on the Global Hunger Index. This is not a production crisis — it is a distribution, storage, and political will crisis.',
+    stat: '₹92,000 Cr',
+    statLabel: 'worth of food wasted in India annually (ICAR)',
+    icon: '🌾',
+    tag: 'food' as const,
+  },
+  {
+    title: 'Footpath Movement',
+    href: '/footpath/',
+    mythsHref: '/footpath/myths/',
+    dataHref: '/footpath/data/',
+    description: 'Pedestrians are India\'s single largest road accident victim group. Functional, unobstructed footpaths are the exception, not the rule. This is a choice — not an inevitability.',
+    stat: '17%',
+    statLabel: 'of all road accident deaths — pedestrians (MoRTH 2022)',
+    icon: '🚶',
+    tag: 'foot' as const,
+  },
+  {
+    title: 'Intersectional Justice',
+    href: '/intersectional-justice/',
+    mythsHref: '/intersectional-justice/myths/',
+    dataHref: '/intersectional-justice/data/',
+    description: 'Protecting women, trans individuals, and animals. Dismantling caste discrimination and racism with evidence, not slogans. Rights are not Western imports — they are indigenous reclamations.',
+    stat: '57,582',
+    statLabel: 'registered crimes against Scheduled Castes in 2021 alone (NCRB)',
+    icon: '⚖️',
+    tag: 'just' as const,
+  },
+];
+
+const pageDescription = 'Three grassroots movements. One commitment: evidence over propaganda. Food security, safe pedestrian infrastructure, and intersectional justice — rigorously cited, freely shareable.';
+---
+
+<BaseLayout
+  title="Home"
+  description={pageDescription}
+  ogImage="/og/home.png"
+>
+  <!-- Hero -->
+  <section class="hero" aria-label="Site introduction">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__label tag tag--accent">
+          <span aria-hidden="true">◈</span>
+          Evidence-Based Activism
+        </div>
+
+        <h1 class="hero__heading">
+          Three movements.<br />
+          <span class="hero__heading-accent">One commitment to truth.</span>
+        </h1>
+
+        <p class="hero__sub">
+          This site exists to counter propaganda with evidence. No advertising, no political funding, no data collection.
+          Just rigorously cited facts — formatted for WhatsApp and Telegram sharing across India.
+        </p>
+
+        <div class="hero__actions">
+          <a href="/food-security/" class="btn btn-primary" id="hero-cta-food">
+            🌾 Start with Food Security
+          </a>
+          <a href="/about" class="btn btn-outline" id="hero-cta-about">
+            Read our Pledge
+          </a>
+        </div>
+
+        <div class="hero__share-note">
+          <p>📲 Share this site</p>
+          <ShareButtons title="Paras Activist — Evidence over propaganda" url="https://parasactivist.in" />
+        </div>
+      </div>
+
+      <!-- Decorative grid lines -->
+      <div class="hero__deco" aria-hidden="true">
+        <div class="hero__deco-grid"></div>
+        <div class="hero__deco-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cause Cards -->
+  <section class="causes section" aria-label="Three causes">
+    <div class="container">
+      <div class="section-header">
+        <h2>The Three Movements</h2>
+        <p class="section-sub">
+          Each cause stands independently. Together they represent a vision of a more just, accessible, and equitable India.
+        </p>
+      </div>
+
+      <div class="causes__grid stagger">
+        {causes.map(cause => (
+          <CauseCard {...cause} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why This Site Section -->
+  <section class="why section--sm" aria-label="Why this site exists">
+    <div class="container">
+      <div class="why__inner">
+        <div class="why__text">
+          <h2>Why this site exists</h2>
+          <p>
+            Propaganda thrives in information vacuums. When people lack access to verified, citable, shareable data, misinformation fills the gap.
+          </p>
+          <p>
+            This platform is built on one principle: <strong>an ordinary person in India should be able to share an evidence-based fact in under 10 seconds.</strong>
+            Every article is structured for WhatsApp, every claim is cited, and every statistic points to its primary source.
+          </p>
+          <p>
+            We receive no corporate or political funding. We use no trackers. We sell nothing.
+          </p>
+          <a href="/about#pledge" class="btn btn-outline" id="why-pledge-btn">
+            Read the Zero Propaganda Pledge →
+          </a>
+        </div>
+
+        <div class="why__pillars">
+          <div class="pillar">
+            <div class="pillar__icon" aria-hidden="true">📚</div>
+            <h3 class="pillar__title">Evidence First</h3>
+            <p class="pillar__text">Every claim links to a government report, peer-reviewed paper, or independently verified NGO data.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar__icon" aria-hidden="true">📲</div>
+            <h3 class="pillar__title">Mobile Native</h3>
+            <p class="pillar__text">Designed for 4G India. Fast loading, WhatsApp-optimised link previews, downloadable share cards.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar__icon" aria-hidden="true">🔒</div>
+            <h3 class="pillar__title">Zero Tracking</h3>
+            <p class="pillar__text">No cookies, no analytics, no fingerprinting. This is a read-only educational resource.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar__icon" aria-hidden="true">✏️</div>
+            <h3 class="pillar__title">Open Corrections</h3>
+            <p class="pillar__text">All factual errors are corrected publicly, with a correction log and update date on every article.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Share Toolkit CTA -->
+  <section class="share-cta section--sm" aria-label="Download share cards">
+    <div class="container">
+      <div class="share-cta__inner">
+        <div class="share-cta__text">
+          <span class="tag tag--accent" aria-hidden="true">📲 Share Toolkit</span>
+          <h2>Arm yourself with shareable evidence</h2>
+          <p>
+            Download pre-formatted WhatsApp image cards for every myth-buster, statistic, and fact sheet.
+            Designed for Indian mobile screens. One tap to share.
+          </p>
+          <a href="/share-toolkit" class="btn btn-primary" id="share-toolkit-cta">
+            View Share Toolkit →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    padding-block: var(--space-20) var(--space-16);
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+  }
+
+  .hero__label {
+    display: inline-flex;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__heading {
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__heading-accent {
+    background: linear-gradient(135deg, var(--clr-accent) 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__sub {
+    font-size: clamp(1rem, 2vw, 1.1875rem);
+    color: var(--clr-text-muted);
+    max-width: 60ch;
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-8);
+  }
+
+  .hero__share-note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+  .hero__share-note p {
+    font-size: 0.875rem;
+    color: var(--clr-text-muted);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  /* Deco */
+  .hero__deco {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero__deco-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--clr-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--clr-border) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.35;
+    mask-image: radial-gradient(ellipse at 60% 40%, black 0%, transparent 70%);
+  }
+
+  .hero__deco-glow {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 50vw;
+    height: 50vw;
+    max-width: 600px;
+    max-height: 600px;
+    background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+
+  /* Section header */
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .section-sub {
+    color: var(--clr-text-muted);
+    max-width: 55ch;
+    margin-inline: auto;
+    font-size: 1.0625rem;
+    margin-top: var(--space-4);
+  }
+
+  /* Causes grid */
+  .causes__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 960px) {
+    .causes__grid { grid-template-columns: 1fr; }
+  }
+
+  /* Why */
+  .why__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .why__inner { grid-template-columns: 1fr; gap: var(--space-8); }
+  }
+
+  .why__text h2 { margin-bottom: var(--space-4); }
+  .why__text p { color: var(--clr-text-muted); margin-bottom: var(--space-4); }
+
+  .why__pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .pillar {
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    transition: border-color var(--duration-normal) var(--ease-out);
+  }
+  .pillar:hover { border-color: var(--clr-accent); }
+
+  .pillar__icon { font-size: 1.5rem; margin-bottom: var(--space-3); }
+  .pillar__title { font-size: 0.9375rem; font-weight: 700; margin-bottom: var(--space-2); }
+  .pillar__text { font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.5; margin: 0; }
+
+  /* Share CTA */
+  .share-cta {
+    background: var(--clr-bg-surface);
+    border-top: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .share-cta__inner {
+    max-width: 640px;
+  }
+
+  .share-cta__text { display: flex; flex-direction: column; gap: var(--space-4); }
+  .share-cta__text h2 { margin: 0; }
+  .share-cta__text p { color: var(--clr-text-muted); margin: 0; }
+</style>

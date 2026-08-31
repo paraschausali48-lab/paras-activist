@@ -1,0 +1,18 @@
+{
+  "name": "Paras Activist",
+  "short_name": "ParasActivist",
+  "description": "Evidence-based activism on food security, footpath safety, and intersectional justice in India.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0c10",
+  "theme_color": "#0a0c10",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}

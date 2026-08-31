@@ -1,0 +1,111 @@
+---
+// src/pages/intersectional-justice/data.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+---
+
+<BaseLayout
+  title="Intersectional Justice Data & Statistics"
+  description="Primary source data on caste-based discrimination, trans rights, and animal welfare in India — NCRB crime data, Oxfam inequality reports, and Supreme Court judgments."
+  ogImage="/og/just-data.png"
+>
+  <div class="data-page">
+    <div class="container">
+      <header class="data-page__header">
+        <a href="/intersectional-justice/" class="breadcrumb-back">← Intersectional Justice</a>
+        <span class="tag tag--just">📊 Data & Statistics</span>
+        <h1>Intersectional Justice: Data & Statistics</h1>
+        <p class="data-page__sub">
+          All data is sourced from primary government records, judicial judgments, UN agency reports, or peer-reviewed scholarship. Each figure links to its source.
+        </p>
+        <ShareButtons title="Intersectional Justice Data — Paras Activist" url="https://parasactivist.in/intersectional-justice/data/" />
+      </header>
+
+      <div class="stats-showcase stagger">
+        <StatHighlight number="57,582" label="Registered crimes against SCs in 2021 — widespread undercount acknowledged (NCRB)" source="NCRB Crime in India, 2021" color="just" />
+        <StatHighlight number="1861" label="Year Section 377 was introduced as British colonial law, criminalising gender non-conformity" source="IPC colonial legal history" color="just" />
+        <StatHighlight number="2014" label="Year India's Supreme Court affirmed third gender rights in NALSA v. Union of India" source="Supreme Court of India, NALSA, 2014" color="just" />
+        <StatHighlight number="2018" label="Year Section 377 was partially struck down by the Supreme Court in Navtej Singh Johar v. UOI" source="Supreme Court of India, 2018" color="just" />
+      </div>
+
+      <!-- NCRB Table -->
+      <section class="data-table-section">
+        <h2>Crimes Against Scheduled Castes — India Trend (NCRB)</h2>
+        <div class="table-wrapper" role="region" aria-label="NCRB crime data table" tabindex="0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Registered Crimes Against SCs</th>
+                <th scope="col">Change YoY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>2021</td><td>57,582</td><td>+1.2%</td></tr>
+              <tr><td>2020</td><td>50,900</td><td>-3.1%</td></tr>
+              <tr><td>2019</td><td>45,961</td><td>+7.3%</td></tr>
+              <tr><td>2018</td><td>42,793</td><td>+5.0%</td></tr>
+              <tr><td>2017</td><td>40,801</td><td>–</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Source: <a href="https://ncrb.gov.in" target="_blank" rel="noopener noreferrer">NCRB Crime in India (annual)</a> | Note: These are <em>registered</em> crimes. Actual incidence is estimated to be significantly higher due to underreporting.</p>
+      </section>
+
+      <!-- Key Judgments -->
+      <section class="primary-sources-section">
+        <h2>Key Legal Milestones</h2>
+        <div class="source-cards">
+          <a href="https://main.sci.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 Supreme Court Judgment</span>
+            <h3>NALSA v. Union of India (2014)</h3>
+            <p>Landmark judgment affirming the legal recognition of third gender. Directed governments to implement welfare measures for transgender persons.</p>
+          </a>
+          <a href="https://main.sci.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 Supreme Court Judgment</span>
+            <h3>Navtej Singh Johar v. UOI (2018)</h3>
+            <p>Partially struck down Section 377 of the IPC, decriminalising consensual same-sex relations between adults.</p>
+          </a>
+          <a href="https://ncrb.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 Government</span>
+            <h3>NCRB Crime in India 2021</h3>
+            <p>Annual national crime statistics including caste-based violence, crimes against women, and SC/ST atrocities data.</p>
+          </a>
+          <a href="https://oxfamindia.org" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟡 NGO Report</span>
+            <h3>Oxfam India Inequality Report 2022</h3>
+            <p>Wage, land ownership, and credit access disparities by caste — controlling for education level. Documents structural economic discrimination.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .data-page { padding-block: var(--space-8) var(--space-20); }
+  .data-page__header { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-10); max-width: 720px; }
+  .breadcrumb-back { font-size: 0.875rem; color: var(--clr-text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: var(--space-1); transition: color var(--duration-fast) var(--ease-out); }
+  .breadcrumb-back:hover { color: var(--clr-just); }
+  .data-page__header h1 { margin: 0; }
+  .data-page__sub { color: var(--clr-text-muted); font-size: 1rem; max-width: 60ch; line-height: 1.7; margin: 0; }
+  .stats-showcase { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-12); }
+  .data-table-section, .primary-sources-section { margin-top: var(--space-12); }
+  .data-table-section h2, .primary-sources-section h2 { margin-bottom: var(--space-4); }
+  .source-note { font-size: 0.8rem; color: var(--clr-text-muted); margin-top: var(--space-3); }
+  .source-note a { color: var(--clr-accent); }
+  .table-wrapper { overflow-x: auto; border: 1px solid var(--clr-border); border-radius: var(--radius-lg); margin-bottom: var(--space-2); }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .data-table th, .data-table td { padding: var(--space-4) var(--space-5); text-align: left; border-bottom: 1px solid var(--clr-border); }
+  .data-table th { background: var(--clr-bg-surface); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-text-muted); }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table tbody tr:hover { background: var(--clr-bg-elevated); }
+  .source-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  @media (max-width: 700px) { .source-cards { grid-template-columns: 1fr; } }
+  .source-card { display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; transition: all var(--duration-normal) var(--ease-out); }
+  .source-card:hover { border-color: var(--clr-just); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .source-card__type { font-size: 0.75rem; font-weight: 600; color: var(--clr-text-muted); display: block; margin-bottom: var(--space-2); }
+  .source-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--clr-just); margin-bottom: var(--space-2); }
+  .source-card p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+</style>

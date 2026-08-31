@@ -1,0 +1,47 @@
+---
+// Citation.astro — inline superscript citation with accessible tooltip / link
+interface Props {
+  number: string | number;
+  href?: string;
+  label?: string;  // Short source label for tooltip
+}
+const { number, href, label } = Astro.props;
+---
+
+{href ? (
+  <a
+    href={href}
+    class="citation"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={label ? `Source ${number}: ${label}` : `Source ${number}`}
+    title={label}
+  >
+    <sup>{number}</sup>
+  </a>
+) : (
+  <span class="citation" aria-label={label ? `Source ${number}: ${label}` : `Source ${number}`} title={label}>
+    <sup>{number}</sup>
+  </span>
+)}
+
+<style>
+  .citation {
+    color: var(--clr-accent);
+    font-size: 0.75em;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: help;
+    border-bottom: 1px dotted currentColor;
+    transition: color var(--duration-fast) var(--ease-out);
+    white-space: nowrap;
+  }
+
+  .citation:hover { color: var(--clr-text); }
+
+  .citation sup {
+    font-size: 0.875em;
+    vertical-align: super;
+    line-height: 0;
+  }
+</style>

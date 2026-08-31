@@ -1,0 +1,254 @@
+---
+// src/pages/about.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About & Zero Propaganda Pledge"
+  description="What this site is, who built it, and why. The complete Zero Propaganda Pledge — no tracking, no advertising, no political or corporate funding. Evidence-based activism for India."
+  ogImage="/og/about.png"
+>
+  <div class="about-page">
+    <div class="container">
+      <header class="about-header">
+        <h1>About <span class="accent">Paras Activist</span></h1>
+        <p class="about-header__sub">
+          Three grassroots Instagram pages. One unified website. Zero propaganda.
+        </p>
+      </header>
+
+      <div class="about-grid">
+        <!-- Main content -->
+        <article class="about-content">
+
+          <section id="what" class="about-section">
+            <h2>What this site is</h2>
+            <p>
+              Paras Activist is a unified educational platform for three grassroots Indian movements: <a href="/food-security/">Food Security</a>, the <a href="/footpath/">Footpath Movement</a>, and <a href="/intersectional-justice/">Intersectional Justice</a>.
+            </p>
+            <p>
+              It is not a news site. It is not an organisation. It does not accept donations, run campaigns, or collect contact information. It is a static, read-only educational resource — the digital equivalent of a well-sourced pamphlet.
+            </p>
+            <p>
+              Every claim is cited. Every statistic points to a primary source. Every page is structured for easy sharing on WhatsApp and Telegram so that one person can counter a piece of misinformation in under ten seconds.
+            </p>
+          </section>
+
+          <section id="pledge" class="about-section pledge-section">
+            <div class="pledge-header">
+              <span aria-hidden="true" class="pledge-icon">🔒</span>
+              <h2>The Zero Propaganda Pledge</h2>
+            </div>
+            <p class="pledge-date">Signed and dated: August 2025. Last reviewed: August 2025. Corrections: 0.</p>
+
+            <div class="pledge-commitments">
+              <div class="pledge-item">
+                <div class="pledge-item__icon" aria-hidden="true">❌</div>
+                <div>
+                  <h3>No cookies or tracking</h3>
+                  <p>This site does not use Google Analytics, Plausible, Matomo, Hotjar, or any other analytics tool. There are no tracking pixels, fingerprinting scripts, or session recording tools of any kind. We cannot and do not know who visits this site.</p>
+                </div>
+              </div>
+
+              <div class="pledge-item">
+                <div class="pledge-item__icon" aria-hidden="true">❌</div>
+                <div>
+                  <h3>No advertising</h3>
+                  <p>There are no Google Ads, affiliate links, sponsored content, or any commercial arrangement of any kind. No external party has paid to appear on this site or influence its content.</p>
+                </div>
+              </div>
+
+              <div class="pledge-item">
+                <div class="pledge-item__icon" aria-hidden="true">❌</div>
+                <div>
+                  <h3>No political or corporate funding</h3>
+                  <p>This site receives no funding from any political party, electoral candidate, corporate entity, or ideologically-affiliated NGO. It is self-funded by an individual Indian activist.</p>
+                </div>
+              </div>
+
+              <div class="pledge-item">
+                <div class="pledge-item__icon" aria-hidden="true">❌</div>
+                <div>
+                  <h3>No data collection of any kind</h3>
+                  <p>There are no contact forms, mailing list sign-ups, volunteer registration forms, comment sections, or any mechanism that collects personal information. This is a strictly read-only site.</p>
+                </div>
+              </div>
+
+              <div class="pledge-item">
+                <div class="pledge-item__icon" aria-hidden="true">✅</div>
+                <div>
+                  <h3>Open corrections policy</h3>
+                  <p>If any factual error is found on this site, it will be corrected publicly. The correction will appear at the top of the relevant article with the date of correction and the nature of the error. No corrections have been made as of August 2025.</p>
+                </div>
+              </div>
+
+              <div class="pledge-item">
+                <div class="pledge-item__icon" aria-hidden="true">✅</div>
+                <div>
+                  <h3>Primary sources always</h3>
+                  <p>No claim on this site rests solely on a media report. Every claim is verified against a primary source: a government report, a peer-reviewed paper, a Supreme Court judgment, or a named institutional publication. Media sources are cited only as secondary confirmations.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="causes" class="about-section">
+            <h2>The three causes</h2>
+            <p>
+              These three movements are distinct but united by a common belief: that structural injustice requires structural solutions, and that ordinary people deserve access to the evidence to understand those structures.
+            </p>
+            <ul class="cause-list">
+              <li>
+                <strong>🌾 Food Security:</strong> India cannot claim to be a major food power while ranking 111th on the Global Hunger Index. The distribution system, cold-chain infrastructure, and PDS implementation are policy choices — and can be changed.
+              </li>
+              <li>
+                <strong>🚶 The Footpath Movement:</strong> Pedestrian safety is not a luxury. It is a public health imperative and an economic justice issue. Low-income workers who walk to work deserve the same protection as motorists.
+              </li>
+              <li>
+                <strong>⚖️ Intersectional Justice:</strong> Caste discrimination, gender-based violence, trans exclusion, and animal abuse share common structural roots. Understanding these connections makes advocacy more effective — not more diffuse.
+              </li>
+            </ul>
+          </section>
+
+          <section id="contact" class="about-section">
+            <h2>Contact</h2>
+            <p>
+              This site has no contact form by design. If you have found a factual error, the best way to flag it is via the Instagram pages that power this site. Links are in the footer.
+            </p>
+            <p>
+              Journalists, researchers, and educators are welcome to freely use and cite any content on this site with attribution.
+            </p>
+          </section>
+
+        </article>
+
+        <!-- Sidebar / Quick facts -->
+        <aside class="about-sidebar" aria-label="Site quick facts">
+          <div class="sidebar-card">
+            <h3>Quick Facts</h3>
+            <dl class="quick-facts">
+              <dt>Built with</dt><dd>Astro (static site generator)</dd>
+              <dt>Hosting</dt><dd>Cloudflare Pages (global CDN)</dd>
+              <dt>Cookies</dt><dd class="fact--good">None</dd>
+              <dt>Trackers</dt><dd class="fact--good">None</dd>
+              <dt>JavaScript</dt><dd>Minimal (navigation only)</dd>
+              <dt>Funding</dt><dd class="fact--good">Self-funded</dd>
+              <dt>Corrections</dt><dd class="fact--good">0 to date</dd>
+              <dt>Last updated</dt><dd>August 2025</dd>
+            </dl>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>In case of doubt</h3>
+            <p>Every statistic on this site has a source. The master bibliography is available at:</p>
+            <a href="/sources" class="btn btn-outline sidebar-btn">View All Sources →</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-page { padding-block: var(--space-10) var(--space-20); }
+
+  .about-header { max-width: 640px; margin-bottom: var(--space-12); }
+  .about-header h1 { margin-bottom: var(--space-4); }
+  .accent { color: var(--clr-accent); }
+  .about-header__sub { font-size: 1.125rem; color: var(--clr-text-muted); margin: 0; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  @media (max-width: 960px) { .about-grid { grid-template-columns: 1fr; } }
+
+  .about-section { margin-bottom: var(--space-12); }
+  .about-section h2 { margin-bottom: var(--space-5); }
+  .about-section p { color: var(--clr-text-muted); margin-bottom: var(--space-4); }
+  .about-section a { color: var(--clr-accent); }
+
+  /* Pledge */
+  .pledge-section {
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-left: 4px solid var(--clr-accent);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+  }
+
+  .pledge-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .pledge-icon { font-size: 2rem; }
+  .pledge-header h2 { margin: 0; }
+
+  .pledge-date {
+    font-size: 0.8rem;
+    color: var(--clr-text-subtle);
+    margin-bottom: var(--space-8) !important;
+  }
+
+  .pledge-commitments { display: flex; flex-direction: column; gap: var(--space-6); }
+
+  .pledge-item {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .pledge-item__icon { font-size: 1.25rem; padding-top: 4px; }
+
+  .pledge-item h3 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+    color: var(--clr-text);
+  }
+
+  .pledge-item p {
+    font-size: 0.875rem;
+    color: var(--clr-text-muted);
+    margin: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* Cause list */
+  .cause-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-4); }
+  .cause-list li {
+    font-size: 0.9375rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--clr-border);
+  }
+  .cause-list li strong { color: var(--clr-text); display: block; margin-bottom: var(--space-1); }
+
+  /* Sidebar */
+  .about-sidebar { position: sticky; top: calc(var(--nav-height) + 60px); display: flex; flex-direction: column; gap: var(--space-4); }
+
+  .sidebar-card {
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+  .sidebar-card h3 { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-text-muted); margin-bottom: var(--space-4); }
+  .sidebar-card p { font-size: 0.875rem; color: var(--clr-text-muted); margin-bottom: var(--space-4); }
+
+  .quick-facts { display: grid; grid-template-columns: auto 1fr; gap: var(--space-2) var(--space-4); font-size: 0.8125rem; }
+  .quick-facts dt { color: var(--clr-text-subtle); font-weight: 600; }
+  .quick-facts dd { color: var(--clr-text); }
+  .fact--good { color: var(--clr-success); font-weight: 600; }
+
+  .sidebar-btn { width: 100%; justify-content: center; font-size: 0.875rem; }
+</style>

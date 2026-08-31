@@ -1,0 +1,88 @@
+---
+// src/pages/footpath/myths.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MythFact from '../../components/MythFact.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import EvidenceCard from '../../components/EvidenceCard.astro';
+---
+
+<BaseLayout
+  title="Footpath Movement Myths vs. Facts"
+  description="Countering the most common excuses used to justify India's broken pedestrian infrastructure — with audits, government road accident data, and World Bank economic analysis."
+  ogImage="/og/foot-myths.png"
+>
+  <div class="myth-page">
+    <div class="container">
+      <header class="myth-page__header">
+        <a href="/footpath/" class="breadcrumb-back">← Footpath Movement</a>
+        <span class="tag tag--foot">🚶 Myth vs. Fact</span>
+        <h1>Footpath Movement: <br class="hide-desktop" />Myths vs. Facts</h1>
+        <p class="myth-page__sub">
+          These are the arguments used to delay investment in pedestrian infrastructure. Here is what the data actually shows.
+        </p>
+        <ShareButtons title="Footpath Myths vs. Facts — Paras Activist" url="https://parasactivist.in/footpath/myths/" />
+      </header>
+
+      <EvidenceCard
+        primarySources="2 government reports (MoRTH, WB), 1 city-level NGO audit, 1 transport policy institute report"
+        lastVerified="August 2025"
+        corrections={0}
+      />
+
+      <MythFact
+        myth="Footpaths exist in Indian cities. Pedestrians just don't use them properly."
+        fact="A 2022 audit by the Praja Foundation across Mumbai found that over 60% of footpaths surveyed were either encroached upon, broken, had no kerb cuts for wheelchair access, or were completely absent. MoRTH's Road Accidents in India 2022 shows pedestrians constitute ~17% of all road accident deaths — the single largest victim group. Pedestrians are not choosing roads over footpaths. They are forced onto roads because functional, unobstructed footpaths are the exception, not the rule."
+        sources="Praja Foundation Mumbai Footpath Audit 2022; Ministry of Road Transport & Highways, Road Accidents in India 2022; WRI India, Cities for Walking report."
+      />
+
+      <StatHighlight number="17%" label="All Indian road accident deaths — pedestrians are the single largest victim group" source="MoRTH Road Accidents in India, 2022" color="foot" />
+
+      <MythFact
+        myth="Building better footpaths is a luxury India cannot afford. More urgent issues exist."
+        fact="Road accidents cost India an estimated 3–5% of GDP annually (World Bank). The majority of victims are pedestrians and two-wheeler riders — overwhelmingly working-class individuals who cannot afford motorised transport. Accessible pedestrian infrastructure is therefore a direct poverty alleviation tool and a public health intervention. Countries with comparable income levels — Vietnam, Colombia — have invested systematically in pedestrian infrastructure. This is a choice, not an inevitability."
+        sources="World Bank, The High Toll of Traffic Injuries (2019); MoRTH Annual Report; Institute for Transportation & Development Policy (ITDP) India."
+      />
+
+      <StatHighlight number="3–5% GDP" label="Annual economic cost of road accidents in India — equivalent to the entire defence budget" source="World Bank, The High Toll of Traffic Injuries, 2019" color="foot" />
+
+      <MythFact
+        myth="This is an urban elite concern. Poor people in India don't care about footpaths."
+        fact="The reverse is true. Wealthier urban residents use private vehicles and are insulated from broken pedestrian infrastructure. It is low-income workers — domestic workers, daily-wage labourers, street vendors — who walk to work daily and bear the greatest risk. The NCRB and MoRTH data show that pedestrian accident victims are disproportionately from lower socioeconomic groups. Footpath advocacy is economic justice advocacy."
+        sources="MoRTH Road Accidents in India 2022; ITDP India, The India Cycling and Walking Report; NCRB Crime in India data."
+      />
+
+      <section class="sources-section">
+        <h2>Full Source List</h2>
+        <ol class="source-list">
+          <li><strong>Praja Foundation Mumbai Footpath Audit 2022</strong> — City-level NGO audit of pedestrian infrastructure. <a href="https://praja.org" target="_blank" rel="noopener noreferrer">praja.org</a></li>
+          <li><strong>MoRTH Road Accidents in India 2022</strong> — Ministry of Road Transport and Highways. <a href="https://morth.nic.in" target="_blank" rel="noopener noreferrer">morth.nic.in</a></li>
+          <li><strong>World Bank: The High Toll of Traffic Injuries (2019)</strong> — Economic burden analysis of road accidents. <a href="https://worldbank.org" target="_blank" rel="noopener noreferrer">worldbank.org</a></li>
+          <li><strong>WRI India — Cities for Walking</strong> — Urban mobility policy research. <a href="https://www.wri.org/india" target="_blank" rel="noopener noreferrer">wri.org/india</a></li>
+          <li><strong>ITDP India — The India Cycling and Walking Report</strong> — Institute for Transportation & Development Policy. <a href="https://itdp.org" target="_blank" rel="noopener noreferrer">itdp.org</a></li>
+        </ol>
+      </section>
+
+      <div class="myth-page__share-footer">
+        <p>Share this evidence:</p>
+        <ShareButtons title="Footpath Myths vs. Facts — Paras Activist" url="https://parasactivist.in/footpath/myths/" />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .myth-page { padding-block: var(--space-8) var(--space-20); }
+  .myth-page__header { max-width: 720px; margin-bottom: var(--space-10); display: flex; flex-direction: column; gap: var(--space-4); }
+  .breadcrumb-back { font-size: 0.875rem; color: var(--clr-text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: var(--space-1); transition: color var(--duration-fast) var(--ease-out); }
+  .breadcrumb-back:hover { color: var(--clr-foot); }
+  .myth-page__header h1 { margin: 0; }
+  .myth-page__sub { color: var(--clr-text-muted); font-size: 1rem; max-width: 60ch; line-height: 1.7; margin: 0; }
+  .sources-section { margin-top: var(--space-12); padding: var(--space-8); background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); }
+  .sources-section h2 { margin-bottom: var(--space-6); font-size: 1.125rem; }
+  .source-list { list-style: decimal; padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); }
+  .source-list li { font-size: 0.9rem; color: var(--clr-text-muted); line-height: 1.6; }
+  .source-list a { color: var(--clr-accent); text-decoration: underline; text-underline-offset: 3px; }
+  .myth-page__share-footer { margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--clr-border); display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+  .myth-page__share-footer p { font-weight: 600; color: var(--clr-text-muted); margin: 0; font-size: 0.875rem; }
+</style>

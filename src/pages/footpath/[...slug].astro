@@ -1,0 +1,32 @@
+---
+// src/pages/footpath/[...slug].astro — Dynamic article pages
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('footpath');
+  return articles.map(article => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+
+<ArticleLayout
+  title={article.data.title}
+  description={article.data.description}
+  publishDate={article.data.publishDate}
+  lastVerified={article.data.lastVerified}
+  primarySources={article.data.primarySources}
+  corrections={article.data.corrections}
+  funding={article.data.funding}
+  ogImage={article.data.ogImage}
+  causeLabel="Footpath Movement"
+  causeTag="foot"
+  causeHref="/footpath/"
+>
+  <Content />
+</ArticleLayout>

@@ -1,0 +1,185 @@
+---
+// src/pages/share-toolkit.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+---
+
+<BaseLayout
+  title="Share Toolkit"
+  description="WhatsApp and Telegram-ready share cards for food security, footpath safety, and intersectional justice facts. One tap to share evidence-based activism."
+  ogImage="/og/share.png"
+>
+  <div class="toolkit-page">
+    <div class="container">
+      <header class="toolkit-header">
+        <span class="tag tag--accent">📲 Share Toolkit</span>
+        <h1>Arm yourself with shareable evidence</h1>
+        <p class="toolkit-header__sub">
+          Every key fact from all three causes — formatted for Indian mobile screens. Share on WhatsApp or Telegram in one tap.
+          No account needed. No tracking. Completely free.
+        </p>
+      </header>
+
+      <!-- How to share -->
+      <section class="how-to-share" aria-label="How to share">
+        <h2>How to share</h2>
+        <div class="how-grid">
+          <div class="how-step">
+            <div class="how-step__number" aria-hidden="true">1</div>
+            <div>
+              <h3>Find your fact</h3>
+              <p>Browse the cause pages and myth-busting sections to find the specific evidence you need.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__number" aria-hidden="true">2</div>
+            <div>
+              <h3>Share the link</h3>
+              <p>Use the WhatsApp or Telegram buttons on any page. The link preview is automatically formatted for mobile.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step__number" aria-hidden="true">3</div>
+            <div>
+              <h3>Include the source</h3>
+              <p>Every page lists its primary sources. Share the source link alongside the fact for maximum credibility.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shareable pages -->
+      <section class="shareable-pages" aria-label="Shareable pages">
+        <h2>Quick Share Links</h2>
+        <p class="share-note">Click any button to instantly share that page on WhatsApp or Telegram with a properly formatted preview.</p>
+
+        <div class="share-cards">
+          <div class="share-card share-card--food">
+            <div class="share-card__header">
+              <span aria-hidden="true">🌾</span>
+              <h3>Food Security — Myths vs. Facts</h3>
+            </div>
+            <p>Three myth-busters on India's hunger crisis, with GHI data and FCI storage figures.</p>
+            <ShareButtons title="Food Security Myths vs. Facts — Paras Activist" url="https://parasactivist.in/food-security/myths/" />
+          </div>
+
+          <div class="share-card share-card--food">
+            <div class="share-card__header">
+              <span aria-hidden="true">📊</span>
+              <h3>Food Security — Data</h3>
+            </div>
+            <p>GHI rankings, FCI storage data, and ICAR wastage estimates — all primary sources.</p>
+            <ShareButtons title="Food Security Data & Statistics — Paras Activist" url="https://parasactivist.in/food-security/data/" />
+          </div>
+
+          <div class="share-card share-card--foot">
+            <div class="share-card__header">
+              <span aria-hidden="true">🚶</span>
+              <h3>Footpath Movement — Myths vs. Facts</h3>
+            </div>
+            <p>Why "pedestrians don't use footpaths" and "it's a luxury" are both factually wrong.</p>
+            <ShareButtons title="Footpath Myths vs. Facts — Paras Activist" url="https://parasactivist.in/footpath/myths/" />
+          </div>
+
+          <div class="share-card share-card--foot">
+            <div class="share-card__header">
+              <span aria-hidden="true">📊</span>
+              <h3>Footpath Movement — Data</h3>
+            </div>
+            <p>MoRTH pedestrian death statistics, Praja Foundation audits, World Bank GDP cost data.</p>
+            <ShareButtons title="Footpath Data & Statistics — Paras Activist" url="https://parasactivist.in/footpath/data/" />
+          </div>
+
+          <div class="share-card share-card--just">
+            <div class="share-card__header">
+              <span aria-hidden="true">⚖️</span>
+              <h3>Intersectional Justice — Myths vs. Facts</h3>
+            </div>
+            <p>Caste denial, "Western import" rhetoric, and the colonial history of Section 377 — all addressed.</p>
+            <ShareButtons title="Intersectional Justice Myths vs. Facts — Paras Activist" url="https://parasactivist.in/intersectional-justice/myths/" />
+          </div>
+
+          <div class="share-card share-card--just">
+            <div class="share-card__header">
+              <span aria-hidden="true">📊</span>
+              <h3>Intersectional Justice — Data</h3>
+            </div>
+            <p>NCRB crime data, Supreme Court judgments, Oxfam inequality report — all cited.</p>
+            <ShareButtons title="Intersectional Justice Data — Paras Activist" url="https://parasactivist.in/intersectional-justice/data/" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Share the whole site -->
+      <section class="share-site-section" aria-label="Share the entire site">
+        <h2>Share the entire site</h2>
+        <p>Know someone who needs the full picture? Share the homepage.</p>
+        <ShareButtons title="Paras Activist — Evidence over propaganda" url="https://parasactivist.in" />
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .toolkit-page { padding-block: var(--space-8) var(--space-20); }
+
+  .toolkit-header { max-width: 720px; margin-bottom: var(--space-12); display: flex; flex-direction: column; gap: var(--space-4); }
+  .toolkit-header h1 { margin: 0; }
+  .toolkit-header__sub { color: var(--clr-text-muted); font-size: 1rem; max-width: 60ch; line-height: 1.7; margin: 0; }
+
+  .how-to-share, .shareable-pages, .share-site-section { margin-bottom: var(--space-12); }
+  .how-to-share h2, .shareable-pages h2, .share-site-section h2 { margin-bottom: var(--space-6); }
+
+  .share-note { font-size: 0.9rem; color: var(--clr-text-muted); margin-bottom: var(--space-6); }
+
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+  @media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; } }
+
+  .how-step {
+    display: grid; grid-template-columns: 40px 1fr; gap: var(--space-4); align-items: start;
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-5);
+  }
+
+  .how-step__number {
+    width: 36px; height: 36px;
+    background: var(--clr-accent-glow); border: 1px solid rgba(245,166,35,0.4);
+    border-radius: var(--radius-full); color: var(--clr-accent); font-weight: 800;
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .how-step h3 { font-size: 0.9375rem; margin-bottom: var(--space-2); }
+  .how-step p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+
+  .share-cards {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);
+  }
+  @media (max-width: 768px) { .share-cards { grid-template-columns: 1fr; } }
+
+  .share-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-6);
+    display: flex; flex-direction: column; gap: var(--space-4);
+    transition: border-color var(--duration-normal) var(--ease-out);
+  }
+
+  .share-card--food { border-top: 3px solid var(--clr-food); }
+  .share-card--food:hover { border-color: var(--clr-food); }
+  .share-card--foot { border-top: 3px solid var(--clr-foot); }
+  .share-card--foot:hover { border-color: var(--clr-foot); }
+  .share-card--just { border-top: 3px solid var(--clr-just); }
+  .share-card--just:hover { border-color: var(--clr-just); }
+
+  .share-card__header { display: flex; align-items: center; gap: var(--space-3); }
+  .share-card__header span { font-size: 1.25rem; }
+  .share-card__header h3 { font-size: 0.9375rem; font-weight: 700; color: var(--clr-text); margin: 0; }
+  .share-card p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+
+  .share-site-section {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-8);
+    display: flex; flex-direction: column; gap: var(--space-4);
+  }
+  .share-site-section h2 { margin: 0; }
+  .share-site-section p { color: var(--clr-text-muted); margin: 0; }
+</style>

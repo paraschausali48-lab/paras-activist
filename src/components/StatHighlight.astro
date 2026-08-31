@@ -1,0 +1,69 @@
+---
+// StatHighlight.astro — full-width impactful statistic callout
+interface Props {
+  number: string;
+  label: string;
+  source?: string;
+  color?: 'food' | 'foot' | 'just' | 'accent';
+}
+
+const { number, label, source, color = 'accent' } = Astro.props;
+---
+
+<figure class={`stat-highlight stat-highlight--${color}`} role="figure" aria-label={`Statistic: ${number} — ${label}`}>
+  <div class="stat-highlight__number">{number}</div>
+  <figcaption class="stat-highlight__label">{label}</figcaption>
+  {source && <cite class="stat-highlight__source">Source: {source}</cite>}
+</figure>
+
+<style>
+  .stat-highlight {
+    text-align: center;
+    padding: var(--space-10) var(--space-8);
+    border-radius: var(--radius-xl);
+    margin-block: var(--space-8);
+    border: 1px solid var(--clr-border);
+    background: var(--clr-bg-surface);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-highlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background: radial-gradient(ellipse at center, currentColor 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .stat-highlight--accent { color: var(--clr-accent); border-color: rgba(245,166,35,0.3); }
+  .stat-highlight--food   { color: var(--clr-food); border-color: rgba(74,222,128,0.3); }
+  .stat-highlight--foot   { color: var(--clr-foot); border-color: rgba(96,165,250,0.3); }
+  .stat-highlight--just   { color: var(--clr-just); border-color: rgba(192,132,252,0.3); }
+
+  .stat-highlight__number {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+  }
+
+  .stat-highlight__label {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 600;
+    color: var(--clr-text);
+    max-width: 48ch;
+    margin-inline: auto;
+    margin-bottom: var(--space-3);
+    line-height: 1.4;
+  }
+
+  .stat-highlight__source {
+    font-size: 0.8rem;
+    color: var(--clr-text-subtle);
+    font-style: normal;
+    display: block;
+  }
+</style>

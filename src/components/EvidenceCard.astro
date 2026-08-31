@@ -1,0 +1,131 @@
+---
+// EvidenceCard.astro — Reuters-style metadata card shown at the top of every article
+interface Props {
+  primarySources: string;
+  lastVerified: string;
+  corrections?: number;
+  funding?: string;
+}
+
+const {
+  primarySources,
+  lastVerified,
+  corrections = 0,
+  funding = 'None. Self-funded, independent.',
+} = Astro.props;
+---
+
+<div class="evidence-card" role="complementary" aria-label="Evidence quality information">
+  <div class="evidence-card__header">
+    <span class="evidence-card__icon" aria-hidden="true">🔍</span>
+    <h2 class="evidence-card__title">Evidence Quality Card</h2>
+  </div>
+
+  <div class="evidence-card__grid">
+    <div class="evidence-card__row">
+      <span class="evidence-card__label">Primary Sources</span>
+      <span class="evidence-card__value">{primarySources}</span>
+    </div>
+    <div class="evidence-card__row">
+      <span class="evidence-card__label">Last Verified</span>
+      <span class="evidence-card__value">{lastVerified}</span>
+    </div>
+    <div class="evidence-card__row">
+      <span class="evidence-card__label">Corrections</span>
+      <span class={`evidence-card__value ${corrections === 0 ? 'evidence-card__value--good' : 'evidence-card__value--warn'}`}>
+        {corrections} {corrections === 0 ? '✓' : '— see correction log'}
+      </span>
+    </div>
+    <div class="evidence-card__row">
+      <span class="evidence-card__label">Funding</span>
+      <span class="evidence-card__value evidence-card__value--good">{funding}</span>
+    </div>
+  </div>
+
+  <div class="evidence-card__legend">
+    <span class="legend-item legend-item--govt">🟢 Government/Official</span>
+    <span class="legend-item legend-item--academic">🔵 Academic/Peer-reviewed</span>
+    <span class="legend-item legend-item--ngo">🟡 NGO/Independent</span>
+    <span class="legend-item legend-item--media">🔴 Media (used sparingly)</span>
+  </div>
+</div>
+
+<style>
+  .evidence-card {
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-left: 4px solid var(--clr-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .evidence-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .evidence-card__icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .evidence-card__title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--clr-text-muted);
+    margin: 0;
+  }
+
+  .evidence-card__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3) var(--space-8);
+    margin-bottom: var(--space-5);
+  }
+
+  @media (max-width: 600px) {
+    .evidence-card__grid { grid-template-columns: 1fr; }
+  }
+
+  .evidence-card__row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .evidence-card__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--clr-text-subtle);
+  }
+
+  .evidence-card__value {
+    font-size: 0.9rem;
+    color: var(--clr-text);
+    font-weight: 500;
+  }
+
+  .evidence-card__value--good { color: var(--clr-success); }
+  .evidence-card__value--warn { color: var(--clr-warning); }
+
+  .evidence-card__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--clr-border-soft);
+  }
+
+  .legend-item {
+    font-size: 0.75rem;
+    color: var(--clr-text-muted);
+    white-space: nowrap;
+  }
+</style>

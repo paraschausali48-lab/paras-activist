@@ -1,0 +1,46 @@
+# Netlify configuration — CSP headers & cache control
+# Deploy: netlify.toml
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Cache static assets aggressively
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML pages: never cache (fresh content)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Content Security Policy for ALL pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Redirects: trailing slash canonicalisation
+[[redirects]]
+  from = "/food-security"
+  to = "/food-security/"
+  status = 301
+
+[[redirects]]
+  from = "/footpath"
+  to = "/footpath/"
+  status = 301
+
+[[redirects]]
+  from = "/intersectional-justice"
+  to = "/intersectional-justice/"
+  status = 301

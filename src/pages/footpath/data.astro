@@ -1,0 +1,110 @@
+---
+// src/pages/footpath/data.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+---
+
+<BaseLayout
+  title="Footpath Movement Data & Statistics"
+  description="Primary source data on pedestrian safety in India — MoRTH road accident reports, Praja Foundation city audits, and World Bank economic cost analysis."
+  ogImage="/og/foot-data.png"
+>
+  <div class="data-page">
+    <div class="container">
+      <header class="data-page__header">
+        <a href="/footpath/" class="breadcrumb-back">← Footpath Movement</a>
+        <span class="tag tag--foot">📊 Data & Statistics</span>
+        <h1>Footpath Movement: Data & Statistics</h1>
+        <p class="data-page__sub">
+          All data is sourced from government reports, city-level audits, and international transport policy research. Every figure links to its primary source.
+        </p>
+        <ShareButtons title="Footpath Data — Paras Activist" url="https://parasactivist.in/footpath/data/" />
+      </header>
+
+      <div class="stats-showcase stagger">
+        <StatHighlight number="17%" label="Pedestrians as a share of all road accident deaths — India's single largest victim group (MoRTH 2022)" source="MoRTH Road Accidents in India, 2022" color="foot" />
+        <StatHighlight number="60%+" label="Mumbai footpaths broken, encroached, or non-existent (Praja Foundation, 2022)" source="Praja Foundation Mumbai Footpath Audit, 2022" color="foot" />
+        <StatHighlight number="3–5% GDP" label="Estimated annual cost of road accidents to India's economy" source="World Bank, 2019" color="foot" />
+        <StatHighlight number="~1.5 Lakh" label="Road accident deaths in India annually — among the world's highest" source="MoRTH Road Accidents in India, 2022" color="foot" />
+      </div>
+
+      <!-- Road Accident Data Table -->
+      <section class="data-table-section">
+        <h2>Pedestrian Deaths as % of Total Road Accident Deaths — India</h2>
+        <div class="table-wrapper" role="region" aria-label="Pedestrian road accident data" tabindex="0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Total Road Deaths</th>
+                <th scope="col">Pedestrian Deaths</th>
+                <th scope="col">Pedestrian %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>2022</td><td>1,68,491</td><td>~28,600</td><td>~17%</td></tr>
+              <tr><td>2021</td><td>1,55,622</td><td>~26,400</td><td>~17%</td></tr>
+              <tr><td>2020</td><td>1,31,714</td><td>~22,900</td><td>~17.4%</td></tr>
+              <tr><td>2019</td><td>1,51,113</td><td>~25,800</td><td>~17.1%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Source: <a href="https://morth.nic.in" target="_blank" rel="noopener noreferrer">Ministry of Road Transport & Highways, Road Accidents in India (annual)</a></p>
+      </section>
+
+      <section class="primary-sources-section">
+        <h2>Primary Sources</h2>
+        <div class="source-cards">
+          <a href="https://morth.nic.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 Government</span>
+            <h3>MoRTH: Road Accidents in India 2022</h3>
+            <p>Annual official report on road accident deaths, injuries, and victim categories across all Indian states.</p>
+          </a>
+          <a href="https://praja.org" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟡 NGO Audit</span>
+            <h3>Praja Foundation Mumbai Footpath Audit 2022</h3>
+            <p>Field-level audit of Mumbai footpath conditions: encroachment, accessibility, kerb cuts, and continuity.</p>
+          </a>
+          <a href="https://worldbank.org" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 International</span>
+            <h3>World Bank: The High Toll of Traffic Injuries (2019)</h3>
+            <p>GDP-level economic burden analysis of road accident costs in developing nations including India.</p>
+          </a>
+          <a href="https://itdp.org" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟡 Policy Research</span>
+            <h3>ITDP: India Cycling & Walking Report</h3>
+            <p>Institute for Transportation & Development Policy — urban mobility, pedestrian infrastructure, and policy recommendations.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .data-page { padding-block: var(--space-8) var(--space-20); }
+  .data-page__header { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-10); max-width: 720px; }
+  .breadcrumb-back { font-size: 0.875rem; color: var(--clr-text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: var(--space-1); transition: color var(--duration-fast) var(--ease-out); }
+  .breadcrumb-back:hover { color: var(--clr-foot); }
+  .data-page__header h1 { margin: 0; }
+  .data-page__sub { color: var(--clr-text-muted); font-size: 1rem; max-width: 60ch; line-height: 1.7; margin: 0; }
+  .stats-showcase { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-12); }
+  .data-table-section, .primary-sources-section { margin-top: var(--space-12); }
+  .data-table-section h2, .primary-sources-section h2 { margin-bottom: var(--space-4); }
+  .source-note { font-size: 0.8rem; color: var(--clr-text-muted); margin-top: var(--space-3); }
+  .source-note a { color: var(--clr-accent); }
+  .table-wrapper { overflow-x: auto; border: 1px solid var(--clr-border); border-radius: var(--radius-lg); margin-bottom: var(--space-2); }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .data-table th, .data-table td { padding: var(--space-4) var(--space-5); text-align: left; border-bottom: 1px solid var(--clr-border); }
+  .data-table th { background: var(--clr-bg-surface); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-text-muted); }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table tbody tr:hover { background: var(--clr-bg-elevated); }
+  .source-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  @media (max-width: 700px) { .source-cards { grid-template-columns: 1fr; } }
+  .source-card { display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; transition: all var(--duration-normal) var(--ease-out); }
+  .source-card:hover { border-color: var(--clr-foot); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .source-card__type { font-size: 0.75rem; font-weight: 600; color: var(--clr-text-muted); display: block; margin-bottom: var(--space-2); }
+  .source-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--clr-foot); margin-bottom: var(--space-2); }
+  .source-card p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+</style>

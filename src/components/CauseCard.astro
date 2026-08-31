@@ -1,0 +1,134 @@
+---
+// CauseCard.astro — homepage pillar navigation card
+interface Props {
+  title: string;
+  href: string;
+  description: string;
+  stat: string;
+  statLabel: string;
+  icon: string;
+  tag: 'food' | 'foot' | 'just';
+  mythsHref: string;
+  dataHref: string;
+}
+
+const { title, href, description, stat, statLabel, icon, tag, mythsHref, dataHref } = Astro.props;
+---
+
+<article class={`cause-card cause-card--${tag}`} aria-label={title}>
+  <div class="cause-card__icon" aria-hidden="true">{icon}</div>
+
+  <div class="cause-card__tag">
+    <span class={`tag tag--${tag}`}>{title}</span>
+  </div>
+
+  <div class="cause-card__stat">
+    <div class="cause-card__stat-number">{stat}</div>
+    <div class="cause-card__stat-label">{statLabel}</div>
+  </div>
+
+  <p class="cause-card__description">{description}</p>
+
+  <div class="cause-card__actions">
+    <a href={mythsHref} class="btn btn-outline cause-card__btn">
+      Myth vs. Fact
+    </a>
+    <a href={dataHref} class="btn btn-ghost cause-card__btn">
+      View Data →
+    </a>
+  </div>
+
+  <a href={href} class="cause-card__overlay-link" aria-hidden="true" tabindex="-1"></a>
+</article>
+
+<style>
+  .cause-card {
+    position: relative;
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: all var(--duration-normal) var(--ease-out);
+    overflow: hidden;
+  }
+
+  .cause-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .cause-card--food::before { background: radial-gradient(ellipse at top left, var(--clr-food-bg) 0%, transparent 60%); }
+  .cause-card--foot::before { background: radial-gradient(ellipse at top left, var(--clr-foot-bg) 0%, transparent 60%); }
+  .cause-card--just::before { background: radial-gradient(ellipse at top left, var(--clr-just-bg) 0%, transparent 60%); }
+
+  .cause-card:hover::before { opacity: 1; }
+
+  .cause-card--food:hover { border-color: var(--clr-food); }
+  .cause-card--foot:hover { border-color: var(--clr-foot); }
+  .cause-card--just:hover { border-color: var(--clr-just); }
+
+  .cause-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .cause-card__icon {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .cause-card__stat {
+    padding: var(--space-4) 0;
+  }
+
+  .cause-card__stat-number {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: var(--space-1);
+  }
+
+  .cause-card--food .cause-card__stat-number { color: var(--clr-food); }
+  .cause-card--foot .cause-card__stat-number { color: var(--clr-foot); }
+  .cause-card--just .cause-card__stat-number { color: var(--clr-just); }
+
+  .cause-card__stat-label {
+    font-size: 0.85rem;
+    color: var(--clr-text-muted);
+    max-width: 28ch;
+    line-height: 1.4;
+  }
+
+  .cause-card__description {
+    font-size: 0.9375rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .cause-card__actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cause-card__btn {
+    font-size: 0.8rem;
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .cause-card__overlay-link {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+</style>

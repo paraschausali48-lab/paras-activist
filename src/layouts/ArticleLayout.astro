@@ -1,0 +1,162 @@
+---
+// ArticleLayout.astro — wraps every article with EvidenceCard + SourceDrawer
+import BaseLayout from './BaseLayout.astro';
+import EvidenceCard from '../components/EvidenceCard.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  lastVerified: Date;
+  primarySources: string;
+  corrections?: number;
+  funding?: string;
+  ogImage?: string;
+  causeLabel: string;
+  causeTag: 'food' | 'foot' | 'just';
+  causeHref: string;
+}
+
+const {
+  title,
+  description,
+  publishDate,
+  lastVerified,
+  primarySources,
+  corrections = 0,
+  funding = 'None. Self-funded, independent.',
+  ogImage,
+  causeLabel,
+  causeTag,
+  causeHref,
+} = Astro.props;
+
+const formattedDate = publishDate.toLocaleDateString('en-IN', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+const verifiedDate = lastVerified.toLocaleDateString('en-IN', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+---
+
+<BaseLayout {title} {description} {ogImage} ogType="article">
+  <div class="article-wrapper">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href={causeHref}>{causeLabel}</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{title}</span>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="article-header fade-in-up">
+        <div class="article-meta-top">
+          <span class={`tag tag--${causeTag}`}>{causeLabel}</span>
+          <time datetime={publishDate.toISOString()}>{formattedDate}</time>
+        </div>
+        <h1>{title}</h1>
+        <p class="article-description">{description}</p>
+      </header>
+
+      <!-- Evidence Quality Card (BEFORE any prose) -->
+      <EvidenceCard
+        primarySources={primarySources}
+        lastVerified={verifiedDate}
+        corrections={corrections}
+        funding={funding}
+      />
+
+      <!-- Article Body -->
+      <article class="article-body">
+        <slot />
+      </article>
+
+      <!-- Share Buttons -->
+      <div class="article-share-section">
+        <p class="share-label">📤 Share this evidence</p>
+        <ShareButtons title={title} url={Astro.url.href} />
+      </div>
+
+      <!-- Back link -->
+      <a href={causeHref} class="btn btn-outline back-link">
+        ← Back to {causeLabel}
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .article-wrapper {
+    padding-block: var(--space-8) var(--space-20);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.875rem;
+    color: var(--clr-text-muted);
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: var(--clr-text-muted);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .breadcrumb a:hover { color: var(--clr-accent); }
+  .breadcrumb span[aria-current] { color: var(--clr-text); }
+
+  .article-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .article-meta-top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    font-size: 0.875rem;
+    color: var(--clr-text-muted);
+  }
+
+  .article-header h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .article-description {
+    font-size: 1.125rem;
+    color: var(--clr-text-muted);
+    max-width: 65ch;
+    line-height: 1.7;
+  }
+
+  .article-body {
+    margin-top: var(--space-8);
+    max-width: 70ch;
+  }
+
+  .article-share-section {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--clr-border);
+  }
+
+  .share-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link {
+    margin-top: var(--space-8);
+    display: inline-flex;
+  }
+</style>

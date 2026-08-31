@@ -1,0 +1,104 @@
+---
+// TrustBanner.astro — sticky zero-tracking pledge banner
+---
+
+<div class="trust-banner" id="trust-banner" role="banner" aria-label="Privacy notice">
+  <div class="trust-banner__inner container">
+    <div class="trust-banner__content">
+      <span class="trust-banner__icon" aria-hidden="true">🔒</span>
+      <p>
+        <strong>Zero cookies. Zero trackers. Zero ads.</strong>
+        We collect no data. We receive no corporate or political funding.
+        <a href="/about#pledge">Read our pledge →</a>
+      </p>
+    </div>
+    <button
+      class="trust-banner__close btn-ghost"
+      id="trust-banner-close"
+      aria-label="Dismiss privacy notice"
+      type="button"
+    >
+      ✕
+    </button>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('trust-banner');
+  const closeBtn = document.getElementById('trust-banner-close');
+  if (closeBtn && banner) {
+    closeBtn.addEventListener('click', () => {
+      banner.classList.add('trust-banner--hidden');
+    });
+  }
+</script>
+
+<style>
+  .trust-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, rgba(245,166,35,0.12) 0%, rgba(245,166,35,0.06) 100%);
+    border-bottom: 1px solid rgba(245,166,35,0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform var(--duration-normal) var(--ease-out),
+                opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .trust-banner--hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .trust-banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-3);
+  }
+
+  .trust-banner__content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 0.875rem;
+    color: var(--clr-text);
+  }
+
+  .trust-banner__content p { margin: 0; }
+
+  .trust-banner__content strong {
+    color: var(--clr-accent);
+  }
+
+  .trust-banner__content a {
+    color: var(--clr-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .trust-banner__icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .trust-banner__close {
+    flex-shrink: 0;
+    color: var(--clr-text-muted);
+    font-size: 0.875rem;
+    cursor: pointer;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    transition: color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
+    background: transparent;
+    border: none;
+  }
+  .trust-banner__close:hover {
+    color: var(--clr-text);
+    background: rgba(255,255,255,0.05);
+  }
+</style>

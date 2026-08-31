@@ -1,0 +1,294 @@
+---
+// Nav.astro — primary navigation
+const currentPath = Astro.url.pathname;
+
+const causes = [
+  { label: 'Food Security', href: '/food-security/', tag: 'food', icon: '🌾' },
+  { label: 'Footpath Movement', href: '/footpath/', tag: 'foot', icon: '🚶' },
+  { label: 'Intersectional Justice', href: '/intersectional-justice/', tag: 'just', icon: '⚖️' },
+];
+
+function isActive(href: string) {
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="nav-header" role="banner">
+  <nav class="nav container" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="/" class="nav__logo" aria-label="Paras Activist — Home">
+      <span class="nav__logo-mark" aria-hidden="true">◈</span>
+      <span class="nav__logo-text">Paras<span class="nav__logo-accent">Activist</span></span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="nav__links" role="list">
+      {causes.map(cause => (
+        <li>
+          <a
+            href={cause.href}
+            class={`nav__link nav__link--${cause.tag} ${isActive(cause.href) ? 'nav__link--active' : ''}`}
+            aria-current={isActive(cause.href) ? 'page' : undefined}
+          >
+            <span aria-hidden="true">{cause.icon}</span>
+            {cause.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Right side actions -->
+    <div class="nav__actions">
+      <a href="/about" class={`nav__link ${currentPath === '/about/' || currentPath === '/about' ? 'nav__link--active' : ''}`}>
+        About
+      </a>
+      <a href="/sources" class="btn btn-outline nav__sources-btn">
+        Sources
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      class="nav__hamburger"
+      id="nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      type="button"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <ul class="mobile-menu__links" role="list">
+      {causes.map(cause => (
+        <li>
+          <a href={cause.href} class={`mobile-menu__link mobile-menu__link--${cause.tag}`}>
+            <span aria-hidden="true">{cause.icon}</span>
+            {cause.label}
+          </a>
+        </li>
+      ))}
+      <li><a href="/about" class="mobile-menu__link">About & Pledge</a></li>
+      <li><a href="/sources" class="mobile-menu__link">Sources</a></li>
+      <li><a href="/share-toolkit" class="mobile-menu__link">Share Toolkit</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  let isOpen = false;
+
+  toggle?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    menu?.setAttribute('aria-hidden', String(!isOpen));
+    menu?.classList.toggle('mobile-menu--open', isOpen);
+    toggle.classList.toggle('nav__hamburger--open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close on link click
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      toggle?.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      menu.classList.remove('mobile-menu--open');
+      toggle?.classList.remove('nav__hamburger--open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+<style>
+  .nav-header {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: rgba(10, 12, 16, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    height: var(--nav-height);
+  }
+
+  /* Logo */
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    color: var(--clr-text);
+    font-weight: 800;
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+  .nav__logo:hover { opacity: 0.8; color: var(--clr-text); }
+
+  .nav__logo-mark {
+    font-size: 1.25rem;
+    color: var(--clr-accent);
+    line-height: 1;
+  }
+
+  .nav__logo-accent { color: var(--clr-accent); }
+
+  /* Desktop links */
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    margin-left: var(--space-4);
+    flex: 1;
+  }
+
+  .nav__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+    text-decoration: none;
+    transition: all var(--duration-fast) var(--ease-out);
+    white-space: nowrap;
+  }
+
+  .nav__link:hover, .nav__link--active {
+    color: var(--clr-text);
+    background: var(--clr-bg-elevated);
+  }
+
+  .nav__link--food:hover, .nav__link--food.nav__link--active {
+    color: var(--clr-food);
+    background: var(--clr-food-bg);
+  }
+  .nav__link--foot:hover, .nav__link--foot.nav__link--active {
+    color: var(--clr-foot);
+    background: var(--clr-foot-bg);
+  }
+  .nav__link--just:hover, .nav__link--just.nav__link--active {
+    color: var(--clr-just);
+    background: var(--clr-just-bg);
+  }
+
+  /* Actions */
+  .nav__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-left: auto;
+  }
+
+  .nav__sources-btn {
+    font-size: 0.8rem;
+    padding: var(--space-2) var(--space-4);
+  }
+
+  /* Hamburger */
+  .nav__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    margin-left: auto;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--clr-text-muted);
+    border-radius: var(--radius-full);
+    transition: all var(--duration-normal) var(--ease-out);
+    transform-origin: center;
+  }
+
+  .nav__hamburger--open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav__hamburger--open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .nav__hamburger--open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: calc(var(--nav-height) + 44px);
+    background: var(--clr-bg);
+    z-index: 850;
+    padding: var(--space-6);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .mobile-menu--open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .mobile-menu__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-md);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .mobile-menu__link:hover,
+  .mobile-menu__link--food:hover { color: var(--clr-food); background: var(--clr-food-bg); border-color: var(--clr-food); }
+  .mobile-menu__link--foot:hover { color: var(--clr-foot); background: var(--clr-foot-bg); border-color: var(--clr-foot); }
+  .mobile-menu__link--just:hover { color: var(--clr-just); background: var(--clr-just-bg); border-color: var(--clr-just); }
+
+  @media (max-width: 768px) {
+    .nav__links,
+    .nav__actions { display: none; }
+    .nav__hamburger { display: flex; }
+    .mobile-menu { display: block; }
+  }
+</style>

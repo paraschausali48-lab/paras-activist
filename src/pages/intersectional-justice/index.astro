@@ -1,0 +1,124 @@
+---
+// src/pages/intersectional-justice/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('intersectional-justice')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Intersectional Justice"
+  description="Protecting women, trans individuals, and animals. Dismantling caste discrimination and racism with evidence. Rights are not imports — they are indigenous reclamations."
+  ogImage="/og/justice.png"
+>
+  <section class="cause-hero" aria-label="Intersectional Justice overview">
+    <div class="container">
+      <div class="cause-hero__inner">
+        <div class="cause-hero__label">
+          <span class="tag tag--just">⚖️ Intersectional Justice</span>
+        </div>
+        <h1 class="cause-hero__heading">
+          Justice is not divisible.<br />
+          <span class="cause-hero__accent">It is intersectional or it is nothing.</span>
+        </h1>
+        <p class="cause-hero__sub">
+          57,582 registered crimes against Scheduled Castes in 2021 alone. Section 377 — a British colonial import — criminalised gender non-conformity for 157 years. Hijra and Kinnar communities have existed in India for thousands of years. The rights framework protecting them is being <em>reclaimed</em>, not imported.
+        </p>
+        <div class="cause-hero__actions">
+          <a href="/intersectional-justice/myths/" class="btn btn-primary" id="just-myths-cta">Read Myth vs. Fact</a>
+          <a href="/intersectional-justice/data/" class="btn btn-outline" id="just-data-cta">View Data & Statistics</a>
+        </div>
+        <div class="cause-hero__share">
+          <ShareButtons title="Intersectional Justice — Paras Activist" url="https://parasactivist.in/intersectional-justice/" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--sm" aria-label="Key statistics">
+    <div class="container">
+      <div class="stats-grid stagger">
+        <StatHighlight number="57,582" label="Registered crimes against Scheduled Castes in 2021 — a widely acknowledged undercount (NCRB)" source="NCRB Crime in India, 2021" color="just" />
+        <StatHighlight number="1861" label="Year Section 377 was introduced by British colonial law — criminalising gender non-conformity in India" source="Legal historian Alok Gupta; IPC colonial history" color="just" />
+        <StatHighlight number="2014" label="Year the Supreme Court of India affirmed the legal recognition of a 'third gender' in NALSA v. Union of India" source="Supreme Court of India, NALSA judgment, 2014" color="just" />
+      </div>
+    </div>
+  </section>
+
+  {articles.length > 0 && (
+    <section class="section--sm" aria-label="Justice articles">
+      <div class="container">
+        <h2>Articles & Analysis</h2>
+        <div class="article-list">
+          {articles.map(article => (
+            <a href={`/intersectional-justice/${article.id}/`} class="article-card">
+              <div class="article-card__date">
+                <time datetime={article.data.publishDate.toISOString()}>
+                  {article.data.publishDate.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+              </div>
+              <h3 class="article-card__title">{article.data.title}</h3>
+              <p class="article-card__description">{article.data.description}</p>
+              <span class="article-card__read">Read →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section--sm cause-nav" aria-label="Explore intersectional justice">
+    <div class="container">
+      <h2>Explore Intersectional Justice</h2>
+      <div class="cause-nav__grid">
+        <a href="/intersectional-justice/myths/" class="cause-nav__card" id="nav-just-myths">
+          <span class="cause-nav__icon">🔴 vs ✅</span>
+          <h3>Myth vs. Fact</h3>
+          <p>Counter "Western import" rhetoric and caste denial with historical evidence and NCRB data.</p>
+        </a>
+        <a href="/intersectional-justice/data/" class="cause-nav__card" id="nav-just-data">
+          <span class="cause-nav__icon">📊</span>
+          <h3>Data & Statistics</h3>
+          <p>NCRB crime data, Oxfam inequality reports, and Supreme Court judgments — all cited.</p>
+        </a>
+        <a href="/share-toolkit" class="cause-nav__card" id="nav-just-share">
+          <span class="cause-nav__icon">📲</span>
+          <h3>Share Toolkit</h3>
+          <p>WhatsApp-ready cards countering misinformation about trans rights, caste, and animal welfare.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cause-hero { padding-block: var(--space-16) var(--space-12); position: relative; overflow: hidden; }
+  .cause-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 40vw; height: 40vw; background: radial-gradient(circle, var(--clr-just-bg) 0%, transparent 60%); pointer-events: none; }
+  .cause-hero__inner { position: relative; z-index: 1; max-width: 720px; }
+  .cause-hero__label { margin-bottom: var(--space-5); }
+  .cause-hero__heading { margin-bottom: var(--space-5); font-size: clamp(2rem, 5vw, 3.25rem); }
+  .cause-hero__accent { color: var(--clr-just); }
+  .cause-hero__sub { color: var(--clr-text-muted); font-size: 1.0625rem; max-width: 60ch; margin-bottom: var(--space-8); line-height: 1.7; }
+  .cause-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8); }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  @media (max-width: 768px) { .stats-grid { grid-template-columns: 1fr; } }
+  .article-list { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-6); }
+  .article-card { display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-6); text-decoration: none; transition: all var(--duration-normal) var(--ease-out); }
+  .article-card:hover { border-color: var(--clr-just); transform: translateX(4px); }
+  .article-card__date { font-size: 0.8rem; color: var(--clr-text-subtle); margin-bottom: var(--space-2); }
+  .article-card__title { font-size: 1.125rem; font-weight: 700; margin-bottom: var(--space-2); color: var(--clr-text); }
+  .article-card__description { font-size: 0.9rem; color: var(--clr-text-muted); margin-bottom: var(--space-3); }
+  .article-card__read { font-size: 0.85rem; font-weight: 600; color: var(--clr-just); }
+  .cause-nav h2 { margin-bottom: var(--space-6); }
+  .cause-nav__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  @media (max-width: 768px) { .cause-nav__grid { grid-template-columns: 1fr; } }
+  .cause-nav__card { display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-6); text-decoration: none; transition: all var(--duration-normal) var(--ease-out); }
+  .cause-nav__card:hover { border-color: var(--clr-just); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .cause-nav__icon { font-size: 1.5rem; display: block; margin-bottom: var(--space-3); }
+  .cause-nav__card h3 { font-size: 1rem; margin-bottom: var(--space-2); color: var(--clr-text); }
+  .cause-nav__card p { font-size: 0.875rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+</style>

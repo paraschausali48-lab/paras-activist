@@ -1,0 +1,164 @@
+---
+// src/pages/food-security/myths.astro — Myth vs. Fact page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MythFact from '../../components/MythFact.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import EvidenceCard from '../../components/EvidenceCard.astro';
+---
+
+<BaseLayout
+  title="Food Security Myths vs. Facts"
+  description="Countering the most common myths about India's hunger crisis with government data, peer-reviewed research, and independently verified evidence."
+  ogImage="/og/food-myths.png"
+>
+  <div class="myth-page">
+    <div class="container">
+
+      <!-- Header -->
+      <header class="myth-page__header">
+        <a href="/food-security/" class="breadcrumb-back" aria-label="Back to Food Security">← Food Security</a>
+        <span class="tag tag--food">🌾 Myth vs. Fact</span>
+        <h1>Food Security: <br class="hide-desktop" />Myths vs. Facts</h1>
+        <p class="myth-page__sub">
+          Every myth below is phrased exactly as it circulates in conversation and on social media.
+          Every fact is backed by a named, verifiable source. Click the source numbers to verify.
+        </p>
+        <ShareButtons title="Food Security Myths vs. Facts — Paras Activist" url="https://parasactivist.in/food-security/myths/" />
+      </header>
+
+      <!-- Evidence Card -->
+      <EvidenceCard
+        primarySources="4 government reports, 2 NGO impact reports, 1 peer-reviewed text"
+        lastVerified="August 2025"
+        corrections={0}
+      />
+
+      <!-- Myth 1 -->
+      <MythFact
+        myth="India's food problem is a problem of production. We simply don't grow enough."
+        fact="India is the world's second-largest food producer and consistently holds one of the world's largest buffer grain stocks — far exceeding its own norms. The Food Corporation of India held over 61 million metric tonnes in 2022, against a buffer norm requiring ~21 MT. Simultaneously, the Global Hunger Index 2023 ranks India 111th out of 125 nations. This is not a supply crisis. It is a distribution, storage, and political will crisis."
+        sources="Food Corporation of India Annual Report 2022–23; Global Hunger Index 2023 (Welthungerhilfe); CACP Price Policy Reports; Madhura Swaminathan, Weakening Welfare: The Public Distribution of Food in India."
+      />
+
+      <StatHighlight number="111th" label="India's Global Hunger Index 2023 rank — despite being the world's 2nd largest food producer" source="Welthungerhilfe, Global Hunger Index 2023" color="food" />
+
+      <!-- Myth 2 -->
+      <MythFact
+        myth="Food that is wasted would have gone bad anyway. It can't be redirected to the poor."
+        fact="The ICAR estimates India wastes ₹92,000 crore worth of food annually, a significant portion lost before spoilage due to cold-chain gaps and inadequate warehousing. Organisations like Robin Hood Army and No Food Waste have demonstrated at scale that urban surplus food — from restaurants, caterers, and households — can be safely redistributed within hours. The claim that waste is 'inevitable' is a structural excuse, not a factual constraint."
+        sources="ICAR Report on Food Wastage (2022); FAO Food Wastage Footprint Report; Robin Hood Army Annual Impact Reports."
+      />
+
+      <StatHighlight number="₹92,000 Cr" label="Estimated annual food wastage in India — much of it preventable with cold-chain investment" source="Indian Council of Agricultural Research (ICAR), 2022" color="food" />
+
+      <!-- Myth 3 -->
+      <MythFact
+        myth="The PDS (Public Distribution System) reaches everyone who needs it. People who go hungry are simply not registered."
+        fact="The National Food Security Act (NFSA) 2013 covers approximately 67% of India's population, but implementation varies drastically by state. The Parliamentary Standing Committee on Food (2022) noted that exclusion errors — eligible families left out — remain widespread. Migrant workers, homeless individuals, and those without Aadhaar linkage are systematically excluded. Being 'unregistered' is itself a function of administrative failure, not personal choice."
+        sources="National Food Security Act 2013; Parliamentary Standing Committee on Food Report (2022); Jean Drèze and Amartya Sen, An Uncertain Glory: India and its Contradictions."
+      />
+
+      <!-- Sources Section -->
+      <section class="sources-section" aria-label="Full source list">
+        <h2>Full Source List</h2>
+        <ol class="source-list">
+          <li><strong>Global Hunger Index 2023</strong> — Welthungerhilfe & Concern Worldwide. <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer">globalhungerindex.org</a></li>
+          <li><strong>Food Corporation of India Annual Report 2022–23</strong> — Government of India, Ministry of Consumer Affairs. <a href="https://fci.gov.in" target="_blank" rel="noopener noreferrer">fci.gov.in</a></li>
+          <li><strong>ICAR Report on Food Wastage, 2022</strong> — Indian Council of Agricultural Research. Available via <a href="https://icar.org.in" target="_blank" rel="noopener noreferrer">icar.org.in</a></li>
+          <li><strong>FAO Food Wastage Footprint</strong> — Food and Agriculture Organisation of the United Nations. <a href="https://www.fao.org/food-loss-and-food-waste/flw-data/en" target="_blank" rel="noopener noreferrer">fao.org</a></li>
+          <li><strong>National Food Security Act, 2013</strong> — Government of India. <a href="https://dfpd.gov.in/nfsa.htm" target="_blank" rel="noopener noreferrer">dfpd.gov.in</a></li>
+          <li><strong>Swaminathan M. (2000)</strong> — Weakening Welfare: The Public Distribution of Food in India. LeftWord Books.</li>
+          <li><strong>Drèze J. & Sen A. (2013)</strong> — An Uncertain Glory: India and its Contradictions. Princeton University Press.</li>
+        </ol>
+      </section>
+
+      <!-- Share -->
+      <div class="myth-page__share-footer">
+        <p>Found this useful? Share it.</p>
+        <ShareButtons title="Food Security Myths vs. Facts — Paras Activist" url="https://parasactivist.in/food-security/myths/" />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .myth-page { padding-block: var(--space-8) var(--space-20); }
+
+  .myth-page__header {
+    max-width: 720px;
+    margin-bottom: var(--space-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .breadcrumb-back {
+    font-size: 0.875rem;
+    color: var(--clr-text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .breadcrumb-back:hover { color: var(--clr-food); }
+
+  .myth-page__header h1 { margin: 0; }
+
+  .myth-page__sub {
+    color: var(--clr-text-muted);
+    font-size: 1rem;
+    max-width: 60ch;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .sources-section {
+    margin-top: var(--space-12);
+    padding: var(--space-8);
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .sources-section h2 { margin-bottom: var(--space-6); font-size: 1.125rem; }
+
+  .source-list {
+    list-style: decimal;
+    padding-left: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .source-list li {
+    font-size: 0.9rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+  }
+
+  .source-list a {
+    color: var(--clr-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    word-break: break-all;
+  }
+
+  .myth-page__share-footer {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--clr-border);
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .myth-page__share-footer p {
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    margin: 0;
+    font-size: 0.875rem;
+  }
+</style>

@@ -1,0 +1,181 @@
+---
+// src/pages/food-security/data.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StatHighlight from '../../components/StatHighlight.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+---
+
+<BaseLayout
+  title="Food Security Data & Statistics"
+  description="Primary source data on India's food security crisis — Government of India reports, Global Hunger Index, FCI storage data, and ICAR wastage estimates."
+  ogImage="/og/food-data.png"
+>
+  <div class="data-page">
+    <div class="container">
+      <header class="data-page__header">
+        <a href="/food-security/" class="breadcrumb-back">← Food Security</a>
+        <span class="tag tag--food">📊 Data & Statistics</span>
+        <h1>Food Security: Data & Statistics</h1>
+        <p class="data-page__sub">
+          All figures below are sourced from primary government documents, peer-reviewed research, or internationally recognised indices. Each entry links to its source.
+        </p>
+        <ShareButtons title="Food Security Data — Paras Activist" url="https://parasactivist.in/food-security/data/" />
+      </header>
+
+      <div class="stats-showcase stagger">
+        <StatHighlight number="111th" label="India's Global Hunger Index rank in 2023 out of 125 nations" source="Welthungerhilfe, GHI 2023" color="food" />
+        <StatHighlight number="61 MT" label="Grain held in FCI central storage in 2022 — 2.9× the buffer norm of 21 MT" source="FCI Annual Report 2022–23" color="food" />
+        <StatHighlight number="₹92,000 Cr" label="Annual food wastage value in India" source="ICAR, 2022" color="food" />
+        <StatHighlight number="67%" label="Population covered under NFSA 2013 — but exclusion errors remain widespread" source="National Food Security Act, 2013" color="food" />
+        <StatHighlight number="189.2M" label="People undernourished in India (2022–24 estimate)" source="FAO State of Food Security Report 2024" color="food" />
+      </div>
+
+      <!-- Data Table -->
+      <section class="data-table-section">
+        <h2>Global Hunger Index — India Trend</h2>
+        <p class="data-table__note">Note: GHI scores range from 0 (no hunger) to 100 (extreme hunger). Lower rank = better performance.</p>
+        <div class="table-wrapper" role="region" aria-label="GHI India trend table" tabindex="0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Year</th>
+                <th scope="col">GHI Score</th>
+                <th scope="col">Rank</th>
+                <th scope="col">Countries Ranked</th>
+                <th scope="col">Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>2023</td><td>28.7</td><td>111</td><td>125</td><td><span class="category-badge category--serious">Serious</span></td></tr>
+              <tr><td>2022</td><td>29.1</td><td>107</td><td>121</td><td><span class="category-badge category--serious">Serious</span></td></tr>
+              <tr><td>2021</td><td>27.5</td><td>101</td><td>116</td><td><span class="category-badge category--serious">Serious</span></td></tr>
+              <tr><td>2020</td><td>27.2</td><td>94</td><td>107</td><td><span class="category-badge category--serious">Serious</span></td></tr>
+              <tr><td>2015</td><td>29.0</td><td>80</td><td>104</td><td><span class="category-badge category--serious">Serious</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Source: <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer">Global Hunger Index — India</a></p>
+      </section>
+
+      <!-- Source Links -->
+      <section class="primary-sources-section">
+        <h2>Primary Sources</h2>
+        <div class="source-cards">
+          <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 International Index</span>
+            <h3>Global Hunger Index 2023</h3>
+            <p>Welthungerhilfe & Concern Worldwide. Annual composite index measuring hunger across four indicators.</p>
+          </a>
+          <a href="https://fci.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 Government</span>
+            <h3>FCI Annual Report 2022–23</h3>
+            <p>Food Corporation of India. Official grain storage, procurement, and distribution data.</p>
+          </a>
+          <a href="https://icar.org.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 Government Research</span>
+            <h3>ICAR Food Wastage Report 2022</h3>
+            <p>Indian Council of Agricultural Research. Comprehensive food loss estimates across value chain stages.</p>
+          </a>
+          <a href="https://www.fao.org/publications/sofi" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">🟢 UN Agency</span>
+            <h3>FAO State of Food Security 2024</h3>
+            <p>Food and Agriculture Organisation of the UN. Annual global undernourishment estimates.</p>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .data-page { padding-block: var(--space-8) var(--space-20); }
+
+  .data-page__header {
+    display: flex; flex-direction: column; gap: var(--space-4);
+    margin-bottom: var(--space-10); max-width: 720px;
+  }
+  .breadcrumb-back {
+    font-size: 0.875rem; color: var(--clr-text-muted); text-decoration: none;
+    display: inline-flex; align-items: center; gap: var(--space-1);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .breadcrumb-back:hover { color: var(--clr-food); }
+  .data-page__header h1 { margin: 0; }
+  .data-page__sub { color: var(--clr-text-muted); font-size: 1rem; max-width: 60ch; line-height: 1.7; margin: 0; }
+
+  .stats-showcase { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-12); }
+
+  .data-table-section, .primary-sources-section {
+    margin-top: var(--space-12);
+  }
+  .data-table-section h2, .primary-sources-section h2 { margin-bottom: var(--space-4); }
+
+  .data-table__note, .source-note {
+    font-size: 0.8rem; color: var(--clr-text-muted); margin-bottom: var(--space-4);
+  }
+  .source-note { margin-top: var(--space-3); }
+  .source-note a { color: var(--clr-accent); }
+
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .data-table th, .data-table td {
+    padding: var(--space-4) var(--space-5);
+    text-align: left;
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .data-table th {
+    background: var(--clr-bg-surface);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--clr-text-muted);
+  }
+
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table tbody tr:hover { background: var(--clr-bg-elevated); }
+
+  .category-badge {
+    display: inline-block;
+    padding: 2px var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem; font-weight: 600;
+  }
+  .category--serious { background: rgba(251,191,36,0.15); color: var(--clr-warning); }
+  .category--alarming { background: rgba(248,113,113,0.15); color: var(--clr-danger); }
+
+  .source-cards {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+  @media (max-width: 700px) { .source-cards { grid-template-columns: 1fr; } }
+
+  .source-card {
+    display: block;
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    text-decoration: none;
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+  .source-card:hover { border-color: var(--clr-food); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .source-card__type {
+    font-size: 0.75rem; font-weight: 600; color: var(--clr-text-muted);
+    display: block; margin-bottom: var(--space-2);
+  }
+  .source-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--clr-food); margin-bottom: var(--space-2); }
+  .source-card p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+</style>

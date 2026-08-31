@@ -1,0 +1,190 @@
+---
+// Footer.astro
+const causes = [
+  { label: 'Food Security', href: '/food-security/', icon: '🌾' },
+  { label: 'Footpath Movement', href: '/footpath/', icon: '🚶' },
+  { label: 'Intersectional Justice', href: '/intersectional-justice/', icon: '⚖️' },
+];
+---
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="Home">
+          <span class="footer__logo-mark" aria-hidden="true">◈</span>
+          <span>Paras<span class="footer__logo-accent">Activist</span></span>
+        </a>
+        <p class="footer__tagline">
+          Three movements. One commitment. <strong>Evidence over propaganda.</strong>
+        </p>
+        <div class="footer__pledge-badge" role="note" aria-label="Privacy pledge">
+          <span aria-hidden="true">🔒</span>
+          Zero cookies · Zero tracking · Zero ads
+        </div>
+      </div>
+
+      <!-- Causes -->
+      <div class="footer__col">
+        <h3 class="footer__col-title">Causes</h3>
+        <ul role="list">
+          {causes.map(c => (
+            <li>
+              <a href={c.href} class="footer__link">
+                <span aria-hidden="true">{c.icon}</span> {c.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Site -->
+      <div class="footer__col">
+        <h3 class="footer__col-title">Site</h3>
+        <ul role="list">
+          <li><a href="/about" class="footer__link">About & Our Pledge</a></li>
+          <li><a href="/sources" class="footer__link">Master Bibliography</a></li>
+          <li><a href="/share-toolkit" class="footer__link">Share Toolkit</a></li>
+        </ul>
+      </div>
+
+      <!-- Share -->
+      <div class="footer__col">
+        <h3 class="footer__col-title">Share</h3>
+        <ul role="list">
+          <li>
+            <a
+              href="https://www.instagram.com/"
+              class="footer__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram (opens in new tab)"
+            >
+              📸 Instagram
+            </a>
+          </li>
+          <li>
+            <a href="/share-toolkit" class="footer__link">
+              📲 WhatsApp Cards
+            </a>
+          </li>
+          <li>
+            <a href="/share-toolkit" class="footer__link">
+              ✈️ Telegram Cards
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">
+        © {new Date().getFullYear()} Paras Activist. All content is freely shareable for non-commercial educational use with attribution.
+      </p>
+      <p class="footer__disclaimer">
+        This site contains no advertising, no affiliate links, and no data collection of any kind. Content is evidence-based and independently funded.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--clr-bg-surface);
+    border-top: 1px solid var(--clr-border);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-8);
+    margin-top: var(--space-20);
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (max-width: 900px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .footer__brand { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 500px) {
+    .footer__grid { grid-template-columns: 1fr; }
+  }
+
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 800;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: var(--clr-text);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-4);
+  }
+  .footer__logo:hover { color: var(--clr-text); opacity: 0.8; }
+
+  .footer__logo-mark { color: var(--clr-accent); }
+  .footer__logo-accent { color: var(--clr-accent); }
+
+  .footer__tagline {
+    color: var(--clr-text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    max-width: 32ch;
+    margin-bottom: var(--space-5);
+  }
+
+  .footer__pledge-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--clr-accent-glow);
+    border: 1px solid rgba(245,166,35,0.3);
+    border-radius: var(--radius-full);
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--clr-accent);
+  }
+
+  .footer__col-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--clr-text-subtle);
+    margin-bottom: var(--space-4);
+  }
+
+  .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
+
+  .footer__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--clr-text-muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .footer__link:hover { color: var(--clr-accent); }
+
+  .footer__bottom {
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--clr-border);
+  }
+
+  .footer__copy, .footer__disclaimer {
+    font-size: 0.8125rem;
+    color: var(--clr-text-subtle);
+    line-height: 1.6;
+  }
+
+  .footer__copy { margin-bottom: var(--space-2); }
+</style>
