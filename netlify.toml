@@ -11,6 +11,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Explicit Content-Type for Astro-generated CSS (prevents browser rejection)
+[[headers]]
+  for = "/_astro/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
+
 # HTML pages: never cache (fresh content)
 [[headers]]
   for = "/*.html"
