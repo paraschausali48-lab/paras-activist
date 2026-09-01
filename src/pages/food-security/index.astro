@@ -1,4 +1,4 @@
----
+﻿---
 // src/pages/food-security/index.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ShareButtons from '../../components/ShareButtons.astro';
@@ -12,7 +12,7 @@ const articles = (await getCollection('food-security')).sort(
 
 <BaseLayout
   title="Food Security"
-  description="India is the world's second-largest food producer yet ranks 111th on the Global Hunger Index. This is not a production crisis — it is a distribution and political will crisis. Evidence-based analysis."
+  description="India is the world's second-largest food producer yet ranks 111th on the Global Hunger Index. This is not a production crisis - it is a distribution and political will crisis. Evidence-based analysis."
   ogImage="/og/food-security.png"
   causeColor="food"
 >
@@ -21,7 +21,7 @@ const articles = (await getCollection('food-security')).sort(
     <div class="container">
       <div class="cause-hero__inner">
         <div class="cause-hero__label">
-          <span class="tag tag--food">🌾 Food Security</span>
+          <span class="tag tag--food">Food Food Security</span>
         </div>
         <h1 class="cause-hero__heading">
           India wastes food.<br />
@@ -29,7 +29,7 @@ const articles = (await getCollection('food-security')).sort(
           These facts coexist.
         </h1>
         <p class="cause-hero__sub">
-          The Global Hunger Index 2023 ranks India 111th out of 125 nations. In the same year, the Food Corporation of India held over <strong>61 million metric tonnes</strong> of grain in central storage — nearly three times the buffer norm. This is not a production problem. It is a system problem.
+          The Global Hunger Index 2023 ranks India 111th out of 125 nations. In the same year, the Food Corporation of India held over <strong>61 million metric tonnes</strong> of grain in central storage - nearly three times the buffer norm. This is not a production problem. It is a system problem.
         </p>
         <div class="cause-hero__actions">
           <a href="/food-security/myths/" class="btn btn-primary" id="food-myths-cta">
@@ -40,7 +40,7 @@ const articles = (await getCollection('food-security')).sort(
           </a>
         </div>
         <div class="cause-hero__share">
-          <ShareButtons title="Food Security — Evidence from Paras Activist" url="https://parasactivist.in/food-security/" />
+          <ShareButtons title="Food Security - Evidence from Paras Activist" url="https://parasactivist.in/food-security/" />
         </div>
       </div>
     </div>
@@ -51,8 +51,8 @@ const articles = (await getCollection('food-security')).sort(
     <div class="container">
       <div class="stats-grid">
         <StatHighlight number="111th" label="India's rank on the Global Hunger Index 2023 (out of 125 nations)" source="Welthungerhilfe / Global Hunger Index 2023" color="food" />
-        <StatHighlight number="₹92,000 Cr" label="Estimated annual food wastage in India (ICAR 2022)" source="Indian Council of Agricultural Research, 2022" color="food" />
-        <StatHighlight number="61 MT" label="Grain held in FCI central storage in 2022 — nearly 3× the buffer norm" source="Food Corporation of India Annual Report 2022–23" color="food" />
+        <StatHighlight number="Rs 92,000 Cr" label="Estimated annual food wastage in India (ICAR 2022)" source="Indian Council of Agricultural Research, 2022" color="food" />
+        <StatHighlight number="61 MT" label="Grain held in FCI central storage in 2022 - nearly 3x the buffer norm" source="Food Corporation of India Annual Report 2022-23" color="food" />
       </div>
     </div>
   </section>
@@ -72,7 +72,7 @@ const articles = (await getCollection('food-security')).sort(
               </div>
               <h3 class="article-card__title">{article.data.title}</h3>
               <p class="article-card__description">{article.data.description}</p>
-              <span class="article-card__read">Read →</span>
+              <span class="article-card__read">Read -></span>
             </a>
           ))}
         </div>
@@ -86,17 +86,17 @@ const articles = (await getCollection('food-security')).sort(
       <h2>Explore Food Security</h2>
       <div class="cause-nav__grid">
         <a href="/food-security/myths/" class="cause-nav__card" id="nav-food-myths">
-          <span class="cause-nav__icon" aria-hidden="true">🔴 vs ✅</span>
+          <span class="cause-nav__icon" aria-hidden="true">Media vs Yes</span>
           <h3>Myth vs. Fact</h3>
           <p>Counter the most common misinformation about India's hunger crisis with verified data.</p>
         </a>
         <a href="/food-security/data/" class="cause-nav__card" id="nav-food-data">
-          <span class="cause-nav__icon" aria-hidden="true">📊</span>
+          <span class="cause-nav__icon" aria-hidden="true">Data</span>
           <h3>Data & Statistics</h3>
-          <p>Government reports, GHI rankings, FCI data, and ICAR estimates — all cited and sourced.</p>
+          <p>Government reports, GHI rankings, FCI data, and ICAR estimates - all cited and sourced.</p>
         </a>
         <a href="/share-toolkit" class="cause-nav__card" id="nav-food-share">
-          <span class="cause-nav__icon" aria-hidden="true">📲</span>
+          <span class="cause-nav__icon" aria-hidden="true">Share</span>
           <h3>Share Toolkit</h3>
           <p>WhatsApp and Telegram-ready image cards for every key fact on food security.</p>
         </a>
@@ -181,3 +181,5 @@ const articles = (await getCollection('food-security')).sort(
   .cause-nav__card h3 { font-size: 1rem; margin-bottom: var(--space-2); color: var(--clr-text); }
   .cause-nav__card p { font-size: 0.875rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
 </style>
+
+

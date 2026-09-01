@@ -1,4 +1,4 @@
----
+﻿---
 // src/pages/intersectional-justice/index.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ShareButtons from '../../components/ShareButtons.astro';
@@ -12,28 +12,28 @@ const articles = (await getCollection('intersectional-justice')).sort(
 
 <BaseLayout
   title="Intersectional Justice"
-  description="Protecting women, trans individuals, and animals. Dismantling caste discrimination and racism with evidence. Rights are not imports — they are indigenous reclamations."
+  description="Protecting women, trans individuals, and animals. Dismantling caste discrimination and racism with evidence. Rights are not imports - they are indigenous reclamations."
   ogImage="/og/justice.png"
 >
   <section class="cause-hero" aria-label="Intersectional Justice overview">
     <div class="container">
       <div class="cause-hero__inner">
         <div class="cause-hero__label">
-          <span class="tag tag--just">⚖️ Intersectional Justice</span>
+          <span class="tag tag--just">Justice Intersectional Justice</span>
         </div>
         <h1 class="cause-hero__heading">
           Justice is not divisible.<br />
           <span class="cause-hero__accent">It is intersectional or it is nothing.</span>
         </h1>
         <p class="cause-hero__sub">
-          57,582 registered crimes against Scheduled Castes in 2021 alone. Section 377 — a British colonial import — criminalised gender non-conformity for 157 years. Hijra and Kinnar communities have existed in India for thousands of years. The rights framework protecting them is being <em>reclaimed</em>, not imported.
+          57,582 registered crimes against Scheduled Castes in 2021 alone. Section 377 - a British colonial import - criminalised gender non-conformity for 157 years. Hijra and Kinnar communities have existed in India for thousands of years. The rights framework protecting them is being <em>reclaimed</em>, not imported.
         </p>
         <div class="cause-hero__actions">
           <a href="/intersectional-justice/myths/" class="btn btn-primary" id="just-myths-cta">Read Myth vs. Fact</a>
           <a href="/intersectional-justice/data/" class="btn btn-outline" id="just-data-cta">View Data & Statistics</a>
         </div>
         <div class="cause-hero__share">
-          <ShareButtons title="Intersectional Justice — Paras Activist" url="https://parasactivist.in/intersectional-justice/" />
+          <ShareButtons title="Intersectional Justice - Paras Activist" url="https://parasactivist.in/intersectional-justice/" />
         </div>
       </div>
     </div>
@@ -42,8 +42,8 @@ const articles = (await getCollection('intersectional-justice')).sort(
   <section class="section--sm" aria-label="Key statistics">
     <div class="container">
       <div class="stats-grid stagger">
-        <StatHighlight number="57,582" label="Registered crimes against Scheduled Castes in 2021 — a widely acknowledged undercount (NCRB)" source="NCRB Crime in India, 2021" color="just" />
-        <StatHighlight number="1861" label="Year Section 377 was introduced by British colonial law — criminalising gender non-conformity in India" source="Legal historian Alok Gupta; IPC colonial history" color="just" />
+        <StatHighlight number="57,582" label="Registered crimes against Scheduled Castes in 2021 - a widely acknowledged undercount (NCRB)" source="NCRB Crime in India, 2021" color="just" />
+        <StatHighlight number="1861" label="Year Section 377 was introduced by British colonial law - criminalising gender non-conformity in India" source="Legal historian Alok Gupta; IPC colonial history" color="just" />
         <StatHighlight number="2014" label="Year the Supreme Court of India affirmed the legal recognition of a 'third gender' in NALSA v. Union of India" source="Supreme Court of India, NALSA judgment, 2014" color="just" />
       </div>
     </div>
@@ -63,7 +63,7 @@ const articles = (await getCollection('intersectional-justice')).sort(
               </div>
               <h3 class="article-card__title">{article.data.title}</h3>
               <p class="article-card__description">{article.data.description}</p>
-              <span class="article-card__read">Read →</span>
+              <span class="article-card__read">Read -></span>
             </a>
           ))}
         </div>
@@ -76,17 +76,17 @@ const articles = (await getCollection('intersectional-justice')).sort(
       <h2>Explore Intersectional Justice</h2>
       <div class="cause-nav__grid">
         <a href="/intersectional-justice/myths/" class="cause-nav__card" id="nav-just-myths">
-          <span class="cause-nav__icon">🔴 vs ✅</span>
+          <span class="cause-nav__icon">Media vs Yes</span>
           <h3>Myth vs. Fact</h3>
           <p>Counter "Western import" rhetoric and caste denial with historical evidence and NCRB data.</p>
         </a>
         <a href="/intersectional-justice/data/" class="cause-nav__card" id="nav-just-data">
-          <span class="cause-nav__icon">📊</span>
+          <span class="cause-nav__icon">Data</span>
           <h3>Data & Statistics</h3>
-          <p>NCRB crime data, Oxfam inequality reports, and Supreme Court judgments — all cited.</p>
+          <p>NCRB crime data, Oxfam inequality reports, and Supreme Court judgments - all cited.</p>
         </a>
         <a href="/share-toolkit" class="cause-nav__card" id="nav-just-share">
-          <span class="cause-nav__icon">📲</span>
+          <span class="cause-nav__icon">Share</span>
           <h3>Share Toolkit</h3>
           <p>WhatsApp-ready cards countering misinformation about trans rights, caste, and animal welfare.</p>
         </a>
@@ -122,3 +122,5 @@ const articles = (await getCollection('intersectional-justice')).sort(
   .cause-nav__card h3 { font-size: 1rem; margin-bottom: var(--space-2); color: var(--clr-text); }
   .cause-nav__card p { font-size: 0.875rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
 </style>
+
+

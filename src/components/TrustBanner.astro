@@ -1,5 +1,5 @@
----
-// TrustBanner.astro — sticky zero-tracking pledge banner
+﻿---
+// TrustBanner.astro - sticky zero-tracking pledge banner
 ---
 
 <div class="trust-banner" id="trust-banner" role="banner" aria-label="Privacy notice">
@@ -9,19 +9,19 @@
         <span class="trust-pill__dot trust-pill__dot--green" aria-hidden="true"></span>
         No cookies
       </span>
-      <span class="trust-banner__sep" aria-hidden="true">·</span>
+      <span class="trust-banner__sep" aria-hidden="true">/</span>
       <span class="trust-pill" aria-label="No trackers">
         <span class="trust-pill__dot trust-pill__dot--green" aria-hidden="true"></span>
         No trackers
       </span>
-      <span class="trust-banner__sep" aria-hidden="true">·</span>
+      <span class="trust-banner__sep" aria-hidden="true">/</span>
       <span class="trust-pill" aria-label="No ads">
         <span class="trust-pill__dot trust-pill__dot--green" aria-hidden="true"></span>
         No ads
       </span>
-      <span class="trust-banner__sep trust-banner__sep--lg" aria-hidden="true">·</span>
+      <span class="trust-banner__sep trust-banner__sep--lg" aria-hidden="true">/</span>
       <a href="/about#pledge" class="trust-banner__link" aria-label="Read our full privacy pledge">
-        Read our pledge →
+        Read our pledge <span aria-hidden="true">-&gt;</span>
       </a>
     </div>
 
@@ -57,8 +57,7 @@
     border-bottom: 1px solid rgba(245, 166, 35, 0.18);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    transition: transform var(--duration-normal) var(--ease-out),
-                opacity var(--duration-normal) var(--ease-out);
+    transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
   }
 
   .trust-banner--hidden {
@@ -89,7 +88,7 @@
     font-size: 0.78rem;
     font-weight: 600;
     color: var(--clr-text-muted);
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
   }
 
   .trust-pill__dot {
@@ -111,9 +110,7 @@
     user-select: none;
   }
 
-  .trust-banner__sep--lg {
-    margin-inline: var(--space-1);
-  }
+  .trust-banner__sep--lg { margin-inline: var(--space-1); }
 
   .trust-banner__link {
     font-size: 0.78rem;
@@ -137,9 +134,7 @@
     cursor: pointer;
     color: var(--clr-text-subtle);
     flex-shrink: 0;
-    transition: color var(--duration-fast) var(--ease-out),
-                border-color var(--duration-fast) var(--ease-out),
-                background var(--duration-fast) var(--ease-out);
+    transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
   }
   .trust-banner__close:hover {
     color: var(--clr-text);
@@ -148,7 +143,9 @@
   }
 
   @media (max-width: 480px) {
-    .trust-banner__sep--lg { display: none; }
+    .trust-banner__sep--lg,
     .trust-banner__link { display: none; }
   }
 </style>
+
+

@@ -1,5 +1,5 @@
----
-// StatHighlight.astro — full-width impactful statistic callout
+﻿---
+// StatHighlight.astro - full-width impactful statistic callout
 interface Props {
   number: string;
   label: string;
@@ -10,7 +10,7 @@ interface Props {
 const { number, label, source, color = 'accent' } = Astro.props;
 ---
 
-<figure class={`stat-highlight stat-highlight--${color}`} role="figure" aria-label={`Statistic: ${number} — ${label}`}>
+<figure class={`stat-highlight stat-highlight--${color}`} role="figure" aria-label={`Statistic: ${number} - ${label}`}>
   <div class="stat-highlight__number">{number}</div>
   <figcaption class="stat-highlight__label">{label}</figcaption>
   {source && <cite class="stat-highlight__source">Source: {source}</cite>}
@@ -67,3 +67,5 @@ const { number, label, source, color = 'accent' } = Astro.props;
     display: block;
   }
 </style>
+
+

@@ -1,5 +1,5 @@
----
-// src/pages/index.astro — Homepage (The Hub)
+﻿---
+// src/pages/index.astro - Homepage
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CauseCard from '../components/CauseCard.astro';
 import ShareButtons from '../components/ShareButtons.astro';
@@ -10,10 +10,10 @@ const causes = [
     href: '/food-security/',
     mythsHref: '/food-security/myths/',
     dataHref: '/food-security/data/',
-    description: 'India is the world\'s second-largest food producer. Yet it ranks 111th on the Global Hunger Index. This is not a production crisis — it is a distribution, storage, and political will crisis.',
-    stat: '₹92,000 Cr',
+    description: 'India is the world\'s second-largest food producer. Yet it ranks 111th on the Global Hunger Index. This is not a production crisis - it is a distribution, storage, and political will crisis.',
+    stat: 'Rs 92,000 Cr',
     statLabel: 'worth of food wasted in India annually (ICAR)',
-    icon: '🌾',
+    code: 'FS',
     tag: 'food' as const,
   },
   {
@@ -21,10 +21,10 @@ const causes = [
     href: '/footpath/',
     mythsHref: '/footpath/myths/',
     dataHref: '/footpath/data/',
-    description: 'Pedestrians are India\'s single largest road accident victim group. Functional, unobstructed footpaths are the exception, not the rule. This is a choice — not an inevitability.',
+    description: 'Pedestrians are India\'s single largest road accident victim group. Functional, unobstructed footpaths are the exception, not the rule. This is a choice - not an inevitability.',
     stat: '17%',
-    statLabel: 'of all road accident deaths — pedestrians (MoRTH 2022)',
-    icon: '🚶',
+    statLabel: 'of all road accident deaths - pedestrians (MoRTH 2022)',
+    code: 'FM',
     tag: 'foot' as const,
   },
   {
@@ -32,96 +32,63 @@ const causes = [
     href: '/intersectional-justice/',
     mythsHref: '/intersectional-justice/myths/',
     dataHref: '/intersectional-justice/data/',
-    description: 'Protecting women, trans individuals, and animals. Dismantling caste discrimination and racism with evidence, not slogans. Rights are not Western imports — they are indigenous reclamations.',
+    description: 'Protecting women, trans individuals, and animals. Dismantling caste discrimination and racism with evidence, not slogans. Rights are not Western imports - they are indigenous reclamations.',
     stat: '57,582',
     statLabel: 'registered crimes against Scheduled Castes in 2021 alone (NCRB)',
-    icon: '⚖️',
+    code: 'IJ',
     tag: 'just' as const,
   },
 ];
 
 const pillars = [
-  {
-    n: '01',
-    icon: '📚',
-    title: 'Evidence First',
-    text: 'Every claim links to a government report, peer-reviewed paper, or independently verified NGO data. No exceptions.',
-  },
-  {
-    n: '02',
-    icon: '📲',
-    title: 'Mobile Native',
-    text: 'Designed for 4G India. Fast loading, WhatsApp-optimised link previews, and downloadable share cards.',
-  },
-  {
-    n: '03',
-    icon: '🔒',
-    title: 'Zero Tracking',
-    text: 'No cookies, no analytics, no fingerprinting. This is a strictly read-only educational resource.',
-  },
-  {
-    n: '04',
-    icon: '✏️',
-    title: 'Open Corrections',
-    text: 'All factual errors are corrected publicly, with a correction log and update date on every article.',
-  },
+  { n: '01', code: 'EV', title: 'Evidence First', text: 'Every claim links to a government report, peer-reviewed paper, or independently verified NGO data. No exceptions.' },
+  { n: '02', code: 'MO', title: 'Mobile Native', text: 'Designed for 4G India. Fast loading, WhatsApp-optimised link previews, and downloadable share cards.' },
+  { n: '03', code: 'PR', title: 'Zero Tracking', text: 'No cookies, no analytics, no fingerprinting. This is a strictly read-only educational resource.' },
+  { n: '04', code: 'CO', title: 'Open Corrections', text: 'All factual errors are corrected publicly, with a correction log and update date on every article.' },
 ];
 
-const pageDescription = 'Three grassroots movements. One commitment: evidence over propaganda. Food security, safe pedestrian infrastructure, and intersectional justice — rigorously cited, freely shareable.';
+const pageDescription = 'Three grassroots movements. One commitment: evidence over propaganda. Food security, safe pedestrian infrastructure, and intersectional justice - rigorously cited, freely shareable.';
 ---
 
-<BaseLayout
-  title="Home"
-  description={pageDescription}
-  ogImage="/og/home.png"
->
-  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<BaseLayout title="Home" description={pageDescription} ogImage="/og/home.png">
   <section class="hero" aria-label="Site introduction">
-    <!-- Mesh gradient background -->
     <div class="hero__mesh" aria-hidden="true">
-      <div class="hero__mesh-orb hero__mesh-orb--1"></div>
-      <div class="hero__mesh-orb hero__mesh-orb--2"></div>
-      <div class="hero__mesh-orb hero__mesh-orb--3"></div>
+      <div class="hero__mesh-panel hero__mesh-panel--1"></div>
+      <div class="hero__mesh-panel hero__mesh-panel--2"></div>
       <div class="hero__grid"></div>
     </div>
 
     <div class="container">
       <div class="hero__inner">
-        <!-- Eyebrow label -->
         <div class="hero__eyebrow">
           <span class="hero__eyebrow-dot" aria-hidden="true"></span>
-          <span>Evidence-Based Activism · India</span>
+          <span>Evidence-Based Activism / India</span>
         </div>
 
-        <!-- Headline -->
         <h1 class="hero__heading">
           Three movements.<br />
           <span class="hero__heading-gradient">One commitment to truth.</span>
         </h1>
 
-        <!-- Sub -->
         <p class="hero__sub">
           This site exists to counter propaganda with evidence. No advertising, no political funding, no data collection.
-          Just rigorously cited facts — formatted for WhatsApp and Telegram sharing across India.
+          Just rigorously cited facts, formatted for WhatsApp and Telegram sharing across India.
         </p>
 
-        <!-- CTAs -->
         <div class="hero__actions">
           <a href="/food-security/" class="btn btn-primary hero__cta-primary" id="hero-cta-food">
-            <span aria-hidden="true">🌾</span> Start with Food Security
+            Start with Food Security
           </a>
           <a href="/about" class="btn btn-outline" id="hero-cta-about">
             Read our Pledge
           </a>
         </div>
 
-        <!-- Share prompt -->
         <div class="hero__share-note">
-          <span class="hero__share-label" aria-hidden="true">📲 Share this site</span>
-          <ShareButtons title="Paras Activist — Evidence over propaganda" url="https://parasactivist.in" />
+          <span class="hero__share-label">Share this site</span>
+          <ShareButtons title="Paras Activist - Evidence over propaganda" url="https://parasactivist.in" />
         </div>
 
-        <!-- Floating stat chips -->
         <div class="hero__stat-chips" aria-label="Key statistics">
           <div class="hero__stat-chip hero__stat-chip--food">
             <span class="hero__stat-chip-value" data-count="111" data-suffix="th">111th</span>
@@ -138,14 +105,8 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
         </div>
       </div>
     </div>
-
-    <!-- Scroll hint -->
-    <div class="hero__scroll-hint" aria-hidden="true">
-      <span class="hero__scroll-line"></span>
-    </div>
   </section>
 
-  <!-- ══════════════════════════ CAUSE CARDS ════════════════════════════ -->
   <section class="causes section" aria-label="Three causes">
     <div class="container">
       <div class="section-header reveal">
@@ -166,11 +127,9 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
     </div>
   </section>
 
-  <!-- ══════════════════════════ WHY SECTION ════════════════════════════ -->
   <section class="why section--sm" aria-label="Why this site exists">
     <div class="container">
       <div class="why__inner">
-
         <div class="why__text reveal">
           <span class="section-eyebrow">Our Purpose</span>
           <h2>Why this site exists</h2>
@@ -185,7 +144,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
             We receive no corporate or political funding. We use no trackers. We sell nothing.
           </p>
           <a href="/about#pledge" class="btn btn-outline" id="why-pledge-btn">
-            Read the Zero Propaganda Pledge →
+            Read the Zero Propaganda Pledge <span aria-hidden="true">-&gt;</span>
           </a>
         </div>
 
@@ -194,19 +153,17 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
             <div class={`pillar reveal reveal-delay-${i + 1}`}>
               <div class="pillar__number" aria-hidden="true">{p.n}</div>
               <div class="pillar__body">
-                <div class="pillar__icon" aria-hidden="true">{p.icon}</div>
+                <div class="pillar__icon" aria-hidden="true">{p.code}</div>
                 <h3 class="pillar__title">{p.title}</h3>
                 <p class="pillar__text">{p.text}</p>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ═════════════════════════ SHARE CTA BANNER ═══════════════════════ -->
   <section class="share-cta" aria-label="Download share cards">
     <div class="share-cta__bg" aria-hidden="true">
       <div class="share-cta__bg-glow"></div>
@@ -214,7 +171,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
     <div class="container">
       <div class="share-cta__inner reveal">
         <div class="share-cta__left">
-          <span class="tag tag--accent">📲 Share Toolkit</span>
+          <span class="tag tag--accent">Share Toolkit</span>
           <h2>Arm yourself with shareable evidence</h2>
           <p>
             Download pre-formatted WhatsApp image cards for every myth-buster, statistic, and fact sheet.
@@ -223,9 +180,9 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
         </div>
         <div class="share-cta__right">
           <a href="/share-toolkit" class="btn btn-primary share-cta__btn" id="share-toolkit-cta">
-            View Share Toolkit →
+            View Share Toolkit <span aria-hidden="true">-&gt;</span>
           </a>
-          <span class="share-cta__note">Free · No sign-up · No tracking</span>
+          <span class="share-cta__note">Free / No sign-up / No tracking</span>
         </div>
       </div>
     </div>
@@ -233,406 +190,80 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
 </BaseLayout>
 
 <style>
-  /* ── Hero ─────────────────────────────────────────────────────────── */
   .hero {
     position: relative;
     padding-block: clamp(5rem, 12vh, 7rem) clamp(4rem, 8vh, 6rem);
     overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(245,166,35,0.08), transparent 35%),
+      linear-gradient(180deg, rgba(22,26,36,0.55), rgba(8,10,15,0));
   }
 
-  /* Mesh gradient orbs */
-  .hero__mesh {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero__mesh-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(72px);
-    animation: pulseGlow 6s ease-in-out infinite alternate;
-  }
-
-  .hero__mesh-orb--1 {
-    width: 520px;
-    height: 520px;
-    top: -180px;
-    right: -80px;
-    background: radial-gradient(circle, rgba(245,166,35,0.09) 0%, transparent 65%);
-    animation-delay: 0s;
-  }
-
-  .hero__mesh-orb--2 {
-    width: 380px;
-    height: 380px;
-    bottom: -60px;
-    left: -60px;
-    background: radial-gradient(circle, rgba(96,165,250,0.06) 0%, transparent 65%);
-    animation-delay: 2s;
-  }
-
-  .hero__mesh-orb--3 {
-    width: 280px;
-    height: 280px;
-    top: 40%;
-    left: 40%;
-    background: radial-gradient(circle, rgba(192,132,252,0.04) 0%, transparent 65%);
-    animation-delay: 4s;
-  }
-
+  .hero__mesh { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  .hero__mesh-panel { position: absolute; border: 1px solid var(--clr-border); border-radius: var(--radius-lg); opacity: 0.38; }
+  .hero__mesh-panel--1 { width: 420px; height: 260px; top: 70px; right: -90px; transform: rotate(-8deg); background: var(--clr-foot-bg); }
+  .hero__mesh-panel--2 { width: 300px; height: 220px; bottom: 20px; left: -80px; transform: rotate(10deg); background: var(--clr-food-bg); }
   .hero__grid {
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(31,35,48,0.5) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(31,35,48,0.5) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(31,35,48,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(31,35,48,0.5) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse 75% 80% at 70% 30%, black 0%, transparent 70%);
   }
 
-  /* Hero content */
-  .hero__inner {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-  }
-
-  /* Eyebrow */
-  .hero__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--clr-accent);
-    margin-bottom: var(--space-6);
-  }
-
-  .hero__eyebrow-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--clr-accent);
-    box-shadow: 0 0 10px var(--clr-accent);
-    animation: pulseGlow 2s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-
-  /* Heading */
-  .hero__heading {
-    font-size: clamp(2.5rem, 7vw, 4.75rem);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-    margin-bottom: var(--space-6);
-    color: var(--clr-text);
-  }
-
-  .hero__heading-gradient {
-    background: linear-gradient(135deg, var(--clr-accent) 0%, #f97316 55%, #ef4444 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Sub */
-  .hero__sub {
-    font-size: clamp(1rem, 2.2vw, 1.1875rem);
-    color: var(--clr-text-muted);
-    max-width: 58ch;
-    line-height: 1.75;
-    margin-bottom: var(--space-8);
-  }
-
-  /* Actions */
-  .hero__actions {
-    display: flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-    margin-bottom: var(--space-8);
-    align-items: center;
-  }
-
-  .hero__cta-primary {
-    font-size: 0.95rem;
-    padding: var(--space-3) var(--space-7, 1.75rem);
-  }
-
-  /* Share note */
-  .hero__share-note {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-    margin-bottom: var(--space-12);
-  }
-
-  .hero__share-label {
-    font-size: 0.82rem;
-    color: var(--clr-text-muted);
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  /* Stat chips */
-  .hero__stat-chips {
-    display: flex;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-  }
-
-  .hero__stat-chip {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background: var(--clr-bg-surface);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-3) var(--space-4);
-    min-width: 100px;
-    transition: all var(--duration-normal) var(--ease-out);
-  }
-
-  .hero__stat-chip:hover {
-    transform: translateY(-2px);
-  }
-
+  .hero__inner { position: relative; z-index: 1; max-width: 800px; }
+  .hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-accent); margin-bottom: var(--space-6); }
+  .hero__eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--clr-accent); box-shadow: 0 0 10px var(--clr-accent); flex-shrink: 0; }
+  .hero__heading { font-size: clamp(2.5rem, 7vw, 4.75rem); font-weight: 900; line-height: 1.05; letter-spacing: 0; margin-bottom: var(--space-6); color: var(--clr-text); }
+  .hero__heading-gradient { color: var(--clr-accent); }
+  .hero__sub { font-size: clamp(1rem, 2.2vw, 1.1875rem); color: var(--clr-text-muted); max-width: 58ch; line-height: 1.75; margin-bottom: var(--space-8); }
+  .hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8); align-items: center; }
+  .hero__cta-primary { font-size: 0.95rem; padding: var(--space-3) var(--space-7, 1.75rem); }
+  .hero__share-note { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-12); }
+  .hero__share-label { font-size: 0.82rem; color: var(--clr-text-muted); font-weight: 600; white-space: nowrap; }
+  .hero__stat-chips { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+  .hero__stat-chip { display: flex; flex-direction: column; gap: 2px; background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4); min-width: 120px; }
   .hero__stat-chip--food { border-left: 3px solid var(--clr-food); }
   .hero__stat-chip--foot { border-left: 3px solid var(--clr-foot); }
   .hero__stat-chip--just { border-left: 3px solid var(--clr-just); }
-
-  .hero__stat-chip-value {
-    font-size: 1.375rem;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-
+  .hero__stat-chip-value { font-size: 1.375rem; font-weight: 900; letter-spacing: 0; line-height: 1; }
   .hero__stat-chip--food .hero__stat-chip-value { color: var(--clr-food); }
   .hero__stat-chip--foot .hero__stat-chip-value { color: var(--clr-foot); }
   .hero__stat-chip--just .hero__stat-chip-value { color: var(--clr-just); }
+  .hero__stat-chip-label { font-size: 0.7rem; color: var(--clr-text-subtle); font-weight: 500; line-height: 1.3; }
 
-  .hero__stat-chip-label {
-    font-size: 0.7rem;
-    color: var(--clr-text-subtle);
-    font-weight: 500;
-    line-height: 1.3;
-  }
+  .section-eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clr-accent); margin-bottom: var(--space-3); }
+  .section-header { text-align: center; margin-bottom: var(--space-12); }
+  .section-sub { color: var(--clr-text-muted); max-width: 55ch; margin-inline: auto; font-size: 1.0625rem; margin-top: var(--space-4); line-height: 1.75; }
+  .causes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+  .causes__grid > div { display: flex; flex-direction: column; }
+  .causes__grid > div > :global(.cause-card) { flex: 1; }
+  @media (max-width: 960px) { .causes__grid { grid-template-columns: 1fr; } }
 
-  /* Scroll hint */
-  .hero__scroll-hint {
-    position: absolute;
-    bottom: var(--space-6);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .hero__scroll-line {
-    display: block;
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, var(--clr-accent), transparent);
-    margin: 0 auto;
-    animation: scrollHint 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollHint {
-    0%   { opacity: 1; transform: scaleY(1) translateY(0); }
-    100% { opacity: 0; transform: scaleY(0.6) translateY(16px); }
-  }
-
-  /* ── Section eyebrow ──────────────────────────────────────────────── */
-  .section-eyebrow {
-    display: block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--clr-accent);
-    margin-bottom: var(--space-3);
-  }
-
-  /* ── Section header ───────────────────────────────────────────────── */
-  .section-header {
-    text-align: center;
-    margin-bottom: var(--space-12);
-  }
-
-  .section-sub {
-    color: var(--clr-text-muted);
-    max-width: 55ch;
-    margin-inline: auto;
-    font-size: 1.0625rem;
-    margin-top: var(--space-4);
-    line-height: 1.75;
-  }
-
-  /* ── Causes grid ──────────────────────────────────────────────────── */
-  .causes__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
-  }
-
-  /* Make CauseCard fill height */
-  .causes__grid > div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .causes__grid > div > :global(.cause-card) {
-    flex: 1;
-  }
-
-  @media (max-width: 960px) {
-    .causes__grid { grid-template-columns: 1fr; }
-  }
-
-  /* ── Why section ──────────────────────────────────────────────────── */
-  .why__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-16);
-    align-items: start;
-  }
-
-  @media (max-width: 860px) {
-    .why__inner { grid-template-columns: 1fr; gap: var(--space-10); }
-  }
-
+  .why__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: start; }
+  @media (max-width: 860px) { .why__inner { grid-template-columns: 1fr; gap: var(--space-10); } }
   .why__text h2 { margin-bottom: var(--space-5); }
-  .why__text p  { color: var(--clr-text-muted); margin-bottom: var(--space-4); }
-  .why__text .section-eyebrow { margin-bottom: var(--space-3); }
+  .why__text p { color: var(--clr-text-muted); margin-bottom: var(--space-4); }
+  .why__pillars { display: flex; flex-direction: column; gap: var(--space-2); }
+  .pillar { display: grid; grid-template-columns: 40px 1fr; gap: var(--space-4); align-items: start; padding: var(--space-5); border-radius: var(--radius-lg); border: 1px solid transparent; transition: all var(--duration-normal) var(--ease-out); }
+  .pillar:hover { background: var(--clr-bg-surface); border-color: var(--clr-border); transform: translateX(4px); }
+  .pillar__number { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.08em; color: var(--clr-accent); padding-top: 4px; font-variant-numeric: tabular-nums; }
+  .pillar__body { display: flex; flex-direction: column; gap: var(--space-1); }
+  .pillar__icon { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-md); color: var(--clr-accent); background: var(--clr-accent-glow-sm); border: 1px solid rgba(245,166,35,0.18); font-size: 0.72rem; font-weight: 900; margin-bottom: var(--space-2); }
+  .pillar__title { font-size: 0.9375rem; font-weight: 700; margin-bottom: var(--space-1); color: var(--clr-text); }
+  .pillar__text { font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.6; margin: 0; }
 
-  /* Pillars — numbered horizontal list */
-  .why__pillars {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-
-  .pillar {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    gap: var(--space-4);
-    align-items: start;
-    padding: var(--space-5);
-    border-radius: var(--radius-lg);
-    border: 1px solid transparent;
-    transition: all var(--duration-normal) var(--ease-out);
-  }
-
-  .pillar:hover {
-    background: var(--clr-bg-surface);
-    border-color: var(--clr-border);
-    transform: translateX(4px);
-  }
-
-  .pillar__number {
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    color: var(--clr-accent);
-    padding-top: 4px;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .pillar__body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-
-  .pillar__icon {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-2);
-    line-height: 1;
-  }
-
-  .pillar__title {
-    font-size: 0.9375rem;
-    font-weight: 700;
-    margin-bottom: var(--space-1);
-    color: var(--clr-text);
-  }
-
-  .pillar__text {
-    font-size: 0.85rem;
-    color: var(--clr-text-muted);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* ── Share CTA ────────────────────────────────────────────────────── */
-  .share-cta {
-    position: relative;
-    padding-block: var(--space-16);
-    margin-top: var(--space-20);
-    overflow: hidden;
-  }
-
-  .share-cta__bg {
-    position: absolute;
-    inset: 0;
-    background: var(--clr-bg-surface);
-    border-top: 1px solid var(--clr-border);
-    border-bottom: 1px solid var(--clr-border);
-  }
-
-  .share-cta__bg-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(245,166,35,0.06) 0%, transparent 70%);
-  }
-
-  .share-cta__inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-8);
-    flex-wrap: wrap;
-  }
-
-  .share-cta__left {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    max-width: 520px;
-  }
-
-  .share-cta__left h2 { margin: 0; }
-  .share-cta__left p  { color: var(--clr-text-muted); margin: 0; line-height: 1.7; }
-
-  .share-cta__right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
-    flex-shrink: 0;
-  }
-
-  .share-cta__btn {
-    font-size: 0.95rem;
-    padding: var(--space-3) var(--space-8);
-  }
-
-  .share-cta__note {
-    font-size: 0.75rem;
-    color: var(--clr-text-subtle);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 640px) {
-    .share-cta__inner { flex-direction: column; }
-    .share-cta__right { width: 100%; }
-    .share-cta__btn { width: 100%; justify-content: center; }
-    .hero__stat-chips { gap: var(--space-2); }
-  }
+  .share-cta { position: relative; padding-block: var(--space-16); margin-top: var(--space-20); overflow: hidden; }
+  .share-cta__bg { position: absolute; inset: 0; background: var(--clr-bg-surface); border-top: 1px solid var(--clr-border); border-bottom: 1px solid var(--clr-border); }
+  .share-cta__bg-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(245,166,35,0.06) 0%, transparent 70%); }
+  .share-cta__inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap; }
+  .share-cta__left { display: flex; flex-direction: column; gap: var(--space-4); max-width: 520px; }
+  .share-cta__left h2, .share-cta__left p { margin: 0; }
+  .share-cta__left p { color: var(--clr-text-muted); line-height: 1.7; }
+  .share-cta__right { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); flex-shrink: 0; }
+  .share-cta__btn { font-size: 0.95rem; padding: var(--space-3) var(--space-8); }
+  .share-cta__note { font-size: 0.75rem; color: var(--clr-text-subtle); font-weight: 500; letter-spacing: 0.02em; }
+  @media (max-width: 640px) { .share-cta__inner { flex-direction: column; } .share-cta__right, .share-cta__btn { width: 100%; } .share-cta__btn { justify-content: center; } }
 </style>
+
+

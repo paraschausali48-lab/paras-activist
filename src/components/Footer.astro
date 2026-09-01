@@ -1,19 +1,17 @@
----
+﻿---
 // Footer.astro
 const causes = [
-  { label: 'Food Security', href: '/food-security/', icon: '🌾', tag: 'food' },
-  { label: 'Footpath Movement', href: '/footpath/', icon: '🚶', tag: 'foot' },
-  { label: 'Intersectional Justice', href: '/intersectional-justice/', icon: '⚖️', tag: 'just' },
+  { label: 'Food Security', href: '/food-security/', code: 'FS', tag: 'food' },
+  { label: 'Footpath Movement', href: '/footpath/', code: 'FM', tag: 'foot' },
+  { label: 'Intersectional Justice', href: '/intersectional-justice/', code: 'IJ', tag: 'just' },
 ];
 ---
 
 <footer class="footer" role="contentinfo">
-  <!-- Gradient divider -->
   <div class="footer__gradient-rule" aria-hidden="true"></div>
 
   <div class="container">
     <div class="footer__grid">
-      <!-- Brand -->
       <div class="footer__brand">
         <a href="/" class="footer__logo" aria-label="Home">
           <span class="footer__logo-mark" aria-hidden="true">
@@ -28,36 +26,26 @@ const causes = [
           <strong>Evidence over propaganda.</strong>
         </p>
         <div class="footer__pledge-chips" role="note" aria-label="Privacy pledge">
-          <span class="footer__chip">
-            <span class="footer__chip-dot" aria-hidden="true"></span>
-            No cookies
-          </span>
-          <span class="footer__chip">
-            <span class="footer__chip-dot" aria-hidden="true"></span>
-            No trackers
-          </span>
-          <span class="footer__chip">
-            <span class="footer__chip-dot" aria-hidden="true"></span>
-            No ads
-          </span>
+          <span class="footer__chip"><span class="footer__chip-dot" aria-hidden="true"></span>No cookies</span>
+          <span class="footer__chip"><span class="footer__chip-dot" aria-hidden="true"></span>No trackers</span>
+          <span class="footer__chip"><span class="footer__chip-dot" aria-hidden="true"></span>No ads</span>
         </div>
       </div>
 
-      <!-- Causes -->
       <div class="footer__col">
         <h3 class="footer__col-title">Causes</h3>
         <ul role="list">
           {causes.map(c => (
             <li>
               <a href={c.href} class={`footer__link footer__link--${c.tag}`}>
-                <span aria-hidden="true">{c.icon}</span> {c.label}
+                <span class={`footer__code footer__code--${c.tag}`} aria-hidden="true">{c.code}</span>
+                {c.label}
               </a>
             </li>
           ))}
         </ul>
       </div>
 
-      <!-- Site -->
       <div class="footer__col">
         <h3 class="footer__col-title">Site</h3>
         <ul role="list">
@@ -67,38 +55,19 @@ const causes = [
         </ul>
       </div>
 
-      <!-- Share -->
       <div class="footer__col">
         <h3 class="footer__col-title">Share</h3>
         <ul role="list">
-          <li>
-            <a
-              href="https://www.instagram.com/"
-              class="footer__link"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram (opens in new tab)"
-            >
-              📸 Instagram
-            </a>
-          </li>
-          <li>
-            <a href="/share-toolkit" class="footer__link">
-              📲 WhatsApp Cards
-            </a>
-          </li>
-          <li>
-            <a href="/share-toolkit" class="footer__link">
-              ✈️ Telegram Cards
-            </a>
-          </li>
+          <li><a href="https://www.instagram.com/" class="footer__link" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="/share-toolkit" class="footer__link">WhatsApp Cards</a></li>
+          <li><a href="/share-toolkit" class="footer__link">Telegram Cards</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer__bottom">
       <p class="footer__copy">
-        © {new Date().getFullYear()} Paras Activist. All content is freely shareable for non-commercial educational use with attribution.
+        (c) {new Date().getFullYear()} Paras Activist. All content is freely shareable for non-commercial educational use with attribution.
       </p>
       <p class="footer__disclaimer">
         This site contains no advertising, no affiliate links, and no data collection of any kind. Content is evidence-based and independently funded.
@@ -122,16 +91,7 @@ const causes = [
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--clr-border) 15%,
-      rgba(245,166,35,0.3) 35%,
-      var(--clr-accent) 50%,
-      rgba(245,166,35,0.3) 65%,
-      var(--clr-border) 85%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg, transparent 0%, var(--clr-border) 15%, rgba(245,166,35,0.3) 35%, var(--clr-accent) 50%, rgba(245,166,35,0.3) 65%, var(--clr-border) 85%, transparent 100%);
   }
 
   .footer__grid {
@@ -142,9 +102,7 @@ const causes = [
   }
 
   @media (max-width: 900px) {
-    .footer__grid {
-      grid-template-columns: 1fr 1fr;
-    }
+    .footer__grid { grid-template-columns: 1fr 1fr; }
     .footer__brand { grid-column: 1 / -1; }
   }
 
@@ -160,7 +118,7 @@ const causes = [
     font-size: 1.125rem;
     text-decoration: none;
     color: var(--clr-text);
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
     margin-bottom: var(--space-4);
     transition: opacity var(--duration-fast) var(--ease-out);
   }
@@ -178,7 +136,6 @@ const causes = [
   }
   .footer__tagline strong { color: var(--clr-text); }
 
-  /* Pledge chips */
   .footer__pledge-chips {
     display: flex;
     flex-wrap: wrap;
@@ -216,7 +173,12 @@ const causes = [
     margin-bottom: var(--space-4);
   }
 
-  .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
+  .footer__col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
 
   .footer__link {
     display: flex;
@@ -227,6 +189,24 @@ const causes = [
     text-decoration: none;
     transition: color var(--duration-fast) var(--ease-out);
   }
+
+  .footer__code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-sm);
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    flex-shrink: 0;
+  }
+
+  .footer__code--food { color: var(--clr-food); background: var(--clr-food-bg); }
+  .footer__code--foot { color: var(--clr-foot); background: var(--clr-foot-bg); }
+  .footer__code--just { color: var(--clr-just); background: var(--clr-just-bg); }
+
   .footer__link:hover { color: var(--clr-accent); }
   .footer__link--food:hover { color: var(--clr-food); }
   .footer__link--foot:hover { color: var(--clr-foot); }
@@ -237,7 +217,8 @@ const causes = [
     border-top: 1px solid var(--clr-border);
   }
 
-  .footer__copy, .footer__disclaimer {
+  .footer__copy,
+  .footer__disclaimer {
     font-size: 0.8125rem;
     color: var(--clr-text-subtle);
     line-height: 1.6;
@@ -245,3 +226,5 @@ const causes = [
 
   .footer__copy { margin-bottom: var(--space-2); }
 </style>
+
+

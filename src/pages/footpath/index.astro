@@ -1,4 +1,4 @@
----
+﻿---
 // src/pages/footpath/index.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ShareButtons from '../../components/ShareButtons.astro';
@@ -12,28 +12,28 @@ const articles = (await getCollection('footpath')).sort(
 
 <BaseLayout
   title="The Footpath Movement"
-  description="Pedestrians are India's single largest road accident victim group. Over 60% of Mumbai footpaths are broken or encroached. Safe walking infrastructure is not a luxury — it is a public health and poverty alleviation imperative."
+  description="Pedestrians are India's single largest road accident victim group. Over 60% of Mumbai footpaths are broken or encroached. Safe walking infrastructure is not a luxury - it is a public health and poverty alleviation imperative."
   ogImage="/og/footpath.png"
 >
   <section class="cause-hero" aria-label="Footpath Movement overview">
     <div class="container">
       <div class="cause-hero__inner">
         <div class="cause-hero__label">
-          <span class="tag tag--foot">🚶 Footpath Movement</span>
+          <span class="tag tag--foot">Footpath Footpath Movement</span>
         </div>
         <h1 class="cause-hero__heading">
           Pedestrians are dying<br />
           <span class="cause-hero__accent">on roads they were forced onto.</span>
         </h1>
         <p class="cause-hero__sub">
-          In 2022, pedestrians accounted for <strong>17% of all road accident deaths</strong> in India — the single largest victim group. They are not choosing the road. Functional, unobstructed footpaths are the exception. We are demanding they become the rule.
+          In 2022, pedestrians accounted for <strong>17% of all road accident deaths</strong> in India - the single largest victim group. They are not choosing the road. Functional, unobstructed footpaths are the exception. We are demanding they become the rule.
         </p>
         <div class="cause-hero__actions">
           <a href="/footpath/myths/" class="btn btn-primary" id="foot-myths-cta">Read Myth vs. Fact</a>
           <a href="/footpath/data/" class="btn btn-outline" id="foot-data-cta">View Data & Statistics</a>
         </div>
         <div class="cause-hero__share">
-          <ShareButtons title="The Footpath Movement — Paras Activist" url="https://parasactivist.in/footpath/" />
+          <ShareButtons title="The Footpath Movement - Paras Activist" url="https://parasactivist.in/footpath/" />
         </div>
       </div>
     </div>
@@ -42,9 +42,9 @@ const articles = (await getCollection('footpath')).sort(
   <section class="section--sm" aria-label="Key statistics">
     <div class="container">
       <div class="stats-grid stagger">
-        <StatHighlight number="17%" label="of all Indian road accident deaths are pedestrians — the largest single group (MoRTH 2022)" source="Ministry of Road Transport & Highways, 2022" color="foot" />
+        <StatHighlight number="17%" label="of all Indian road accident deaths are pedestrians - the largest single group (MoRTH 2022)" source="Ministry of Road Transport & Highways, 2022" color="foot" />
         <StatHighlight number="60%+" label="of Mumbai footpaths broken, encroached, or absent (Praja Foundation, 2022)" source="Praja Foundation Mumbai Footpath Audit, 2022" color="foot" />
-        <StatHighlight number="3–5% GDP" label="Annual cost of road accidents to India's economy (World Bank)" source="World Bank, The High Toll of Traffic Injuries, 2019" color="foot" />
+        <StatHighlight number="3-5% GDP" label="Annual cost of road accidents to India's economy (World Bank)" source="World Bank, The High Toll of Traffic Injuries, 2019" color="foot" />
       </div>
     </div>
   </section>
@@ -63,7 +63,7 @@ const articles = (await getCollection('footpath')).sort(
               </div>
               <h3 class="article-card__title">{article.data.title}</h3>
               <p class="article-card__description">{article.data.description}</p>
-              <span class="article-card__read">Read →</span>
+              <span class="article-card__read">Read -></span>
             </a>
           ))}
         </div>
@@ -76,17 +76,17 @@ const articles = (await getCollection('footpath')).sort(
       <h2>Explore the Footpath Movement</h2>
       <div class="cause-nav__grid">
         <a href="/footpath/myths/" class="cause-nav__card" id="nav-foot-myths">
-          <span class="cause-nav__icon" aria-hidden="true">🔴 vs ✅</span>
+          <span class="cause-nav__icon" aria-hidden="true">Media vs Yes</span>
           <h3>Myth vs. Fact</h3>
           <p>Counter common excuses for why Indian cities fail their pedestrians.</p>
         </a>
         <a href="/footpath/data/" class="cause-nav__card" id="nav-foot-data">
-          <span class="cause-nav__icon" aria-hidden="true">📊</span>
+          <span class="cause-nav__icon" aria-hidden="true">Data</span>
           <h3>Data & Statistics</h3>
-          <p>MoRTH accident data, Praja audits, World Bank economic costs — all cited.</p>
+          <p>MoRTH accident data, Praja audits, World Bank economic costs - all cited.</p>
         </a>
         <a href="/share-toolkit" class="cause-nav__card" id="nav-foot-share">
-          <span class="cause-nav__icon" aria-hidden="true">📲</span>
+          <span class="cause-nav__icon" aria-hidden="true">Share</span>
           <h3>Share Toolkit</h3>
           <p>WhatsApp-ready cards with footpath facts for your local community.</p>
         </a>
@@ -142,3 +142,4 @@ const articles = (await getCollection('footpath')).sort(
   .cause-nav__card h3 { font-size: 1rem; margin-bottom: var(--space-2); color: var(--clr-text); }
   .cause-nav__card p { font-size: 0.875rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
 </style>
+

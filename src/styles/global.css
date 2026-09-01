@@ -1,5 +1,5 @@
-/* =========================================================
-   PARAS ACTIVIST — Global Design System
+﻿/* =========================================================
+   PARAS ACTIVIST - Global Design System
    Zero Tracking. Zero Propaganda. Just Evidence.
    ========================================================= */
 
@@ -15,7 +15,7 @@
   --clr-border:      #1f2330;
   --clr-border-soft: #191d29;
 
-  /* Brand accent — a bold saffron/amber (distinctly Indian, not political-party orange) */
+  /* Brand accent - a bold saffron/amber (distinctly Indian, not political-party orange) */
   --clr-accent:        #f5a623;
   --clr-accent-bright: #fbbf44;
   --clr-accent-dim:    #c47d0e;
@@ -456,3 +456,5 @@ hr, .divider {
 @media (min-width: 769px) {
   .hide-desktop { display: none !important; }
 }
+
+

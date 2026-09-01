@@ -1,5 +1,5 @@
----
-// BaseLayout.astro — wraps every page with SEO, OG tags, fonts, and global styles.
+﻿---
+// BaseLayout.astro - wraps every page with SEO, OG tags, fonts, and global styles.
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -25,7 +25,7 @@ const {
 } = Astro.props;
 
 const siteTitle = title === 'Home'
-  ? 'Paras Activist — Evidence Over Propaganda'
+  ? 'Paras Activist - Evidence Over Propaganda'
   : `${title} | Paras Activist`;
 
 const siteUrl = 'https://parasactivist.in';
@@ -144,4 +144,7 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
   </script>
 </body>
 </html>
+
+
+
 

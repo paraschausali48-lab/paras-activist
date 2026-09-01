@@ -1,4 +1,4 @@
----
+﻿---
 // src/pages/footpath/data.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -7,31 +7,31 @@ import ShareButtons from '../../components/ShareButtons.astro';
 
 <BaseLayout
   title="Footpath Movement Data & Statistics"
-  description="Primary source data on pedestrian safety in India — MoRTH road accident reports, Praja Foundation city audits, and World Bank economic cost analysis."
+  description="Primary source data on pedestrian safety in India - MoRTH road accident reports, Praja Foundation city audits, and World Bank economic cost analysis."
   ogImage="/og/foot-data.png"
 >
   <div class="data-page">
     <div class="container">
       <header class="data-page__header">
-        <a href="/footpath/" class="breadcrumb-back">← Footpath Movement</a>
-        <span class="tag tag--foot">📊 Data & Statistics</span>
+        <a href="/footpath/" class="breadcrumb-back"><- Footpath Movement</a>
+        <span class="tag tag--foot">Data Data & Statistics</span>
         <h1>Footpath Movement: Data & Statistics</h1>
         <p class="data-page__sub">
           All data is sourced from government reports, city-level audits, and international transport policy research. Every figure links to its primary source.
         </p>
-        <ShareButtons title="Footpath Data — Paras Activist" url="https://parasactivist.in/footpath/data/" />
+        <ShareButtons title="Footpath Data - Paras Activist" url="https://parasactivist.in/footpath/data/" />
       </header>
 
       <div class="stats-showcase stagger">
-        <StatHighlight number="17%" label="Pedestrians as a share of all road accident deaths — India's single largest victim group (MoRTH 2022)" source="MoRTH Road Accidents in India, 2022" color="foot" />
+        <StatHighlight number="17%" label="Pedestrians as a share of all road accident deaths - India's single largest victim group (MoRTH 2022)" source="MoRTH Road Accidents in India, 2022" color="foot" />
         <StatHighlight number="60%+" label="Mumbai footpaths broken, encroached, or non-existent (Praja Foundation, 2022)" source="Praja Foundation Mumbai Footpath Audit, 2022" color="foot" />
-        <StatHighlight number="3–5% GDP" label="Estimated annual cost of road accidents to India's economy" source="World Bank, 2019" color="foot" />
-        <StatHighlight number="~1.5 Lakh" label="Road accident deaths in India annually — among the world's highest" source="MoRTH Road Accidents in India, 2022" color="foot" />
+        <StatHighlight number="3-5% GDP" label="Estimated annual cost of road accidents to India's economy" source="World Bank, 2019" color="foot" />
+        <StatHighlight number="~1.5 Lakh" label="Road accident deaths in India annually - among the world's highest" source="MoRTH Road Accidents in India, 2022" color="foot" />
       </div>
 
       <!-- Road Accident Data Table -->
       <section class="data-table-section">
-        <h2>Pedestrian Deaths as % of Total Road Accident Deaths — India</h2>
+        <h2>Pedestrian Deaths as % of Total Road Accident Deaths - India</h2>
         <div class="table-wrapper" role="region" aria-label="Pedestrian road accident data" tabindex="0">
           <table class="data-table">
             <thead>
@@ -57,24 +57,24 @@ import ShareButtons from '../../components/ShareButtons.astro';
         <h2>Primary Sources</h2>
         <div class="source-cards">
           <a href="https://morth.nic.in" target="_blank" rel="noopener noreferrer" class="source-card">
-            <span class="source-card__type">🟢 Government</span>
+            <span class="source-card__type">Official Government</span>
             <h3>MoRTH: Road Accidents in India 2022</h3>
             <p>Annual official report on road accident deaths, injuries, and victim categories across all Indian states.</p>
           </a>
           <a href="https://praja.org" target="_blank" rel="noopener noreferrer" class="source-card">
-            <span class="source-card__type">🟡 NGO Audit</span>
+            <span class="source-card__type">Independent NGO Audit</span>
             <h3>Praja Foundation Mumbai Footpath Audit 2022</h3>
             <p>Field-level audit of Mumbai footpath conditions: encroachment, accessibility, kerb cuts, and continuity.</p>
           </a>
           <a href="https://worldbank.org" target="_blank" rel="noopener noreferrer" class="source-card">
-            <span class="source-card__type">🟢 International</span>
+            <span class="source-card__type">Official International</span>
             <h3>World Bank: The High Toll of Traffic Injuries (2019)</h3>
             <p>GDP-level economic burden analysis of road accident costs in developing nations including India.</p>
           </a>
           <a href="https://itdp.org" target="_blank" rel="noopener noreferrer" class="source-card">
-            <span class="source-card__type">🟡 Policy Research</span>
+            <span class="source-card__type">Independent Policy Research</span>
             <h3>ITDP: India Cycling & Walking Report</h3>
-            <p>Institute for Transportation & Development Policy — urban mobility, pedestrian infrastructure, and policy recommendations.</p>
+            <p>Institute for Transportation & Development Policy - urban mobility, pedestrian infrastructure, and policy recommendations.</p>
           </a>
         </div>
       </section>
@@ -108,3 +108,4 @@ import ShareButtons from '../../components/ShareButtons.astro';
   .source-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--clr-foot); margin-bottom: var(--space-2); }
   .source-card p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
 </style>
+

@@ -1,11 +1,11 @@
----
-// Nav.astro — primary navigation
+﻿---
+// Nav.astro - primary navigation
 const currentPath = Astro.url.pathname;
 
 const causes = [
-  { label: 'Food Security', href: '/food-security/', tag: 'food', icon: '🌾' },
-  { label: 'Footpath Movement', href: '/footpath/', tag: 'foot', icon: '🚶' },
-  { label: 'Intersectional Justice', href: '/intersectional-justice/', tag: 'just', icon: '⚖️' },
+  { label: 'Food Security', href: '/food-security/', tag: 'food', code: 'FS' },
+  { label: 'Footpath Movement', href: '/footpath/', tag: 'foot', code: 'FM' },
+  { label: 'Intersectional Justice', href: '/intersectional-justice/', tag: 'just', code: 'IJ' },
 ];
 
 function isActive(href: string) {
@@ -15,8 +15,7 @@ function isActive(href: string) {
 
 <header class="nav-header" id="nav-header" role="banner">
   <nav class="nav container" aria-label="Main navigation">
-    <!-- Logo -->
-    <a href="/" class="nav__logo" aria-label="Paras Activist — Home">
+    <a href="/" class="nav__logo" aria-label="Paras Activist - Home">
       <span class="nav__logo-mark" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M11 2L13.5 8.5H20.5L14.75 12.75L17 19.5L11 15.25L5 19.5L7.25 12.75L1.5 8.5H8.5L11 2Z" fill="currentColor"/>
@@ -25,7 +24,6 @@ function isActive(href: string) {
       <span class="nav__logo-text">Paras<span class="nav__logo-accent">Activist</span></span>
     </a>
 
-    <!-- Desktop nav links -->
     <ul class="nav__links" role="list">
       {causes.map(cause => (
         <li>
@@ -34,14 +32,13 @@ function isActive(href: string) {
             class={`nav__link nav__link--${cause.tag} ${isActive(cause.href) ? 'nav__link--active' : ''}`}
             aria-current={isActive(cause.href) ? 'page' : undefined}
           >
-            <span aria-hidden="true">{cause.icon}</span>
+            <span class={`nav__cause-dot nav__cause-dot--${cause.tag}`} aria-hidden="true"></span>
             {cause.label}
           </a>
         </li>
       ))}
     </ul>
 
-    <!-- Right side actions -->
     <div class="nav__actions">
       <a href="/about" class={`nav__link ${currentPath === '/about/' || currentPath === '/about' ? 'nav__link--active' : ''}`}>
         About
@@ -51,7 +48,6 @@ function isActive(href: string) {
       </a>
     </div>
 
-    <!-- Mobile hamburger -->
     <button
       class="nav__hamburger"
       id="nav-toggle"
@@ -66,13 +62,12 @@ function isActive(href: string) {
     </button>
   </nav>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
     <ul class="mobile-menu__links" role="list">
       {causes.map(cause => (
         <li>
           <a href={cause.href} class={`mobile-menu__link mobile-menu__link--${cause.tag}`}>
-            <span class="mobile-menu__link-icon" aria-hidden="true">{cause.icon}</span>
+            <span class={`mobile-menu__link-icon mobile-menu__link-icon--${cause.tag}`} aria-hidden="true">{cause.code}</span>
             {cause.label}
           </a>
         </li>
@@ -86,7 +81,6 @@ function isActive(href: string) {
 </header>
 
 <script>
-  // Mobile menu toggle
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
   let isOpen = false;
@@ -101,7 +95,6 @@ function isActive(href: string) {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  // Close on link click
   menu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       isOpen = false;
@@ -113,17 +106,13 @@ function isActive(href: string) {
     });
   });
 
-  // Scroll shrink effect
   const header = document.getElementById('nav-header');
-  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current > 80) {
+    if (window.scrollY > 80) {
       header?.classList.add('nav-header--scrolled');
     } else {
       header?.classList.remove('nav-header--scrolled');
     }
-    lastScroll = current;
   }, { passive: true });
 </script>
 
@@ -132,16 +121,15 @@ function isActive(href: string) {
     position: sticky;
     top: 0;
     z-index: 900;
-    background: rgba(8, 10, 15, 0.82);
+    background: rgba(8, 10, 15, 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--clr-border);
-    transition: background var(--duration-normal) var(--ease-out),
-                box-shadow var(--duration-normal) var(--ease-out);
+    transition: background var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
   }
 
   .nav-header--scrolled {
-    background: rgba(8, 10, 15, 0.96);
+    background: rgba(8, 10, 15, 0.97);
     box-shadow: 0 4px 32px rgba(0,0,0,0.4);
     border-bottom-color: rgba(245,166,35,0.1);
   }
@@ -153,7 +141,6 @@ function isActive(href: string) {
     height: var(--nav-height);
   }
 
-  /* Logo */
   .nav__logo {
     display: flex;
     align-items: center;
@@ -162,7 +149,7 @@ function isActive(href: string) {
     color: var(--clr-text);
     font-weight: 800;
     font-size: 1.15rem;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
     flex-shrink: 0;
     transition: opacity var(--duration-fast) var(--ease-out);
   }
@@ -174,13 +161,9 @@ function isActive(href: string) {
     align-items: center;
     transition: transform var(--duration-normal) var(--ease-spring);
   }
-  .nav__logo:hover .nav__logo-mark {
-    transform: rotate(18deg) scale(1.1);
-  }
-
+  .nav__logo:hover .nav__logo-mark { transform: rotate(18deg) scale(1.1); }
   .nav__logo-accent { color: var(--clr-accent); }
 
-  /* Desktop links */
   .nav__links {
     display: flex;
     align-items: center;
@@ -205,6 +188,16 @@ function isActive(href: string) {
     position: relative;
   }
 
+  .nav__cause-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+  }
+  .nav__cause-dot--food { background: var(--clr-food); box-shadow: 0 0 10px var(--clr-food-glow); }
+  .nav__cause-dot--foot { background: var(--clr-foot); box-shadow: 0 0 10px var(--clr-foot-glow); }
+  .nav__cause-dot--just { background: var(--clr-just); box-shadow: 0 0 10px var(--clr-just-glow); }
+
   .nav__link:hover, .nav__link--active {
     color: var(--clr-text);
     background: var(--clr-bg-elevated);
@@ -222,25 +215,13 @@ function isActive(href: string) {
     background: var(--clr-accent);
   }
 
-  .nav__link--food:hover, .nav__link--food.nav__link--active {
-    color: var(--clr-food);
-    background: var(--clr-food-bg);
-  }
+  .nav__link--food:hover, .nav__link--food.nav__link--active { color: var(--clr-food); background: var(--clr-food-bg); }
   .nav__link--food.nav__link--active::after { background: var(--clr-food); }
-
-  .nav__link--foot:hover, .nav__link--foot.nav__link--active {
-    color: var(--clr-foot);
-    background: var(--clr-foot-bg);
-  }
+  .nav__link--foot:hover, .nav__link--foot.nav__link--active { color: var(--clr-foot); background: var(--clr-foot-bg); }
   .nav__link--foot.nav__link--active::after { background: var(--clr-foot); }
-
-  .nav__link--just:hover, .nav__link--just.nav__link--active {
-    color: var(--clr-just);
-    background: var(--clr-just-bg);
-  }
+  .nav__link--just:hover, .nav__link--just.nav__link--active { color: var(--clr-just); background: var(--clr-just-bg); }
   .nav__link--just.nav__link--active::after { background: var(--clr-just); }
 
-  /* Actions */
   .nav__actions {
     display: flex;
     align-items: center;
@@ -253,7 +234,6 @@ function isActive(href: string) {
     padding: var(--space-2) var(--space-4);
   }
 
-  /* Hamburger */
   .nav__hamburger {
     display: none;
     flex-direction: column;
@@ -281,20 +261,10 @@ function isActive(href: string) {
     transform-origin: center;
   }
 
-  .nav__hamburger--open .hamburger-line:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
-    background: var(--clr-text);
-  }
-  .nav__hamburger--open .hamburger-line:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-  .nav__hamburger--open .hamburger-line:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
-    background: var(--clr-text);
-  }
+  .nav__hamburger--open .hamburger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--clr-text); }
+  .nav__hamburger--open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav__hamburger--open .hamburger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--clr-text); }
 
-  /* Mobile menu */
   .mobile-menu {
     display: none;
     position: fixed;
@@ -309,9 +279,7 @@ function isActive(href: string) {
     transition: transform var(--duration-slow) var(--ease-out);
   }
 
-  .mobile-menu--open {
-    transform: translateX(0);
-  }
+  .mobile-menu--open { transform: translateX(0); }
 
   .mobile-menu__links {
     list-style: none;
@@ -342,8 +310,20 @@ function isActive(href: string) {
   }
 
   .mobile-menu__link-icon {
-    font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-md);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    flex-shrink: 0;
   }
+  .mobile-menu__link-icon--food { color: var(--clr-food); background: var(--clr-food-bg); }
+  .mobile-menu__link-icon--foot { color: var(--clr-foot); background: var(--clr-foot-bg); }
+  .mobile-menu__link-icon--just { color: var(--clr-just); background: var(--clr-just-bg); }
 
   .mobile-menu__link:hover { color: var(--clr-text); background: var(--clr-bg-elevated); }
   .mobile-menu__link--food:hover { color: var(--clr-food); background: var(--clr-food-bg); border-color: rgba(74,222,128,0.2); }
@@ -357,3 +337,5 @@ function isActive(href: string) {
     .mobile-menu { display: block; }
   }
 </style>
+
+

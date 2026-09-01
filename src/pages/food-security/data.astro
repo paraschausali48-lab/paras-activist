@@ -1,4 +1,4 @@
----
+﻿---
 // src/pages/food-security/data.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -7,32 +7,32 @@ import ShareButtons from '../../components/ShareButtons.astro';
 
 <BaseLayout
   title="Food Security Data & Statistics"
-  description="Primary source data on India's food security crisis — Government of India reports, Global Hunger Index, FCI storage data, and ICAR wastage estimates."
+  description="Primary source data on India's food security crisis - Government of India reports, Global Hunger Index, FCI storage data, and ICAR wastage estimates."
   ogImage="/og/food-data.png"
 >
   <div class="data-page">
     <div class="container">
       <header class="data-page__header">
-        <a href="/food-security/" class="breadcrumb-back">← Food Security</a>
-        <span class="tag tag--food">📊 Data & Statistics</span>
+        <a href="/food-security/" class="breadcrumb-back"><- Food Security</a>
+        <span class="tag tag--food">Data Data & Statistics</span>
         <h1>Food Security: Data & Statistics</h1>
         <p class="data-page__sub">
           All figures below are sourced from primary government documents, peer-reviewed research, or internationally recognised indices. Each entry links to its source.
         </p>
-        <ShareButtons title="Food Security Data — Paras Activist" url="https://parasactivist.in/food-security/data/" />
+        <ShareButtons title="Food Security Data - Paras Activist" url="https://parasactivist.in/food-security/data/" />
       </header>
 
       <div class="stats-showcase stagger">
         <StatHighlight number="111th" label="India's Global Hunger Index rank in 2023 out of 125 nations" source="Welthungerhilfe, GHI 2023" color="food" />
-        <StatHighlight number="61 MT" label="Grain held in FCI central storage in 2022 — 2.9× the buffer norm of 21 MT" source="FCI Annual Report 2022–23" color="food" />
-        <StatHighlight number="₹92,000 Cr" label="Annual food wastage value in India" source="ICAR, 2022" color="food" />
-        <StatHighlight number="67%" label="Population covered under NFSA 2013 — but exclusion errors remain widespread" source="National Food Security Act, 2013" color="food" />
-        <StatHighlight number="189.2M" label="People undernourished in India (2022–24 estimate)" source="FAO State of Food Security Report 2024" color="food" />
+        <StatHighlight number="61 MT" label="Grain held in FCI central storage in 2022 - 2.9x the buffer norm of 21 MT" source="FCI Annual Report 2022-23" color="food" />
+        <StatHighlight number="Rs 92,000 Cr" label="Annual food wastage value in India" source="ICAR, 2022" color="food" />
+        <StatHighlight number="67%" label="Population covered under NFSA 2013 - but exclusion errors remain widespread" source="National Food Security Act, 2013" color="food" />
+        <StatHighlight number="189.2M" label="People undernourished in India (2022-24 estimate)" source="FAO State of Food Security Report 2024" color="food" />
       </div>
 
       <!-- Data Table -->
       <section class="data-table-section">
-        <h2>Global Hunger Index — India Trend</h2>
+        <h2>Global Hunger Index - India Trend</h2>
         <p class="data-table__note">Note: GHI scores range from 0 (no hunger) to 100 (extreme hunger). Lower rank = better performance.</p>
         <div class="table-wrapper" role="region" aria-label="GHI India trend table" tabindex="0">
           <table class="data-table">
@@ -54,7 +54,7 @@ import ShareButtons from '../../components/ShareButtons.astro';
             </tbody>
           </table>
         </div>
-        <p class="source-note">Source: <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer">Global Hunger Index — India</a></p>
+        <p class="source-note">Source: <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer">Global Hunger Index - India</a></p>
       </section>
 
       <!-- Source Links -->
@@ -62,22 +62,22 @@ import ShareButtons from '../../components/ShareButtons.astro';
         <h2>Primary Sources</h2>
         <div class="source-cards">
           <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer" class="source-card">
-            <span class="source-card__type">🟢 International Index</span>
+            <span class="source-card__type">Official International Index</span>
             <h3>Global Hunger Index 2023</h3>
             <p>Welthungerhilfe & Concern Worldwide. Annual composite index measuring hunger across four indicators.</p>
           </a>
           <a href="https://fci.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
-            <span class="source-card__type">🟢 Government</span>
-            <h3>FCI Annual Report 2022–23</h3>
+            <span class="source-card__type">Official Government</span>
+            <h3>FCI Annual Report 2022-23</h3>
             <p>Food Corporation of India. Official grain storage, procurement, and distribution data.</p>
           </a>
           <a href="https://icar.org.in" target="_blank" rel="noopener noreferrer" class="source-card">
-            <span class="source-card__type">🟢 Government Research</span>
+            <span class="source-card__type">Official Government Research</span>
             <h3>ICAR Food Wastage Report 2022</h3>
             <p>Indian Council of Agricultural Research. Comprehensive food loss estimates across value chain stages.</p>
           </a>
           <a href="https://www.fao.org/publications/sofi" target="_blank" rel="noopener noreferrer" class="source-card">
-            <span class="source-card__type">🟢 UN Agency</span>
+            <span class="source-card__type">Official UN Agency</span>
             <h3>FAO State of Food Security 2024</h3>
             <p>Food and Agriculture Organisation of the UN. Annual global undernourishment estimates.</p>
           </a>
@@ -179,3 +179,4 @@ import ShareButtons from '../../components/ShareButtons.astro';
   .source-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--clr-food); margin-bottom: var(--space-2); }
   .source-card p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
 </style>
+

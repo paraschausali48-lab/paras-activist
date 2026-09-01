@@ -1,5 +1,5 @@
----
-// ArticleLayout.astro — wraps every article with EvidenceCard + SourceDrawer
+﻿---
+// ArticleLayout.astro - wraps every article with EvidenceCard + SourceDrawer
 import BaseLayout from './BaseLayout.astro';
 import EvidenceCard from '../components/EvidenceCard.astro';
 import ShareButtons from '../components/ShareButtons.astro';
@@ -46,9 +46,9 @@ const verifiedDate = lastVerified.toLocaleDateString('en-IN', {
       <!-- Breadcrumb -->
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a>
-        <span aria-hidden="true">›</span>
+        <span aria-hidden="true">/</span>
         <a href={causeHref}>{causeLabel}</a>
-        <span aria-hidden="true">›</span>
+        <span aria-hidden="true">/</span>
         <span aria-current="page">{title}</span>
       </nav>
 
@@ -77,13 +77,13 @@ const verifiedDate = lastVerified.toLocaleDateString('en-IN', {
 
       <!-- Share Buttons -->
       <div class="article-share-section">
-        <p class="share-label">📤 Share this evidence</p>
+        <p class="share-label">Share Share this evidence</p>
         <ShareButtons title={title} url={Astro.url.href} />
       </div>
 
       <!-- Back link -->
       <a href={causeHref} class="btn btn-outline back-link">
-        ← Back to {causeLabel}
+        <- Back to {causeLabel}
       </a>
     </div>
   </div>
@@ -160,3 +160,5 @@ const verifiedDate = lastVerified.toLocaleDateString('en-IN', {
     display: inline-flex;
   }
 </style>
+
+

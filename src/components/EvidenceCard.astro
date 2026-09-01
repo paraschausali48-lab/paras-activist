@@ -1,5 +1,5 @@
----
-// EvidenceCard.astro — Reuters-style metadata card shown at the top of every article
+﻿---
+// EvidenceCard.astro - Reuters-style metadata card shown at the top of every article
 interface Props {
   primarySources: string;
   lastVerified: string;
@@ -17,7 +17,7 @@ const {
 
 <div class="evidence-card" role="complementary" aria-label="Evidence quality information">
   <div class="evidence-card__header">
-    <span class="evidence-card__icon" aria-hidden="true">🔍</span>
+    <span class="evidence-card__icon" aria-hidden="true">Review</span>
     <h2 class="evidence-card__title">Evidence Quality Card</h2>
   </div>
 
@@ -33,7 +33,7 @@ const {
     <div class="evidence-card__row">
       <span class="evidence-card__label">Corrections</span>
       <span class={`evidence-card__value ${corrections === 0 ? 'evidence-card__value--good' : 'evidence-card__value--warn'}`}>
-        {corrections} {corrections === 0 ? '✓' : '— see correction log'}
+        {corrections} {corrections === 0 ? '✓' : '- see correction log'}
       </span>
     </div>
     <div class="evidence-card__row">
@@ -43,10 +43,10 @@ const {
   </div>
 
   <div class="evidence-card__legend">
-    <span class="legend-item legend-item--govt">🟢 Government/Official</span>
-    <span class="legend-item legend-item--academic">🔵 Academic/Peer-reviewed</span>
-    <span class="legend-item legend-item--ngo">🟡 NGO/Independent</span>
-    <span class="legend-item legend-item--media">🔴 Media (used sparingly)</span>
+    <span class="legend-item legend-item--govt">Official Government/Official</span>
+    <span class="legend-item legend-item--academic">Academic Academic/Peer-reviewed</span>
+    <span class="legend-item legend-item--ngo">Independent NGO/Independent</span>
+    <span class="legend-item legend-item--media">Media Media (used sparingly)</span>
   </div>
 </div>
 
@@ -129,3 +129,5 @@ const {
     white-space: nowrap;
   }
 </style>
+
+

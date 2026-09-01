@@ -1,5 +1,5 @@
----
-// src/pages/footpath/[...slug].astro — Dynamic article pages
+﻿---
+// src/pages/footpath/[...slug].astro - Dynamic article pages
 import { getCollection, render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
@@ -30,3 +30,5 @@ const { Content } = await render(article);
 >
   <Content />
 </ArticleLayout>
+
+

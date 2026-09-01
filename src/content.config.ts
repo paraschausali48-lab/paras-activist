@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+﻿import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const articleSchema = z.object({
@@ -34,3 +34,5 @@ export const collections = {
   'footpath': footpath,
   'intersectional-justice': intersectionalJustice,
 };
+
+
