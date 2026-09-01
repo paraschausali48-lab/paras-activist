@@ -1,4 +1,4 @@
-﻿---
+---
 // src/pages/share-toolkit.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ShareButtons from '../components/ShareButtons.astro';
@@ -12,7 +12,7 @@ import ShareButtons from '../components/ShareButtons.astro';
   <div class="toolkit-page">
     <div class="container">
       <header class="toolkit-header">
-        <span class="tag tag--accent">Share Share Toolkit</span>
+        <span class="tag tag--accent">Share Toolkit</span>
         <h1>Arm yourself with shareable evidence</h1>
         <p class="toolkit-header__sub">
           Every key fact from all three causes - formatted for Indian mobile screens. Share on WhatsApp or Telegram in one tap.
@@ -56,7 +56,7 @@ import ShareButtons from '../components/ShareButtons.astro';
         <div class="share-cards">
           <div class="share-card share-card--food">
             <div class="share-card__header">
-              <span aria-hidden="true">Food</span>
+              <span class="share-card__icon share-card__icon--food" aria-hidden="true">FS</span>
               <h3>Food Security - Myths vs. Facts</h3>
             </div>
             <p>Three myth-busters on India's hunger crisis, with GHI data and FCI storage figures.</p>
@@ -65,7 +65,7 @@ import ShareButtons from '../components/ShareButtons.astro';
 
           <div class="share-card share-card--food">
             <div class="share-card__header">
-              <span aria-hidden="true">Data</span>
+              <span class="share-card__icon share-card__icon--food" aria-hidden="true">DT</span>
               <h3>Food Security - Data</h3>
             </div>
             <p>GHI rankings, FCI storage data, and ICAR wastage estimates - all primary sources.</p>
@@ -74,7 +74,7 @@ import ShareButtons from '../components/ShareButtons.astro';
 
           <div class="share-card share-card--foot">
             <div class="share-card__header">
-              <span aria-hidden="true">Footpath</span>
+              <span class="share-card__icon share-card__icon--foot" aria-hidden="true">FM</span>
               <h3>Footpath Movement - Myths vs. Facts</h3>
             </div>
             <p>Why "pedestrians don't use footpaths" and "it's a luxury" are both factually wrong.</p>
@@ -83,7 +83,7 @@ import ShareButtons from '../components/ShareButtons.astro';
 
           <div class="share-card share-card--foot">
             <div class="share-card__header">
-              <span aria-hidden="true">Data</span>
+              <span class="share-card__icon share-card__icon--foot" aria-hidden="true">DT</span>
               <h3>Footpath Movement - Data</h3>
             </div>
             <p>MoRTH pedestrian death statistics, Praja Foundation audits, World Bank GDP cost data.</p>
@@ -92,7 +92,7 @@ import ShareButtons from '../components/ShareButtons.astro';
 
           <div class="share-card share-card--just">
             <div class="share-card__header">
-              <span aria-hidden="true">Justice</span>
+              <span class="share-card__icon share-card__icon--just" aria-hidden="true">IJ</span>
               <h3>Intersectional Justice - Myths vs. Facts</h3>
             </div>
             <p>Caste denial, "Western import" rhetoric, and the colonial history of Section 377 - all addressed.</p>
@@ -101,7 +101,7 @@ import ShareButtons from '../components/ShareButtons.astro';
 
           <div class="share-card share-card--just">
             <div class="share-card__header">
-              <span aria-hidden="true">Data</span>
+              <span class="share-card__icon share-card__icon--just" aria-hidden="true">DT</span>
               <h3>Intersectional Justice - Data</h3>
             </div>
             <p>NCRB crime data, Supreme Court judgments, Oxfam inequality report - all cited.</p>
@@ -171,7 +171,21 @@ import ShareButtons from '../components/ShareButtons.astro';
   .share-card--just:hover { border-color: var(--clr-just); }
 
   .share-card__header { display: flex; align-items: center; gap: var(--space-3); }
-  .share-card__header span { font-size: 1.25rem; }
+  .share-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    flex-shrink: 0;
+  }
+  .share-card__icon--food { color: var(--clr-food); background: var(--clr-food-bg); }
+  .share-card__icon--foot { color: var(--clr-foot); background: var(--clr-foot-bg); }
+  .share-card__icon--just { color: var(--clr-just); background: var(--clr-just-bg); }
   .share-card__header h3 { font-size: 0.9375rem; font-weight: 700; color: var(--clr-text); margin: 0; }
   .share-card p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
 

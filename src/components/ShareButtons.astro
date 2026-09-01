@@ -1,4 +1,4 @@
-﻿---
+---
 // ShareButtons.astro - WhatsApp and Telegram share buttons
 interface Props {
   title: string;
@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { title, url } = Astro.props;
+const uid = Math.random().toString(36).slice(2, 7);
 const encodedTitle = encodeURIComponent(title);
 const encodedUrl = encodeURIComponent(url);
 const whatsappUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
@@ -43,7 +44,7 @@ const telegramUrl = `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitl
 
   <button
     class="share-btn share-btn--copy"
-    id="share-copy"
+    id={`share-copy-${uid}`}
     type="button"
     aria-label="Copy link to clipboard"
     data-url={url}
@@ -57,34 +58,38 @@ const telegramUrl = `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitl
 </div>
 
 <script>
-  const copyBtn = document.getElementById('share-copy') as HTMLButtonElement | null;
-  const copyLabel = copyBtn?.querySelector('.copy-label');
+  // Use class selector so multiple ShareButtons instances on the same page all work
+  document.querySelectorAll<HTMLButtonElement>('.share-btn--copy').forEach(btn => {
+    if (btn.dataset.shareInit) return; // guard against double-init
+    btn.dataset.shareInit = 'true';
+    const copyLabel = btn.querySelector('.copy-label');
 
-  copyBtn?.addEventListener('click', async () => {
-    const url = copyBtn.dataset.url || window.location.href;
-    try {
-      await navigator.clipboard.writeText(url);
-      if (copyLabel) {
-        copyLabel.textContent = 'Copied!';
-        copyBtn.style.color = 'var(--clr-success)';
-        setTimeout(() => {
-          copyLabel.textContent = 'Copy Link';
-          copyBtn.style.color = '';
-        }, 2000);
+    btn.addEventListener('click', async () => {
+      const url = btn.dataset.url || window.location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+        if (copyLabel) {
+          copyLabel.textContent = 'Copied!';
+          btn.style.color = 'var(--clr-success)';
+          setTimeout(() => {
+            copyLabel.textContent = 'Copy Link';
+            btn.style.color = '';
+          }, 2000);
+        }
+      } catch {
+        // Fallback for older browsers
+        const el = document.createElement('textarea');
+        el.value = url;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        if (copyLabel) {
+          copyLabel.textContent = 'Copied!';
+          setTimeout(() => { copyLabel.textContent = 'Copy Link'; }, 2000);
+        }
       }
-    } catch {
-      // Fallback for older browsers
-      const el = document.createElement('textarea');
-      el.value = url;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      if (copyLabel) {
-        copyLabel.textContent = 'Copied!';
-        setTimeout(() => { copyLabel.textContent = 'Copy Link'; }, 2000);
-      }
-    }
+    });
   });
 </script>
 

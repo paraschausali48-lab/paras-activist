@@ -426,6 +426,11 @@ hr, .divider {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Anchor scroll offset — keeps targets below sticky nav + banner */
+:target {
+  scroll-margin-top: calc(var(--nav-height) + var(--banner-height) + 1rem);
+}
+
 /* --- Focus ring --- */
 :focus-visible {
   outline: 2px solid var(--clr-accent);
