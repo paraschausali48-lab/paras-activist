@@ -1,4 +1,4 @@
-﻿---
+---
 // Nav.astro - primary navigation
 const currentPath = Astro.url.pathname;
 
@@ -107,6 +107,22 @@ function isActive(href: string) {
   });
 
   const header = document.getElementById('nav-header');
+  const banner = document.getElementById('trust-banner');
+
+  function updateMenuTop() {
+    if (menu) {
+      const bannerH = banner ? banner.offsetHeight : 0;
+      const navH = header ? header.offsetHeight : 68;
+      menu.style.top = `${bannerH + navH}px`;
+    }
+  }
+  updateMenuTop();
+
+  // Keep top in sync when banner collapses
+  if (banner) {
+    new MutationObserver(updateMenuTop).observe(banner, { attributes: true, attributeFilter: ['class'] });
+  }
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 80) {
       header?.classList.add('nav-header--scrolled');
@@ -269,7 +285,7 @@ function isActive(href: string) {
     display: none;
     position: fixed;
     inset: 0;
-    top: calc(var(--nav-height) + var(--banner-height));
+    top: 0; /* set dynamically by JS */
     background: rgba(8, 10, 15, 0.98);
     backdrop-filter: blur(24px);
     z-index: 850;

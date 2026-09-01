@@ -1,4 +1,4 @@
-﻿---
+---
 // TrustBanner.astro - sticky zero-tracking pledge banner
 ---
 
@@ -57,13 +57,21 @@
     border-bottom: 1px solid rgba(245, 166, 35, 0.18);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
+    max-height: var(--banner-height, 48px);
+    overflow: hidden;
+    transition: max-height var(--duration-normal) var(--ease-out),
+                opacity var(--duration-normal) var(--ease-out),
+                padding-block var(--duration-normal) var(--ease-out),
+                border-bottom-color var(--duration-normal) var(--ease-out);
   }
 
   .trust-banner--hidden {
-    transform: translateY(-100%);
+    max-height: 0;
+    padding-block: 0;
     opacity: 0;
     pointer-events: none;
+    overflow: hidden;
+    border-bottom-color: transparent;
   }
 
   .trust-banner__inner {

@@ -1,4 +1,4 @@
-﻿---
+---
 // ArticleLayout.astro - wraps every article with EvidenceCard + SourceDrawer
 import BaseLayout from './BaseLayout.astro';
 import EvidenceCard from '../components/EvidenceCard.astro';
@@ -77,13 +77,13 @@ const verifiedDate = lastVerified.toLocaleDateString('en-IN', {
 
       <!-- Share Buttons -->
       <div class="article-share-section">
-        <p class="share-label">Share Share this evidence</p>
+        <p class="share-label">Share this evidence</p>
         <ShareButtons title={title} url={Astro.url.href} />
       </div>
 
       <!-- Back link -->
       <a href={causeHref} class="btn btn-outline back-link">
-        <- Back to {causeLabel}
+        &larr; Back to {causeLabel}
       </a>
     </div>
   </div>
