@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://parasactivist.in',
+  site: 'https://paraschausali48-lab.github.io',
+  base: '/paras-activist',
   output: 'static',
   integrations: [
     mdx(),
