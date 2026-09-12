@@ -1,4 +1,4 @@
-﻿---
+---
 // Footer.astro
 const causes = [
   { label: 'Food Security', href: '/food-security/', code: 'FS', tag: 'food' },
@@ -56,9 +56,26 @@ const causes = [
       </div>
 
       <div class="footer__col">
-        <h3 class="footer__col-title">Share</h3>
+        <h3 class="footer__col-title">Follow on Instagram</h3>
         <ul role="list">
-          <li><a href="https://www.instagram.com/" class="footer__link" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li>
+            <a href="https://www.instagram.com/footpathmovement" class="footer__link footer__link--foot footer__insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @footpathmovement">
+              <svg class="footer__insta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @footpathmovement
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/stopfoodwastagein" class="footer__link footer__link--food footer__insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @stopfoodwastagein">
+              <svg class="footer__insta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @stopfoodwastagein
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/protectheirights" class="footer__link footer__link--just footer__insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @protectheirights">
+              <svg class="footer__insta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @protectheirights
+            </a>
+          </li>
           <li><a href="/share-toolkit" class="footer__link">WhatsApp Cards</a></li>
           <li><a href="/share-toolkit" class="footer__link">Telegram Cards</a></li>
         </ul>
@@ -71,6 +88,9 @@ const causes = [
       </p>
       <p class="footer__disclaimer">
         This site contains no advertising, no affiliate links, and no data collection of any kind. Content is evidence-based and independently funded.
+      </p>
+      <p class="footer__founder">
+        Founded by <a href="https://www.instagram.com/shogunoden" class="footer__founder-link" target="_blank" rel="noopener noreferrer">@shogunoden</a>
       </p>
     </div>
   </div>
@@ -225,6 +245,26 @@ const causes = [
   }
 
   .footer__copy { margin-bottom: var(--space-2); }
+
+  .footer__insta-icon {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+  .footer__insta:hover .footer__insta-icon { opacity: 1; }
+
+  .footer__founder {
+    font-size: 0.8125rem;
+    color: var(--clr-text-subtle);
+    margin-top: var(--space-3);
+  }
+  .footer__founder-link {
+    color: var(--clr-accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+  .footer__founder-link:hover { opacity: 0.75; }
 </style>
 
 

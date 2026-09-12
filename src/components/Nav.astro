@@ -1,11 +1,17 @@
 ---
 // Nav.astro - primary navigation
 const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const causes = [
-  { label: 'Food Security', href: '/food-security/', tag: 'food', code: 'FS' },
-  { label: 'Footpath Movement', href: '/footpath/', tag: 'foot', code: 'FM' },
-  { label: 'Intersectional Justice', href: '/intersectional-justice/', tag: 'just', code: 'IJ' },
+  { label: "Food Security", href: "/food-security/", tag: "food", code: "FS" },
+  { label: "Footpath Movement", href: "/footpath/", tag: "foot", code: "FM" },
+  {
+    label: "Intersectional Justice",
+    href: "/intersectional-justice/",
+    tag: "just",
+    code: "IJ",
+  },
 ];
 
 function isActive(href: string) {
@@ -17,35 +23,49 @@ function isActive(href: string) {
   <nav class="nav container" aria-label="Main navigation">
     <a href="/" class="nav__logo" aria-label="Paras Activist - Home">
       <span class="nav__logo-mark" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M11 2L13.5 8.5H20.5L14.75 12.75L17 19.5L11 15.25L5 19.5L7.25 12.75L1.5 8.5H8.5L11 2Z" fill="currentColor"/>
-        </svg>
+        <img
+          src={`${base}/logo.png`}
+          alt="Paras Activist Logo"
+          class="nav__logo-img"
+          width="44"
+          height="44"
+          loading="eager"
+          decoding="async"
+        />
       </span>
-      <span class="nav__logo-text">Paras<span class="nav__logo-accent">Activist</span></span>
+      <span class="nav__logo-text"
+        >Paras<span class="nav__logo-accent">Activist</span></span
+      >
     </a>
 
     <ul class="nav__links" role="list">
-      {causes.map(cause => (
-        <li>
-          <a
-            href={cause.href}
-            class={`nav__link nav__link--${cause.tag} ${isActive(cause.href) ? 'nav__link--active' : ''}`}
-            aria-current={isActive(cause.href) ? 'page' : undefined}
-          >
-            <span class={`nav__cause-dot nav__cause-dot--${cause.tag}`} aria-hidden="true"></span>
-            {cause.label}
-          </a>
-        </li>
-      ))}
+      {
+        causes.map((cause) => (
+          <li>
+            <a
+              href={cause.href}
+              class={`nav__link nav__link--${cause.tag} ${isActive(cause.href) ? "nav__link--active" : ""}`}
+              aria-current={isActive(cause.href) ? "page" : undefined}
+            >
+              <span
+                class={`nav__cause-dot nav__cause-dot--${cause.tag}`}
+                aria-hidden="true"
+              />
+              {cause.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
 
     <div class="nav__actions">
-      <a href="/about" class={`nav__link ${currentPath === '/about/' || currentPath === '/about' ? 'nav__link--active' : ''}`}>
+      <a
+        href="/about"
+        class={`nav__link ${currentPath === "/about/" || currentPath === "/about" ? "nav__link--active" : ""}`}
+      >
         About
       </a>
-      <a href="/sources" class="btn btn-outline nav__sources-btn">
-        Sources
-      </a>
+      <a href="/sources" class="btn btn-outline nav__sources-btn"> Sources </a>
     </div>
 
     <button
@@ -62,52 +82,70 @@ function isActive(href: string) {
     </button>
   </nav>
 
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+  <div
+    class="mobile-menu"
+    id="mobile-menu"
+    aria-hidden="true"
+    role="dialog"
+    aria-label="Mobile navigation"
+  >
     <ul class="mobile-menu__links" role="list">
-      {causes.map(cause => (
-        <li>
-          <a href={cause.href} class={`mobile-menu__link mobile-menu__link--${cause.tag}`}>
-            <span class={`mobile-menu__link-icon mobile-menu__link-icon--${cause.tag}`} aria-hidden="true">{cause.code}</span>
-            {cause.label}
-          </a>
-        </li>
-      ))}
+      {
+        causes.map((cause) => (
+          <li>
+            <a
+              href={cause.href}
+              class={`mobile-menu__link mobile-menu__link--${cause.tag}`}
+            >
+              <span
+                class={`mobile-menu__link-icon mobile-menu__link-icon--${cause.tag}`}
+                aria-hidden="true"
+              >
+                {cause.code}
+              </span>
+              {cause.label}
+            </a>
+          </li>
+        ))
+      }
       <li class="mobile-menu__divider" aria-hidden="true"></li>
       <li><a href="/about" class="mobile-menu__link">About & Pledge</a></li>
       <li><a href="/sources" class="mobile-menu__link">Sources</a></li>
-      <li><a href="/share-toolkit" class="mobile-menu__link">Share Toolkit</a></li>
+      <li>
+        <a href="/share-toolkit" class="mobile-menu__link">Share Toolkit</a>
+      </li>
     </ul>
   </div>
 </header>
 
 <script>
-  const toggle = document.getElementById('nav-toggle');
-  const menu = document.getElementById('mobile-menu');
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("mobile-menu");
   let isOpen = false;
 
-  toggle?.addEventListener('click', () => {
+  toggle?.addEventListener("click", () => {
     isOpen = !isOpen;
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-    menu?.setAttribute('aria-hidden', String(!isOpen));
-    menu?.classList.toggle('mobile-menu--open', isOpen);
-    toggle.classList.toggle('nav__hamburger--open', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    menu?.setAttribute("aria-hidden", String(!isOpen));
+    menu?.classList.toggle("mobile-menu--open", isOpen);
+    toggle.classList.toggle("nav__hamburger--open", isOpen);
+    document.body.style.overflow = isOpen ? "hidden" : "";
   });
 
-  menu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
       isOpen = false;
-      toggle?.setAttribute('aria-expanded', 'false');
-      menu.setAttribute('aria-hidden', 'true');
-      menu.classList.remove('mobile-menu--open');
-      toggle?.classList.remove('nav__hamburger--open');
-      document.body.style.overflow = '';
+      toggle?.setAttribute("aria-expanded", "false");
+      menu.setAttribute("aria-hidden", "true");
+      menu.classList.remove("mobile-menu--open");
+      toggle?.classList.remove("nav__hamburger--open");
+      document.body.style.overflow = "";
     });
   });
 
-  const header = document.getElementById('nav-header');
-  const banner = document.getElementById('trust-banner');
+  const header = document.getElementById("nav-header");
+  const banner = document.getElementById("trust-banner");
 
   function updateMenuTop() {
     if (menu) {
@@ -120,16 +158,23 @@ function isActive(href: string) {
 
   // Keep top in sync when banner collapses
   if (banner) {
-    new MutationObserver(updateMenuTop).observe(banner, { attributes: true, attributeFilter: ['class'] });
+    new MutationObserver(updateMenuTop).observe(banner, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
   }
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      header?.classList.add('nav-header--scrolled');
-    } else {
-      header?.classList.remove('nav-header--scrolled');
-    }
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (window.scrollY > 80) {
+        header?.classList.add("nav-header--scrolled");
+      } else {
+        header?.classList.remove("nav-header--scrolled");
+      }
+    },
+    { passive: true },
+  );
 </script>
 
 <style>
@@ -141,13 +186,15 @@ function isActive(href: string) {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--clr-border);
-    transition: background var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+    transition:
+      background var(--duration-normal) var(--ease-out),
+      box-shadow var(--duration-normal) var(--ease-out);
   }
 
   .nav-header--scrolled {
     background: rgba(8, 10, 15, 0.97);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.4);
-    border-bottom-color: rgba(245,166,35,0.1);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+    border-bottom-color: rgba(245, 166, 35, 0.1);
   }
 
   .nav {
@@ -169,16 +216,37 @@ function isActive(href: string) {
     flex-shrink: 0;
     transition: opacity var(--duration-fast) var(--ease-out);
   }
-  .nav__logo:hover { opacity: 0.85; color: var(--clr-text); }
+  .nav__logo:hover {
+    opacity: 0.85;
+    color: var(--clr-text);
+  }
 
   .nav__logo-mark {
-    color: var(--clr-accent);
     display: flex;
     align-items: center;
-    transition: transform var(--duration-normal) var(--ease-spring);
+    flex-shrink: 0;
   }
-  .nav__logo:hover .nav__logo-mark { transform: rotate(18deg) scale(1.1); }
-  .nav__logo-accent { color: var(--clr-accent); }
+
+  .nav__logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    object-position: center top;
+    mix-blend-mode: lighten;
+    filter: drop-shadow(0 0 8px rgba(245, 166, 35, 0.25));
+    transition:
+      transform var(--duration-normal) var(--ease-spring),
+      filter var(--duration-normal) var(--ease-out);
+  }
+
+  .nav__logo:hover .nav__logo-img {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 14px rgba(245, 166, 35, 0.5));
+  }
+
+  .nav__logo-accent {
+    color: var(--clr-accent);
+  }
 
   .nav__links {
     display: flex;
@@ -210,17 +278,27 @@ function isActive(href: string) {
     border-radius: var(--radius-full);
     flex-shrink: 0;
   }
-  .nav__cause-dot--food { background: var(--clr-food); box-shadow: 0 0 10px var(--clr-food-glow); }
-  .nav__cause-dot--foot { background: var(--clr-foot); box-shadow: 0 0 10px var(--clr-foot-glow); }
-  .nav__cause-dot--just { background: var(--clr-just); box-shadow: 0 0 10px var(--clr-just-glow); }
+  .nav__cause-dot--food {
+    background: var(--clr-food);
+    box-shadow: 0 0 10px var(--clr-food-glow);
+  }
+  .nav__cause-dot--foot {
+    background: var(--clr-foot);
+    box-shadow: 0 0 10px var(--clr-foot-glow);
+  }
+  .nav__cause-dot--just {
+    background: var(--clr-just);
+    box-shadow: 0 0 10px var(--clr-just-glow);
+  }
 
-  .nav__link:hover, .nav__link--active {
+  .nav__link:hover,
+  .nav__link--active {
     color: var(--clr-text);
     background: var(--clr-bg-elevated);
   }
 
   .nav__link--active::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 50%;
@@ -231,12 +309,30 @@ function isActive(href: string) {
     background: var(--clr-accent);
   }
 
-  .nav__link--food:hover, .nav__link--food.nav__link--active { color: var(--clr-food); background: var(--clr-food-bg); }
-  .nav__link--food.nav__link--active::after { background: var(--clr-food); }
-  .nav__link--foot:hover, .nav__link--foot.nav__link--active { color: var(--clr-foot); background: var(--clr-foot-bg); }
-  .nav__link--foot.nav__link--active::after { background: var(--clr-foot); }
-  .nav__link--just:hover, .nav__link--just.nav__link--active { color: var(--clr-just); background: var(--clr-just-bg); }
-  .nav__link--just.nav__link--active::after { background: var(--clr-just); }
+  .nav__link--food:hover,
+  .nav__link--food.nav__link--active {
+    color: var(--clr-food);
+    background: var(--clr-food-bg);
+  }
+  .nav__link--food.nav__link--active::after {
+    background: var(--clr-food);
+  }
+  .nav__link--foot:hover,
+  .nav__link--foot.nav__link--active {
+    color: var(--clr-foot);
+    background: var(--clr-foot-bg);
+  }
+  .nav__link--foot.nav__link--active::after {
+    background: var(--clr-foot);
+  }
+  .nav__link--just:hover,
+  .nav__link--just.nav__link--active {
+    color: var(--clr-just);
+    background: var(--clr-just-bg);
+  }
+  .nav__link--just.nav__link--active::after {
+    background: var(--clr-just);
+  }
 
   .nav__actions {
     display: flex;
@@ -265,7 +361,9 @@ function isActive(href: string) {
     margin-left: auto;
     transition: border-color var(--duration-fast) var(--ease-out);
   }
-  .nav__hamburger:hover { border-color: var(--clr-accent); }
+  .nav__hamburger:hover {
+    border-color: var(--clr-accent);
+  }
 
   .hamburger-line {
     display: block;
@@ -277,9 +375,18 @@ function isActive(href: string) {
     transform-origin: center;
   }
 
-  .nav__hamburger--open .hamburger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--clr-text); }
-  .nav__hamburger--open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav__hamburger--open .hamburger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--clr-text); }
+  .nav__hamburger--open .hamburger-line:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+    background: var(--clr-text);
+  }
+  .nav__hamburger--open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .nav__hamburger--open .hamburger-line:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+    background: var(--clr-text);
+  }
 
   .mobile-menu {
     display: none;
@@ -295,7 +402,9 @@ function isActive(href: string) {
     transition: transform var(--duration-slow) var(--ease-out);
   }
 
-  .mobile-menu--open { transform: translateX(0); }
+  .mobile-menu--open {
+    transform: translateX(0);
+  }
 
   .mobile-menu__links {
     list-style: none;
@@ -337,21 +446,49 @@ function isActive(href: string) {
     letter-spacing: 0;
     flex-shrink: 0;
   }
-  .mobile-menu__link-icon--food { color: var(--clr-food); background: var(--clr-food-bg); }
-  .mobile-menu__link-icon--foot { color: var(--clr-foot); background: var(--clr-foot-bg); }
-  .mobile-menu__link-icon--just { color: var(--clr-just); background: var(--clr-just-bg); }
+  .mobile-menu__link-icon--food {
+    color: var(--clr-food);
+    background: var(--clr-food-bg);
+  }
+  .mobile-menu__link-icon--foot {
+    color: var(--clr-foot);
+    background: var(--clr-foot-bg);
+  }
+  .mobile-menu__link-icon--just {
+    color: var(--clr-just);
+    background: var(--clr-just-bg);
+  }
 
-  .mobile-menu__link:hover { color: var(--clr-text); background: var(--clr-bg-elevated); }
-  .mobile-menu__link--food:hover { color: var(--clr-food); background: var(--clr-food-bg); border-color: rgba(74,222,128,0.2); }
-  .mobile-menu__link--foot:hover { color: var(--clr-foot); background: var(--clr-foot-bg); border-color: rgba(96,165,250,0.2); }
-  .mobile-menu__link--just:hover { color: var(--clr-just); background: var(--clr-just-bg); border-color: rgba(192,132,252,0.2); }
+  .mobile-menu__link:hover {
+    color: var(--clr-text);
+    background: var(--clr-bg-elevated);
+  }
+  .mobile-menu__link--food:hover {
+    color: var(--clr-food);
+    background: var(--clr-food-bg);
+    border-color: rgba(74, 222, 128, 0.2);
+  }
+  .mobile-menu__link--foot:hover {
+    color: var(--clr-foot);
+    background: var(--clr-foot-bg);
+    border-color: rgba(96, 165, 250, 0.2);
+  }
+  .mobile-menu__link--just:hover {
+    color: var(--clr-just);
+    background: var(--clr-just-bg);
+    border-color: rgba(192, 132, 252, 0.2);
+  }
 
   @media (max-width: 768px) {
     .nav__links,
-    .nav__actions { display: none; }
-    .nav__hamburger { display: flex; }
-    .mobile-menu { display: block; }
+    .nav__actions {
+      display: none;
+    }
+    .nav__hamburger {
+      display: flex;
+    }
+    .mobile-menu {
+      display: block;
+    }
   }
 </style>
-
-
