@@ -146,6 +146,16 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     );
     document.querySelectorAll('[data-count]').forEach((el) => countObserver.observe(el));
   </script>
+  <!-- Service Worker Registration (enables PWA install prompt) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch((err) => {
+          console.warn('Service Worker registration failed:', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
 
