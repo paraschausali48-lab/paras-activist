@@ -1,4 +1,4 @@
-﻿---
+---
 // src/pages/footpath/myths.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MythFact from '../../components/MythFact.astro';
@@ -25,8 +25,8 @@ import EvidenceCard from '../../components/EvidenceCard.astro';
       </header>
 
       <EvidenceCard
-        primarySources="2 government reports (MoRTH, WB), 1 city-level NGO audit, 1 transport policy institute report"
-        lastVerified="August 2025"
+        primarySources="2 government reports (MoRTH, WB), 1 Supreme Court judgment (2026), 1 IRC standard (IRC:103-2012), 1 city-level NGO audit, 1 transport policy institute report"
+        lastVerified="September 2026"
         corrections={0}
       />
 
@@ -46,6 +46,14 @@ import EvidenceCard from '../../components/EvidenceCard.astro';
 
       <StatHighlight number="3-5% GDP" label="Annual economic cost of road accidents in India - equivalent to the entire defence budget" source="World Bank, The High Toll of Traffic Injuries, 2019" color="foot" />
 
+      <StatHighlight number="1.8 m" label="Minimum clear footpath width mandated by IRC:103-2012 — the legal standard most Indian footpaths fail" source="Indian Roads Congress, IRC:103-2012 - Pedestrian Facilities" color="foot" />
+
+      <MythFact
+        myth="Pedestrians walking on the road are breaking traffic rules. They should use the footpath."
+        fact="When a city fails to construct or maintain a demarcated footpath, a pedestrian forced onto the carriageway is not in violation — the constitutional duty-bearer is. In a landmark 2026 ruling, the Supreme Court of India held that the Right to Walk on a demarcated footpath is a Fundamental Right under Article 21 (Right to Life) and Article 19(1)(d) (Freedom of Movement), and that this right takes precedence over motorised traffic. The court further affirmed that municipal corporations and urban local bodies carry a legally enforceable duty to provide safe, unobstructed pedestrian paths. Blaming the pedestrian inverts the law."
+        sources="Supreme Court of India, Right to Walk Judgment, 2026 (Articles 21 & 19(1)(d)); Indian Roads Congress, IRC:103-2012 (Pedestrian Facilities Standards)."
+      />
+
       <MythFact
         myth="This is an urban elite concern. Poor people in India don't care about footpaths."
         fact="The reverse is true. Wealthier urban residents use private vehicles and are insulated from broken pedestrian infrastructure. It is low-income workers - domestic workers, daily-wage labourers, street vendors - who walk to work daily and bear the greatest risk. The NCRB and MoRTH data show that pedestrian accident victims are disproportionately from lower socioeconomic groups. Footpath advocacy is economic justice advocacy."
@@ -55,6 +63,8 @@ import EvidenceCard from '../../components/EvidenceCard.astro';
       <section class="sources-section">
         <h2>Full Source List</h2>
         <ol class="source-list">
+          <li><strong>Supreme Court of India — Right to Walk Judgment, 2026</strong> - Declared walking on a demarcated footpath a Fundamental Right under Articles 21 & 19(1)(d). Affirmed legally enforceable duty of ULBs to provide pedestrian infrastructure.</li>
+          <li><strong>Indian Roads Congress — IRC:103-2012 (Pedestrian Facilities)</strong> - Official minimum standards: 1.8m clear width, 150mm max height, continuous obstacle-free surface with tactile pavers. <a href="https://irc.nic.in" target="_blank" rel="noopener noreferrer">irc.nic.in</a></li>
           <li><strong>Praja Foundation Mumbai Footpath Audit 2022</strong> - City-level NGO audit of pedestrian infrastructure. <a href="https://praja.org" target="_blank" rel="noopener noreferrer">praja.org</a></li>
           <li><strong>MoRTH Road Accidents in India 2022</strong> - Ministry of Road Transport and Highways. <a href="https://morth.nic.in" target="_blank" rel="noopener noreferrer">morth.nic.in</a></li>
           <li><strong>World Bank: The High Toll of Traffic Injuries (2019)</strong> - Economic burden analysis of road accidents. <a href="https://worldbank.org" target="_blank" rel="noopener noreferrer">worldbank.org</a></li>

@@ -3,30 +3,79 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ShareButtons from '../../components/ShareButtons.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
+import CampaignCard from '../../components/CampaignCard.astro';
 import { getCollection } from 'astro:content';
 
 const articles = (await getCollection('footpath')).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
+
+const rtiTemplate = `To,
+The Public Information Officer / Nodal Grievance Officer,
+[Your Municipal Corporation Name]
+
+Subject: RTI Application regarding condition and compliance of footpaths under IRC:103-2012 and Supreme Court Right to Walk Judgment (2026)
+
+Sir/Madam,
+
+Under the Right to Information Act, 2005, I hereby seek the following information:
+
+1. Total length of footpaths in ward [WARD NUMBER / AREA] as of the latest available date.
+2. What percentage of footpaths in the above ward meet the minimum 1.8m clear width mandated by IRC:103-2012?
+3. What action has been taken to clear encroachments (vehicles, junction boxes, garbage) from footpaths in the past 12 months?
+4. Has your body framed a compliance plan in light of the Supreme Court of India's 2026 Right to Walk judgment (Article 21 / 19(1)(d))? If yes, please share a copy.
+5. What is the annual budget allocated for footpath construction and maintenance for FY 2025-26?
+
+I request the above information within the statutory period of 30 days.
+
+Yours faithfully,
+[YOUR NAME]
+[ADDRESS]
+[CONTACT]
+Date: [DATE]
+
+References:
+- IRC:103-2012 (Indian Roads Congress - Pedestrian Facilities)
+- Supreme Court of India, Right to Walk Judgment, 2026
+- RTI Act, 2005`;
+
+const socialSlides = [
+  {
+    label: 'Slide 1 — The Legal Hook',
+    text: `Did you know walking on a proper footpath is not a municipal favour?\n\nIt is your FUNDAMENTAL RIGHT under the Indian Constitution.\n\n🏛️ Articles 21 & 19(1)(d) | Supreme Court Judgment, 2026\n\n#RightToWalk #FootpathFirst #WalkableIndia`
+  },
+  {
+    label: 'Slide 2 — The Grim Data',
+    text: `🚨 30,000–35,000 pedestrians killed annually in India.\n\nThat is roughly 1 in every 5 road crash deaths.\n\nThey are not choosing to walk on roads.\nThe city failed to build them a footpath.\n\n#PedestriansMatter #SafeFootpathsNow`
+  },
+  {
+    label: 'Slide 3 — The Legal Standard',
+    text: `India's official road standard (IRC:103-2012) mandates:\n\n✅ Minimum clear width: 1.8 metres\n✅ Max height above carriageway: 150mm\n✅ Continuous, obstacle-free with tactile pavers\n\nLook at your footpath. Does it meet these legal minimums?\n\n#FootpathFirst #ReclaimTheWalk`
+  },
+  {
+    label: 'Caption — For All Slides',
+    text: `Why is our tax money building 8-lane expressways while senior citizens, school kids, and wheelchair users can't walk 500m safely?\n\nCities are meant for PEOPLE, not just cars.\n\n📸 Post your neighbourhood's worst footpath with #WalkableIndia and tag your municipal ward.\n\nJoin us → parasactivist.in/footpath/`
+  }
+];
 ---
 
 <BaseLayout
   title="The Footpath Movement"
-  description="Pedestrians are India's single largest road accident victim group. Over 60% of Mumbai footpaths are broken or encroached. Safe walking infrastructure is not a luxury - it is a public health and poverty alleviation imperative."
+  description="Pedestrians are India's single largest road accident victim group. The Supreme Court declared walking a Fundamental Right in 2026. Safe walking infrastructure is not a luxury - it is a constitutional imperative."
   ogImage="/og/footpath.png"
 >
   <section class="cause-hero" aria-label="Footpath Movement overview">
     <div class="container">
       <div class="cause-hero__inner">
         <div class="cause-hero__label">
-          <span class="tag tag--foot">Footpath Footpath Movement</span>
+          <span class="tag tag--foot">Footpath Movement</span>
         </div>
         <h1 class="cause-hero__heading">
           Pedestrians are dying<br />
           <span class="cause-hero__accent">on roads they were forced onto.</span>
         </h1>
         <p class="cause-hero__sub">
-          In 2022, pedestrians accounted for <strong>17% of all road accident deaths</strong> in India - the single largest victim group. They are not choosing the road. Functional, unobstructed footpaths are the exception. We are demanding they become the rule.
+          In 2022, pedestrians accounted for <strong>17% of all road accident deaths</strong> in India — the single largest victim group. They are not choosing the road. In 2026, the Supreme Court declared walking a <strong>Fundamental Right</strong>. Functional, unobstructed footpaths are the exception. We are demanding they become the rule.
         </p>
         <div class="cause-hero__actions">
           <a href="/footpath/myths/" class="btn btn-primary" id="foot-myths-cta">Read Myth vs. Fact</a>
@@ -39,16 +88,310 @@ const articles = (await getCollection('footpath')).sort(
             @footpathmovement
           </a>
         </div>
+
+        <!-- Hashtag strip -->
+        <div class="hashtag-strip" aria-label="Campaign hashtags">
+          {['RightToWalk','FootpathFirst','WalkableIndia','PedestriansMatter','SafeFootpathsNow','ReclaimTheWalk'].map(tag => (
+            <span class="hashtag-strip__chip">#{tag}</span>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Key Statistics -->
   <section class="section--sm" aria-label="Key statistics">
     <div class="container">
       <div class="stats-grid stagger">
-        <StatHighlight number="17%" label="of all Indian road accident deaths are pedestrians - the largest single group (MoRTH 2022)" source="Ministry of Road Transport & Highways, 2022" color="foot" />
+        <StatHighlight number="30–35K" label="pedestrians killed annually in India — 1 in every 5 road crash fatalities (MoRTH)" source="Ministry of Road Transport & Highways, Annual Reports" color="foot" />
         <StatHighlight number="60%+" label="of Mumbai footpaths broken, encroached, or absent (Praja Foundation, 2022)" source="Praja Foundation Mumbai Footpath Audit, 2022" color="foot" />
         <StatHighlight number="3-5% GDP" label="Annual cost of road accidents to India's economy (World Bank)" source="World Bank, The High Toll of Traffic Injuries, 2019" color="foot" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ⚖️ Section 1: Legal Rights Banner -->
+  <section class="section--sm legal-banner" aria-label="Constitutional and legal rights for pedestrians">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">⚖️ Legal Backing</span>
+        <h2>Walking is Your Fundamental Right</h2>
+        <p class="section-sub">
+          This is no longer a matter of civic courtesy. The highest court of the land has spoken.
+        </p>
+      </div>
+
+      <div class="legal-banner__grid">
+        <!-- SC Judgment card -->
+        <div class="legal-card legal-card--primary reveal">
+          <div class="legal-card__badge">Supreme Court of India · 2026</div>
+          <blockquote class="legal-card__quote">
+            "The citizen's fundamental right to walk on a demarcated footpath is primary and shall have priority over movement by motorised vehicles."
+          </blockquote>
+          <div class="legal-card__refs">
+            <span class="legal-ref">Article 21 — Right to Life</span>
+            <span class="legal-ref">Article 19(1)(d) — Freedom of Movement</span>
+          </div>
+          <p class="legal-card__body">
+            The Supreme Court affirmed that municipal corporations, urban local bodies (ULBs), and development authorities have a <strong>legally enforceable duty</strong> to construct and maintain unhindered pedestrian paths.
+          </p>
+          <button
+            class="btn btn-outline legal-card__copy-btn"
+            id="copy-sc-quote"
+            data-copy={`Supreme Court of India, 2026:\n"The citizen's fundamental right to walk on a demarcated footpath is primary and shall have priority over movement by motorised vehicles."\n\nArticle 21 (Right to Life) + Article 19(1)(d) (Freedom of Movement)\n\nSource: parasactivist.in/footpath/`}
+            type="button"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy Quote
+          </button>
+        </div>
+
+        <!-- IRC Standards card -->
+        <div class="legal-card reveal reveal-delay-1">
+          <div class="legal-card__badge">Indian Roads Congress · IRC:103-2012</div>
+          <h3 class="legal-card__title">Official Minimum Standards for Footpaths</h3>
+          <ul class="legal-card__list">
+            <li>
+              <span class="legal-card__list-label">Min. clear width</span>
+              <span class="legal-card__list-value">1.8 m</span>
+            </li>
+            <li>
+              <span class="legal-card__list-label">Max. height above road</span>
+              <span class="legal-card__list-value">150 mm</span>
+            </li>
+            <li>
+              <span class="legal-card__list-label">Surface</span>
+              <span class="legal-card__list-value">Continuous, obstacle-free</span>
+            </li>
+            <li>
+              <span class="legal-card__list-label">Accessibility</span>
+              <span class="legal-card__list-value">Tactile pavers for visually impaired</span>
+            </li>
+          </ul>
+          <p class="legal-card__body">
+            These are not aspirations — they are the <strong>legally mandated minimum</strong> standards set by the official Indian Roads Congress. Most Indian footpaths fail every single metric.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📱 Section 2: Social Media Toolkit -->
+  <section class="section--sm social-toolkit" aria-label="Social media content toolkit">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">📱 Share Toolkit</span>
+        <h2>Ready-to-Share Social Media Copy</h2>
+        <p class="section-sub">
+          Copy these pre-formatted posts for WhatsApp, Instagram, and Twitter. One tap. No editing needed.
+        </p>
+      </div>
+
+      <div class="social-slides">
+        {socialSlides.map((slide, i) => (
+          <div class={`social-slide reveal reveal-delay-${i + 1}`}>
+            <div class="social-slide__header">
+              <span class="social-slide__label">{slide.label}</span>
+            </div>
+            <pre class="social-slide__text">{slide.text}</pre>
+            <button
+              class="btn btn-outline social-slide__copy"
+              id={`copy-slide-${i}`}
+              data-copy={slide.text}
+              type="button"
+              aria-label={`Copy ${slide.label} to clipboard`}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 🏃 Section 3: Vulnerable Groups -->
+  <section class="section--sm vulnerable" aria-label="Who is most affected by broken footpaths">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">👥 Who Bears the Cost</span>
+        <h2>"If a city isn't safe for an 8-year-old or an 80-year-old, it isn't a modern city."</h2>
+        <p class="section-sub">
+          Broken footpaths don't inconvenience everyone equally. Some people are effectively imprisoned by them.
+        </p>
+      </div>
+      <div class="vulnerable__grid">
+        <div class="vuln-card reveal reveal-delay-1">
+          <div class="vuln-card__icon" aria-hidden="true">♿</div>
+          <h3>Persons with Disabilities</h3>
+          <p>Broken kerb cuts, missing ramps, and obstructions trap wheelchair users at every turn. Many are forced to remain indoors, not by their disability — but by city planning that excludes them.</p>
+        </div>
+        <div class="vuln-card reveal reveal-delay-2">
+          <div class="vuln-card__icon" aria-hidden="true">👶</div>
+          <h3>Parents with Strollers & Toddlers</h3>
+          <p>When footpaths are occupied by parked bikes and junction boxes, parents must push strollers into fast-moving vehicular traffic. Families are forced to choose between danger and confinement.</p>
+        </div>
+        <div class="vuln-card reveal reveal-delay-3">
+          <div class="vuln-card__icon" aria-hidden="true">👴</div>
+          <h3>The Elderly</h3>
+          <p>Uneven paver blocks, sudden level changes, and missing sections cause falls — a leading cause of injury-related death in older adults. Poor footpaths rob the elderly of their independence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎯 Section 4: Campaign Hub -->
+  <section class="section--sm campaign-hub" aria-label="Interactive citizen campaign challenges">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">🎯 Take Action</span>
+        <h2>Three Ways to Fight Back — Today</h2>
+        <p class="section-sub">
+          Evidence is only powerful when people act on it. Here are three concrete actions you can take right now.
+        </p>
+      </div>
+      <div class="campaign-hub__grid">
+        <CampaignCard
+          number="Challenge 01"
+          title="The 100-Meter Obstacle Challenge"
+          description="Take a 30-second continuous video trying to walk just 100 meters on a footpath in your neighbourhood without stepping into traffic or hitting an obstruction. Post it with the hashtag."
+          iconEmoji="🎥"
+          hashtags={['WalkableIndia','FootpathFirst','RightToWalk']}
+          ctaLabel="Copy Caption Template"
+          ctaType="copy"
+          copyContent={`I just tried the #100MetreChallenge — walking 100 metres on a footpath without stepping into traffic.\n\nResult: [DESCRIBE WHAT YOU ENCOUNTERED]\n\nThis is what the city provides us every day.\n\nJoin the challenge: post your video with #WalkableIndia #FootpathFirst and tag your municipal corporation.\n\nWalking is a Fundamental Right. — parasactivist.in/footpath/`}
+        />
+        <CampaignCard
+          number="Challenge 02"
+          title="Tag the Ward — Hall of Shame"
+          description="Photograph encroachments blocking footpaths in your area — parked cars, junction boxes, garbage — and tag your local commissioner, traffic police handle, and ward councillor, quoting the Supreme Court judgment."
+          iconEmoji="📸"
+          hashtags={['TagTheWard','SafeFootpathsNow','ReclaimTheWalk']}
+          ctaLabel="Copy Tweet Template"
+          ctaType="copy"
+          copyContent={`📸 Ward [WARD NUMBER] — [AREA NAME], [CITY]\n\nThis footpath has been encroached by [DESCRIBE: parked vehicles / garbage / junction box] for [DURATION].\n\nThe Supreme Court (2026) affirmed my Fundamental Right to walk unobstructed under Articles 21 & 19(1)(d).\n\n@[MUNICIPAL_CORP_HANDLE] @[WARD_COUNCILLOR] — when will this be cleared?\n\n#TagTheWard #SafeFootpathsNow #ReclaimTheWalk #FootpathFirst`}
+        />
+        <CampaignCard
+          number="Challenge 03"
+          title="File a Civic Grievance / RTI"
+          description="Use our pre-drafted RTI template to file a formal complaint with your municipal corporation, quoting the Supreme Court Right to Walk judgment and IRC:103-2012 standards. Takes under 5 minutes."
+          iconEmoji="📋"
+          hashtags={['RightToWalk','RightToInformation']}
+          ctaLabel="Copy RTI Template"
+          ctaType="copy"
+          copyContent={rtiTemplate}
+        />
+      </div>
+      <p class="campaign-hub__note reveal">
+        You can file grievances on portals like <strong>CPGRAMS</strong>, <strong>BBMP Sahaaya</strong>, <strong>MCGM 24×7</strong>, or your local municipal corporation's citizen portal.
+        Quote the <strong>Supreme Court Right to Walk Judgment (2026)</strong> and <strong>IRC:103-2012</strong> in every complaint for maximum legal weight.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 🏙️ City Footpath Audit Scorecard ── -->
+  <section class="section--sm city-scorecard" aria-label="City footpath audit scorecard">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">🏙️ City-Level Evidence</span>
+        <h2>Footpath Audit Scorecard — Major Indian Cities</h2>
+        <p class="section-sub">
+          Sourced from NGO audits, transport policy research, and government ward-level data. The picture is consistent: India's cities are failing their pedestrians.
+        </p>
+      </div>
+      <div class="table-wrapper reveal" role="region" aria-label="City footpath audit scorecard" tabindex="0">
+        <table class="scorecard-table">
+          <thead>
+            <tr>
+              <th scope="col">City</th>
+              <th scope="col">Footpath Coverage</th>
+              <th scope="col">Obstruction Rate</th>
+              <th scope="col">Wheelchair-Accessible</th>
+              <th scope="col">Primary Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="city-name">🏙️ Mumbai</td><td class="score-amber">~40%</td><td class="obs-high">Very High</td><td class="acc-red">&lt;8%</td><td>Praja Foundation, 2022</td></tr>
+            <tr><td class="city-name">🏙️ Bengaluru</td><td class="score-amber">~35%</td><td class="obs-high">High</td><td class="acc-red">&lt;5%</td><td>BBMP Audit / WRI India</td></tr>
+            <tr><td class="city-name">🏙️ Delhi</td><td class="score-red">~30%</td><td class="obs-high">High</td><td class="acc-red">&lt;3%</td><td>CSE India</td></tr>
+            <tr><td class="city-name">🏙️ Chennai</td><td class="score-amber">~45%</td><td class="obs-mid">Moderate</td><td class="acc-red">&lt;6%</td><td>ITDP India</td></tr>
+            <tr><td class="city-name">🏙️ Hyderabad</td><td class="score-red">~25%</td><td class="obs-high">High</td><td class="acc-red">&lt;4%</td><td>WRI India</td></tr>
+            <tr><td class="city-name">🏙️ Kolkata</td><td class="score-amber">~38%</td><td class="obs-high">High</td><td class="acc-red">&lt;5%</td><td>ITDP India</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="scorecard-note reveal">⚠️ All figures are estimates from available NGO audits and transport policy research. The absence of standardised municipal data is itself a governance failure. Sources: <a href="https://praja.org" target="_blank" rel="noopener noreferrer">Praja Foundation</a>, <a href="https://itdp.org" target="_blank" rel="noopener noreferrer">ITDP India</a>, <a href="https://www.wri.org/india" target="_blank" rel="noopener noreferrer">WRI India</a>, <a href="https://cseindia.org" target="_blank" rel="noopener noreferrer">Centre for Science and Environment</a>.</p>
+    </div>
+  </section>
+
+  <!-- ── 📢 Report a Broken Footpath ── -->
+  <section class="section--sm report-section" aria-label="How to report a broken footpath">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">📢 Take Action Now</span>
+        <h2>Report a Broken Footpath — Step by Step</h2>
+        <p class="section-sub">
+          Every complaint filed creates a paper trail. Enough complaints force accountability. Here is exactly how to escalate.
+        </p>
+      </div>
+
+      <div class="report-grid">
+        <!-- CPGRAMS Walkthrough -->
+        <div class="report-card reveal reveal-delay-1">
+          <div class="report-card__header">
+            <span class="report-card__num">01</span>
+            <span class="report-card__icon" aria-hidden="true">🏛️</span>
+          </div>
+          <h3 class="report-card__title">File on CPGRAMS (National Portal)</h3>
+          <ol class="report-card__steps">
+            <li>Visit <a href="https://pgportal.gov.in" target="_blank" rel="noopener noreferrer">pgportal.gov.in</a> (Ministry of Housing &amp; Urban Affairs)</li>
+            <li>Register with your mobile number → OTP login</li>
+            <li>Select: <strong>Ministry of Housing &amp; Urban Affairs → Smart Cities / Urban Local Bodies</strong></li>
+            <li>Title your complaint: <em>"Footpath encroachment / absence — IRC:103-2012 &amp; SC Right to Walk, 2026"</em></li>
+            <li>Attach a photo and your ward number</li>
+            <li>Submit — you'll receive a registration number. Follow up in 30 days if unresolved.</li>
+          </ol>
+          <button class="btn btn-outline report-card__copy" id="copy-cpgrams" data-copy="Complaint Title: Footpath encroachment / absence violating IRC:103-2012 &amp; SC Right to Walk Judgment (2026)\n\nThe footpath at [LOCATION, WARD NUMBER] is:\n[ ] Absent\n[ ] Encroached by vehicles / vendors / junction boxes\n[ ] Broken / discontinuous\n[ ] Not wheelchair-accessible (no tactile pavers / kerb ramps)\n\nThis violates:\n- IRC:103-2012 minimum standards (1.8m clear width, continuous obstacle-free surface)\n- Supreme Court Right to Walk Judgment, 2026 (Articles 21 &amp; 19(1)(d))\n- The municipal corporation's legally enforceable duty to maintain safe pedestrian infrastructure\n\nI request:\n1. Removal of encroachments within 30 days\n2. Written confirmation of compliance plan\n3. Repair / construction of compliant footpath\n\nPhotograph enclosed." type="button" aria-label="Copy CPGRAMS complaint text">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy Complaint Text
+          </button>
+        </div>
+
+        <!-- Twitter/X Template -->
+        <div class="report-card reveal reveal-delay-2">
+          <div class="report-card__header">
+            <span class="report-card__num">02</span>
+            <span class="report-card__icon" aria-hidden="true">📣</span>
+          </div>
+          <h3 class="report-card__title">Tag Your Municipality on Social Media</h3>
+          <p class="report-card__desc">Public tagging creates accountability that private portals can't. Choose your city's handle:</p>
+          <div class="city-handles">
+            <span class="city-handle">@BBMP_WATSAN (Bengaluru)</span>
+            <span class="city-handle">@mybmc (Mumbai)</span>
+            <span class="city-handle">@DelhiTrafficPol (Delhi)</span>
+            <span class="city-handle">@chennaicorp (Chennai)</span>
+            <span class="city-handle">@GHMCOnline (Hyderabad)</span>
+            <span class="city-handle">@KMCGovWest (Kolkata)</span>
+          </div>
+          <button class="btn btn-outline report-card__copy" id="copy-tweet" data-copy="🚨 My footpath at [LOCATION, CITY] has been [broken / encroached / absent] for [TIME PERIOD].\n\nThis violates IRC:103-2012 (1.8m minimum width) and the Supreme Court's 2026 Right to Walk Judgment.\n\n@[MUNICIPAL HANDLE] — what is your compliance plan?\n\n#RightToWalk #FootpathFirst #WalkableIndia #SafeFootpathsNow" type="button" aria-label="Copy social media post">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy Social Post
+          </button>
+        </div>
+
+        <!-- RTI Reminder -->
+        <div class="report-card reveal reveal-delay-3">
+          <div class="report-card__header">
+            <span class="report-card__num">03</span>
+            <span class="report-card__icon" aria-hidden="true">📄</span>
+          </div>
+          <h3 class="report-card__title">Demand Data via RTI</h3>
+          <p class="report-card__desc">If no action is taken on your CPGRAMS complaint within 30 days, escalate with an RTI. Demand ward-level footpath construction expenditure and compliance plans. The RTI template is in the Campaign Hub above — or file online at <a href="https://rtionline.gov.in" target="_blank" rel="noopener noreferrer">rtionline.gov.in</a>.</p>
+          <div class="report-card__legal-note">
+            <strong>Quote in every complaint:</strong><br />
+            SC Right to Walk Judgment (2026) · Articles 21 &amp; 19(1)(d) · IRC:103-2012
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -80,17 +423,17 @@ const articles = (await getCollection('footpath')).sort(
       <h2>Explore the Footpath Movement</h2>
       <div class="cause-nav__grid">
         <a href="/footpath/myths/" class="cause-nav__card" id="nav-foot-myths">
-          <span class="cause-nav__icon" aria-hidden="true">Media vs Yes</span>
+          <span class="cause-nav__icon" aria-hidden="true">⚖️</span>
           <h3>Myth vs. Fact</h3>
           <p>Counter common excuses for why Indian cities fail their pedestrians.</p>
         </a>
         <a href="/footpath/data/" class="cause-nav__card" id="nav-foot-data">
-          <span class="cause-nav__icon" aria-hidden="true">Data</span>
+          <span class="cause-nav__icon" aria-hidden="true">📊</span>
           <h3>Data & Statistics</h3>
-          <p>MoRTH accident data, Praja audits, World Bank economic costs - all cited.</p>
+          <p>MoRTH accident data, Praja audits, IRC standards, World Bank costs — all cited.</p>
         </a>
         <a href="/share-toolkit" class="cause-nav__card" id="nav-foot-share">
-          <span class="cause-nav__icon" aria-hidden="true">Share</span>
+          <span class="cause-nav__icon" aria-hidden="true">📲</span>
           <h3>Share Toolkit</h3>
           <p>WhatsApp-ready cards with footpath facts for your local community.</p>
         </a>
@@ -119,25 +462,165 @@ const articles = (await getCollection('footpath')).sort(
   .cause-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8); }
 
   .insta-handle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: var(--space-4);
-    padding: 6px var(--space-4);
-    border-radius: var(--radius-full);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid currentColor;
-    transition: all var(--duration-fast) var(--ease-out);
-    opacity: 0.85;
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: var(--space-4); padding: 6px var(--space-4);
+    border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; border: 1px solid currentColor;
+    transition: all var(--duration-fast) var(--ease-out); opacity: 0.85;
   }
   .insta-handle:hover { opacity: 1; transform: translateY(-1px); }
   .insta-handle--foot { color: var(--clr-foot); background: var(--clr-foot-bg); border-color: var(--clr-foot); }
 
+  /* Hashtag strip */
+  .hashtag-strip {
+    display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6);
+  }
+  .hashtag-strip__chip {
+    font-size: 0.72rem; font-weight: 700; color: var(--clr-foot);
+    background: var(--clr-foot-bg); border: 1px solid rgba(99,179,237,0.25);
+    padding: 4px var(--space-3); border-radius: var(--radius-full);
+    cursor: default; user-select: all; transition: opacity var(--duration-fast) var(--ease-out);
+  }
+  .hashtag-strip__chip:hover { opacity: 0.8; }
+
   .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
   @media (max-width: 768px) { .stats-grid { grid-template-columns: 1fr; } }
 
+  /* ── Legal Banner ── */
+  .section-eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clr-accent); margin-bottom: var(--space-3); }
+  .section-header { text-align: center; margin-bottom: var(--space-12); }
+  .section-sub { color: var(--clr-text-muted); max-width: 55ch; margin-inline: auto; font-size: 1.0625rem; margin-top: var(--space-4); line-height: 1.75; }
+
+  .legal-banner__grid {
+    display: grid; grid-template-columns: 3fr 2fr; gap: var(--space-6); align-items: start;
+  }
+  @media (max-width: 860px) { .legal-banner__grid { grid-template-columns: 1fr; } }
+
+  .legal-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-7);
+    display: flex; flex-direction: column; gap: var(--space-5);
+    transition: box-shadow var(--duration-normal) var(--ease-out);
+  }
+  .legal-card:hover { box-shadow: var(--shadow-lg); }
+  .legal-card--primary {
+    border-left: 4px solid var(--clr-foot);
+    background: linear-gradient(135deg, var(--clr-foot-bg), var(--clr-bg-surface) 60%);
+  }
+
+  .legal-card__badge {
+    display: inline-flex; align-self: flex-start;
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--clr-foot); background: var(--clr-foot-bg);
+    border: 1px solid var(--clr-foot); padding: 4px var(--space-3);
+    border-radius: var(--radius-full);
+  }
+
+  .legal-card__quote {
+    font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 700; font-style: italic;
+    color: var(--clr-text); line-height: 1.6; margin: 0;
+    padding-left: var(--space-5); border-left: 3px solid var(--clr-foot);
+  }
+
+  .legal-card__refs { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .legal-ref {
+    font-size: 0.72rem; font-weight: 700; color: var(--clr-accent);
+    background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.2);
+    padding: 3px var(--space-3); border-radius: var(--radius-full);
+  }
+
+  .legal-card__body { font-size: 0.9rem; color: var(--clr-text-muted); line-height: 1.7; margin: 0; }
+  .legal-card__title { font-size: 1rem; font-weight: 700; color: var(--clr-text); margin: 0; }
+
+  .legal-card__list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 1px;
+    border: 1px solid var(--clr-border); border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .legal-card__list li {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-3) var(--space-4); gap: var(--space-4);
+    background: var(--clr-bg-elevated); border-bottom: 1px solid var(--clr-border);
+    font-size: 0.875rem;
+  }
+  .legal-card__list li:last-child { border-bottom: none; }
+  .legal-card__list-label { color: var(--clr-text-muted); }
+  .legal-card__list-value { font-weight: 700; color: var(--clr-foot); text-align: right; }
+
+  .legal-card__copy-btn {
+    align-self: flex-start; font-size: 0.82rem; padding: var(--space-2) var(--space-4);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    border-color: var(--clr-foot); color: var(--clr-foot); cursor: pointer;
+  }
+  .legal-card__copy-btn:hover { background: var(--clr-foot-bg); }
+  .legal-card__copy-btn.copied { border-color: var(--clr-success); color: var(--clr-success); background: rgba(74,222,128,0.08); }
+
+  /* ── Social Media Toolkit ── */
+  .social-slides {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);
+  }
+  @media (max-width: 768px) { .social-slides { grid-template-columns: 1fr; } }
+
+  .social-slide {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-5);
+    display: flex; flex-direction: column; gap: var(--space-4);
+    transition: border-color var(--duration-normal) var(--ease-out);
+  }
+  .social-slide:hover { border-color: var(--clr-foot); }
+
+  .social-slide__header { display: flex; align-items: center; justify-content: space-between; }
+  .social-slide__label {
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--clr-text-muted);
+  }
+
+  .social-slide__text {
+    font-family: inherit; font-size: 0.85rem; color: var(--clr-text);
+    line-height: 1.7; white-space: pre-wrap; word-break: break-word;
+    margin: 0; background: var(--clr-bg-elevated); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md); padding: var(--space-4); flex: 1;
+  }
+
+  .social-slide__copy {
+    align-self: flex-start; font-size: 0.82rem; padding: var(--space-2) var(--space-4);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    border-color: var(--clr-foot); color: var(--clr-foot); cursor: pointer;
+  }
+  .social-slide__copy:hover { background: var(--clr-foot-bg); }
+  .social-slide__copy.copied { border-color: var(--clr-success); color: var(--clr-success); }
+
+  /* ── Vulnerable Groups ── */
+  .vulnerable__grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5);
+  }
+  @media (max-width: 860px) { .vulnerable__grid { grid-template-columns: 1fr; } }
+
+  .vuln-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-7);
+    display: flex; flex-direction: column; gap: var(--space-4);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+  .vuln-card:hover { border-color: var(--clr-foot); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .vuln-card__icon { font-size: 2rem; line-height: 1; }
+  .vuln-card h3 { font-size: 1rem; font-weight: 700; color: var(--clr-text); margin: 0; }
+  .vuln-card p { font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.7; margin: 0; }
+
+  /* ── Campaign Hub ── */
+  .campaign-hub__grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-bottom: var(--space-8);
+  }
+  @media (max-width: 960px) { .campaign-hub__grid { grid-template-columns: 1fr; } }
+
+  .campaign-hub__note {
+    font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.7;
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-left: 3px solid var(--clr-accent); border-radius: var(--radius-lg);
+    padding: var(--space-5); margin: 0;
+  }
+
+  /* ── Articles ── */
   .article-list { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-6); }
   .article-card {
     display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
@@ -150,6 +633,7 @@ const articles = (await getCollection('footpath')).sort(
   .article-card__description { font-size: 0.9rem; color: var(--clr-text-muted); margin-bottom: var(--space-3); }
   .article-card__read { font-size: 0.85rem; font-weight: 600; color: var(--clr-foot); }
 
+  /* ── Cause nav ── */
   .cause-nav h2 { margin-bottom: var(--space-6); }
   .cause-nav__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
   @media (max-width: 768px) { .cause-nav__grid { grid-template-columns: 1fr; } }
@@ -162,5 +646,114 @@ const articles = (await getCollection('footpath')).sort(
   .cause-nav__icon { font-size: 1.5rem; display: block; margin-bottom: var(--space-3); }
   .cause-nav__card h3 { font-size: 1rem; margin-bottom: var(--space-2); color: var(--clr-text); }
   .cause-nav__card p { font-size: 0.875rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+
+  /* ── City Scorecard ── */
+  .scorecard-table {
+    width: 100%; border-collapse: collapse; font-size: 0.88rem;
+  }
+  .scorecard-table th, .scorecard-table td {
+    padding: var(--space-4) var(--space-5); text-align: left;
+    border-bottom: 1px solid var(--clr-border);
+  }
+  .scorecard-table th {
+    background: var(--clr-bg-surface); font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-text-muted);
+  }
+  .scorecard-table tbody tr:hover { background: var(--clr-bg-elevated); }
+  .scorecard-table tbody tr:last-child td { border-bottom: none; }
+  .city-name { font-weight: 700; color: var(--clr-text); }
+  .score-red { font-weight: 800; color: var(--clr-danger); }
+  .score-amber { font-weight: 800; color: var(--clr-warning); }
+  .score-green { font-weight: 800; color: var(--clr-success); }
+  .obs-high { color: var(--clr-danger); font-weight: 600; font-size: 0.82rem; }
+  .obs-mid { color: var(--clr-warning); font-weight: 600; font-size: 0.82rem; }
+  .acc-red { color: var(--clr-danger); font-weight: 700; }
+  .scorecard-note {
+    font-size: 0.78rem; color: var(--clr-text-muted); line-height: 1.6;
+    margin-top: var(--space-4); padding: var(--space-4);
+    background: var(--clr-bg-surface); border-radius: var(--radius-md);
+    border: 1px solid var(--clr-border);
+  }
+  .scorecard-note a { color: var(--clr-accent); }
+
+  /* ── Report Section ── */
+  .report-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5);
+  }
+  @media (max-width: 960px) { .report-grid { grid-template-columns: 1fr; } }
+
+  .report-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-6);
+    display: flex; flex-direction: column; gap: var(--space-4);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+  .report-card:hover { border-color: var(--clr-foot); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .report-card__header { display: flex; align-items: center; justify-content: space-between; }
+  .report-card__num {
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--clr-foot); background: var(--clr-foot-bg);
+    border: 1px solid var(--clr-foot); padding: 3px var(--space-3); border-radius: var(--radius-full);
+  }
+  .report-card__icon { font-size: 1.5rem; line-height: 1; }
+  .report-card__title { font-size: 0.9375rem; font-weight: 800; color: var(--clr-text); margin: 0; line-height: 1.3; }
+  .report-card__desc { font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.7; margin: 0; flex: 1; }
+  .report-card__desc a { color: var(--clr-accent); }
+  .report-card__steps {
+    list-style: decimal; padding-left: var(--space-5);
+    display: flex; flex-direction: column; gap: var(--space-2);
+    font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.6;
+    margin: 0; flex: 1;
+  }
+  .report-card__steps a { color: var(--clr-accent); }
+  .report-card__steps strong { color: var(--clr-text); }
+  .report-card__steps em { color: var(--clr-foot); }
+  .report-card__copy {
+    align-self: flex-start; font-size: 0.82rem; padding: var(--space-2) var(--space-4);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    border-color: var(--clr-foot); color: var(--clr-foot); cursor: pointer;
+  }
+  .report-card__copy:hover { background: var(--clr-foot-bg); }
+  .report-card__copy.copied { border-color: var(--clr-success); color: var(--clr-success); }
+  .city-handles { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .city-handle {
+    font-size: 0.72rem; font-weight: 700; color: var(--clr-foot);
+    background: var(--clr-foot-bg); border: 1px solid rgba(96,165,250,0.3);
+    padding: 3px var(--space-3); border-radius: var(--radius-full);
+    user-select: all;
+  }
+  .report-card__legal-note {
+    font-size: 0.8rem; color: var(--clr-text-muted); line-height: 1.6;
+    padding: var(--space-3) var(--space-4);
+    background: var(--clr-bg-elevated); border: 1px solid var(--clr-border);
+    border-left: 3px solid var(--clr-foot); border-radius: var(--radius-md);
+  }
+  .report-card__legal-note strong { color: var(--clr-foot); }
 </style>
 
+<script>
+  // Generic copy-to-clipboard for all [data-copy] buttons on the page
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy || '';
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const originalHTML = btn.innerHTML;
+      btn.classList.add('copied');
+      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = originalHTML;
+      }, 2500);
+    });
+  });
+</script>

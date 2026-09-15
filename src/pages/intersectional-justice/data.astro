@@ -1,4 +1,4 @@
-﻿---
+---
 // src/pages/intersectional-justice/data.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -26,7 +26,9 @@ import ShareButtons from '../../components/ShareButtons.astro';
         <StatHighlight number="57,582" label="Registered crimes against SCs in 2021 - widespread undercount acknowledged (NCRB)" source="NCRB Crime in India, 2021" color="just" />
         <StatHighlight number="1861" label="Year Section 377 was introduced as British colonial law, criminalising gender non-conformity" source="IPC colonial legal history" color="just" />
         <StatHighlight number="2014" label="Year India's Supreme Court affirmed third gender rights in NALSA v. Union of India" source="Supreme Court of India, NALSA, 2014" color="just" />
-        <StatHighlight number="2018" label="Year Section 377 was partially struck down by the Supreme Court in Navtej Singh Johar v. UOI" source="Supreme Court of India, 2018" color="just" />
+        <StatHighlight number="2018" label="Year Section 377 was partially struck down in Navtej Singh Johar v. UOI — decriminalising consensual queer relations" source="Supreme Court of India, 2018" color="just" />
+        <StatHighlight number="2019" label="Transgender Persons (Protection of Rights) Act passed — prohibiting discrimination in employment, education & healthcare" source="Ministry of Social Justice & Empowerment, GoI" color="just" />
+        <StatHighlight number="Article 17" label="Abolition of Untouchability — its practice in any form is a punishable offence under the Constitution of India, 1950" source="Constitution of India, Part III Fundamental Rights" color="just" />
       </div>
 
       <!-- NCRB Table -->
@@ -53,6 +55,36 @@ import ShareButtons from '../../components/ShareButtons.astro';
         <p class="source-note">Source: <a href="https://ncrb.gov.in" target="_blank" rel="noopener noreferrer">NCRB Crime in India (annual)</a> | Note: These are <em>registered</em> crimes. Actual incidence is estimated to be significantly higher due to underreporting.</p>
       </section>
 
+      <!-- Key Laws & Acts Table -->
+      <section class="data-table-section">
+        <h2>Key Laws, Acts & Landmark Judgments</h2>
+        <p class="data-table__note">A reference guide to the constitutional provisions and legal instruments protecting rights in India across all five verticals.</p>
+        <div class="table-wrapper" role="region" aria-label="Key laws and judgments table" tabindex="0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Law / Judgment</th>
+                <th scope="col">Year</th>
+                <th scope="col">Vertical</th>
+                <th scope="col">What it Protects</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>NALSA v. Union of India</td><td>2014</td><td class="tag-cell tag-cell--trans">Trans Rights</td><td>Third gender legal recognition under Articles 14 & 21</td></tr>
+              <tr><td>Navtej Singh Johar v. UOI</td><td>2018</td><td class="tag-cell tag-cell--trans">Queer Rights</td><td>Decriminalisation of consensual same-sex relations</td></tr>
+              <tr><td>Trans Persons Act</td><td>2019</td><td class="tag-cell tag-cell--trans">Trans Rights</td><td>Prohibition of discrimination in employment, education, healthcare</td></tr>
+              <tr><td>SC/ST Atrocities Act</td><td>1989 / 2018</td><td class="tag-cell tag-cell--caste">Caste Rights</td><td>Penal action for caste-based violence; fast-track courts</td></tr>
+              <tr><td>POSH Act</td><td>2013</td><td class="tag-cell tag-cell--women">Women's Rights</td><td>Workplace sexual harassment; mandatory ICC in all offices</td></tr>
+              <tr><td>PWDVA</td><td>2005</td><td class="tag-cell tag-cell--women">Women's Rights</td><td>Domestic violence protection, residence & monetary orders</td></tr>
+              <tr><td>PCA Act</td><td>1960</td><td class="tag-cell tag-cell--animal">Animal Rights</td><td>Criminalises abandonment, starvation & cruelty to animals</td></tr>
+              <tr><td>ABC Rules</td><td>2023</td><td class="tag-cell tag-cell--animal">Animal Rights</td><td>Prohibits RWA relocation/harm of community dogs</td></tr>
+              <tr><td>BNS Sections 196 & 353</td><td>2023</td><td class="tag-cell tag-cell--region">Anti-Racism</td><td>Criminalises racial slurs & promoting enmity between groups</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Sources: Ministry of Law & Justice, Government of India; Supreme Court of India; Animal Welfare Board of India</p>
+      </section>
+
       <!-- Key Judgments -->
       <section class="primary-sources-section">
         <h2>Key Legal Milestones</h2>
@@ -67,6 +99,26 @@ import ShareButtons from '../../components/ShareButtons.astro';
             <h3>Navtej Singh Johar v. UOI (2018)</h3>
             <p>Partially struck down Section 377 of the IPC, decriminalising consensual same-sex relations between adults.</p>
           </a>
+          <a href="https://transgender.dosje.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">Official Government Portal</span>
+            <h3>National Transgender Portal</h3>
+            <p>Apply for a Gender Identity Certificate under the Transgender Persons (Protection of Rights) Act, 2019.</p>
+          </a>
+          <a href="https://legislative.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">Act of Parliament</span>
+            <h3>SC/ST Atrocities Act, 1989 (Amended 2018)</h3>
+            <p>Severe penal consequences for caste-based violence, institutional boycotts, and denial of customary rights. Mandates fast-track courts.</p>
+          </a>
+          <a href="https://legislative.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">Act of Parliament</span>
+            <h3>Prevention of Cruelty to Animals Act, 1960</h3>
+            <p>Criminalises abandonment, starvation, overwork, and physical abuse of animals. Cruelty is a cognizable offence under Section 11.</p>
+          </a>
+          <a href="https://dahd.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">Government Rules</span>
+            <h3>Animal Birth Control (ABC) Rules, 2023</h3>
+            <p>Explicitly prohibits RWAs and local bodies from relocating or harming community dogs. Mandates sterilisation and vaccination.</p>
+          </a>
           <a href="https://ncrb.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
             <span class="source-card__type">Official Government</span>
             <h3>NCRB Crime in India 2021</h3>
@@ -75,7 +127,7 @@ import ShareButtons from '../../components/ShareButtons.astro';
           <a href="https://oxfamindia.org" target="_blank" rel="noopener noreferrer" class="source-card">
             <span class="source-card__type">Independent NGO Report</span>
             <h3>Oxfam India Inequality Report 2022</h3>
-            <p>Wage, land ownership, and credit access disparities by caste - controlling for education level. Documents structural economic discrimination.</p>
+            <p>Wage, land ownership, and credit access disparities by caste — controlling for education level. Documents structural economic discrimination.</p>
           </a>
         </div>
       </section>
@@ -101,8 +153,17 @@ import ShareButtons from '../../components/ShareButtons.astro';
   .data-table th { background: var(--clr-bg-surface); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-text-muted); }
   .data-table tbody tr:last-child td { border-bottom: none; }
   .data-table tbody tr:hover { background: var(--clr-bg-elevated); }
-  .source-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  .source-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  @media (max-width: 960px) { .source-cards { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 700px) { .source-cards { grid-template-columns: 1fr; } }
+  /* Law table tag cells */
+  .tag-cell { font-size: 0.72rem; font-weight: 800; padding: 3px var(--space-2); border-radius: var(--radius-full); white-space: nowrap; }
+  .tag-cell--trans { background: rgba(167,139,250,0.15); color: #a78bfa; }
+  .tag-cell--women { background: var(--clr-just-bg); color: var(--clr-just); }
+  .tag-cell--caste { background: rgba(251,191,36,0.15); color: var(--clr-warning); }
+  .tag-cell--animal { background: rgba(74,222,128,0.1); color: var(--clr-success); }
+  .tag-cell--region { background: rgba(96,165,250,0.12); color: var(--clr-foot); }
+  .data-table__note { font-size: 0.8rem; color: var(--clr-text-muted); margin-bottom: var(--space-4); }
   .source-card { display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; transition: all var(--duration-normal) var(--ease-out); }
   .source-card:hover { border-color: var(--clr-just); transform: translateY(-3px); box-shadow: var(--shadow-md); }
   .source-card__type { font-size: 0.75rem; font-weight: 600; color: var(--clr-text-muted); display: block; margin-bottom: var(--space-2); }

@@ -1,0 +1,334 @@
+---
+// src/pages/helplines.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+
+const nationalHelplines = [
+  { number: '112', label: 'National Emergency', desc: 'Police, fire, ambulance — all in one', icon: '🚨', color: 'danger' },
+  { number: '100', label: 'Police', desc: 'Direct to police control room', icon: '👮', color: 'neutral' },
+  { number: '101', label: 'Fire', desc: 'Fire and rescue services', icon: '🔥', color: 'neutral' },
+  { number: '102', label: 'Ambulance', desc: 'Emergency medical services', icon: '🚑', color: 'neutral' },
+  { number: '1098', label: 'Childline', desc: 'Child abuse, trafficking, emergency care', icon: '🧒', color: 'neutral' },
+  { number: '14567', label: 'Elder Helpline', desc: 'Abuse and emergency support for senior citizens', icon: '👴', color: 'neutral' },
+];
+
+const womensHelplines = [
+  { number: '7827170170', label: 'NCW Women Helpline', desc: 'National Commission for Women — abuse, harassment, emergency', icon: '🚺', color: 'women' },
+  { number: '1091', label: 'Women in Distress', desc: "Women's distress hotline, 24×7", icon: '🆘', color: 'women' },
+  { number: '181', label: 'Domestic Violence Helpline', desc: "MWCD's helpline for domestic abuse survivors", icon: '🏠', color: 'women' },
+  { number: '1800-419-7233', label: 'iCall (Psychological Support)', desc: 'Free mental health counselling — sexual harassment, trauma', icon: '💙', color: 'women' },
+];
+
+const transHelplines = [
+  { number: '14566', label: 'Trans Community Tele-Counselling', desc: 'Ministry of Social Justice & Empowerment — counselling and grievances for transgender persons', icon: '🏳️‍⚧️', color: 'trans' },
+];
+
+const animalHelplines = [
+  { number: '1962', label: 'Animal Helpline (Delhi)', desc: 'Delhi municipal animal helpline', icon: '🐾', color: 'animal' },
+  { number: '044-22354998', label: 'Blue Cross of India (Chennai)', desc: 'Animal rescue and welfare', icon: '🐾', color: 'animal' },
+  { number: '080-22970075', label: 'CUPA (Bengaluru)', desc: 'Compassion Unlimited Plus Action — animal rescue', icon: '🐾', color: 'animal' },
+];
+
+const regionalHelplines = [
+  { number: '1093', label: 'Delhi North-East Helpline', desc: 'Dedicated helpline for people from Northeast India facing discrimination in Delhi', icon: '🌏', color: 'region' },
+];
+
+const legalOrgs = [
+  {
+    name: 'LABIA — A Queer Feminist LBT Collective',
+    city: 'Mumbai',
+    focus: 'Legal aid, mental health, community support for LBT persons',
+    href: 'https://labiacollective.org',
+    icon: '🏳️‍⚧️',
+  },
+  {
+    name: 'Humsafar Trust',
+    city: 'Mumbai',
+    focus: 'Healthcare, legal aid, community support for LGBTQ+ persons',
+    href: 'https://humsafar.org',
+    icon: '🏳️‍🌈',
+  },
+  {
+    name: 'Nazariya — A Queer Feminist Resource Group',
+    city: 'Delhi',
+    focus: 'Queer feminist legal support, documentation, community organising',
+    href: 'https://nazariya.in',
+    icon: '✊',
+  },
+  {
+    name: 'PUCL-K (Karnataka)',
+    city: 'Bengaluru',
+    focus: 'Civil liberties, legal aid across caste, gender, and minority rights',
+    href: 'https://pucl.org',
+    icon: '⚖️',
+  },
+  {
+    name: 'iCall — TISS',
+    city: 'Mumbai / Online',
+    focus: 'Free psychological counselling for harassment, trauma, gender violence',
+    href: 'https://icallhelpline.org',
+    icon: '💙',
+  },
+  {
+    name: 'The Queer Muslim Project',
+    city: 'Pan-India (online)',
+    focus: 'Community support, resources, and peer connection for queer Muslims',
+    href: 'https://thequeermuslimproject.com',
+    icon: '🕌',
+  },
+  {
+    name: 'Animal Welfare Board of India (AWBI)',
+    city: 'National',
+    focus: 'Statutory body under MoFAHD — animal welfare complaints, PCA Act enforcement',
+    href: 'https://awbi.in',
+    icon: '🐾',
+  },
+  {
+    name: 'People for Animals (PFA)',
+    city: 'Pan-India',
+    focus: 'Animal cruelty rescue, legal aid, community dog protection',
+    href: 'https://peopleforanimalsindia.org',
+    icon: '🐕',
+  },
+];
+---
+
+<BaseLayout
+  title="Emergency Helplines & Legal Aid Organisations"
+  description="All emergency helplines across India — women's safety, transgender support, animal cruelty, regional discrimination, and legal aid organisations. One-tap on mobile. Free to call."
+  ogImage="/og/justice.png"
+>
+  <div class="helplines-page">
+    <div class="container">
+
+      <!-- Header -->
+      <header class="helplines-header">
+        <a href="/intersectional-justice/" class="breadcrumb-back">← Intersectional Justice</a>
+        <span class="tag tag--just">Emergency Helplines & Legal Aid</span>
+        <h1>Helplines & Support Organisations</h1>
+        <p class="helplines-sub">
+          All numbers are <strong>free to call</strong>. One-tap on mobile. Available 24×7 unless noted. Save this page — share it where it matters.
+        </p>
+        <div class="helplines-share">
+          <ShareButtons title="Emergency Helplines India - Paras Activist" url="https://parasactivist.in/helplines/" />
+        </div>
+      </header>
+
+      <!-- National Emergency -->
+      <section class="hl-section" aria-label="National emergency helplines">
+        <div class="hl-section__heading">
+          <span class="hl-section__icon" aria-hidden="true">🚨</span>
+          <h2>National Emergency Numbers</h2>
+        </div>
+        <div class="hl-grid hl-grid--3">
+          {nationalHelplines.map(h => (
+            <a href={`tel:${h.number}`} class={`hl-card hl-card--${h.color}`} aria-label={`Call ${h.label}: ${h.number}`}>
+              <span class="hl-card__icon" aria-hidden="true">{h.icon}</span>
+              <span class="hl-card__number">{h.number}</span>
+              <span class="hl-card__label">{h.label}</span>
+              <span class="hl-card__desc">{h.desc}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Women's Safety -->
+      <section class="hl-section" aria-label="Women's safety helplines">
+        <div class="hl-section__heading">
+          <span class="hl-section__icon" aria-hidden="true">🚺</span>
+          <h2>Women's Safety & Domestic Violence</h2>
+        </div>
+        <div class="hl-grid hl-grid--2">
+          {womensHelplines.map(h => (
+            <a href={`tel:${h.number}`} class="hl-card hl-card--women" aria-label={`Call ${h.label}: ${h.number}`}>
+              <span class="hl-card__icon" aria-hidden="true">{h.icon}</span>
+              <span class="hl-card__number">{h.number}</span>
+              <span class="hl-card__label">{h.label}</span>
+              <span class="hl-card__desc">{h.desc}</span>
+            </a>
+          ))}
+        </div>
+        <div class="hl-legal-note">
+          <strong>Zero FIR:</strong> Any police station must register your complaint regardless of jurisdiction. Refusing is itself punishable. Quote: <em>SC Right to Zero FIR</em> and <em>CrPC provisions</em>.
+        </div>
+      </section>
+
+      <!-- Transgender Support -->
+      <section class="hl-section" aria-label="Transgender community helpline">
+        <div class="hl-section__heading">
+          <span class="hl-section__icon" aria-hidden="true">🏳️‍⚧️</span>
+          <h2>Transgender & Queer Support</h2>
+        </div>
+        <div class="hl-grid hl-grid--1">
+          {transHelplines.map(h => (
+            <a href={`tel:${h.number}`} class="hl-card hl-card--trans hl-card--wide" aria-label={`Call ${h.label}: ${h.number}`}>
+              <span class="hl-card__icon" aria-hidden="true">{h.icon}</span>
+              <span class="hl-card__number">{h.number}</span>
+              <span class="hl-card__label">{h.label}</span>
+              <span class="hl-card__desc">{h.desc}</span>
+            </a>
+          ))}
+        </div>
+        <div class="hl-legal-note">
+          <strong>Gender Certificate:</strong> Apply online at <a href="https://transgender.dosje.gov.in" target="_blank" rel="noopener noreferrer">transgender.dosje.gov.in</a>. No surgery proof required. Self-identified gender is legally recognised under NALSA (2014) and the Trans Persons Act (2019).
+        </div>
+      </section>
+
+      <!-- Animal Welfare -->
+      <section class="hl-section" aria-label="Animal welfare helplines">
+        <div class="hl-section__heading">
+          <span class="hl-section__icon" aria-hidden="true">🐾</span>
+          <h2>Animal Welfare & Cruelty Reporting</h2>
+        </div>
+        <div class="hl-grid hl-grid--3">
+          {animalHelplines.map(h => (
+            <a href={`tel:${h.number}`} class="hl-card hl-card--animal" aria-label={`Call ${h.label}: ${h.number}`}>
+              <span class="hl-card__icon" aria-hidden="true">{h.icon}</span>
+              <span class="hl-card__number">{h.number}</span>
+              <span class="hl-card__label">{h.label}</span>
+              <span class="hl-card__desc">{h.desc}</span>
+            </a>
+          ))}
+        </div>
+        <div class="hl-legal-note">
+          <strong>Community dogs:</strong> ABC Rules 2023 prohibit RWA relocation or harm of community dogs. Report cruelty under PCA Act, 1960, Section 11. File with police (112) or your local SPCA.
+        </div>
+      </section>
+
+      <!-- Regional / Anti-Discrimination -->
+      <section class="hl-section" aria-label="Regional discrimination helplines">
+        <div class="hl-section__heading">
+          <span class="hl-section__icon" aria-hidden="true">🌏</span>
+          <h2>Regional Discrimination & Anti-Racism</h2>
+        </div>
+        <div class="hl-grid hl-grid--1">
+          {regionalHelplines.map(h => (
+            <a href={`tel:${h.number}`} class="hl-card hl-card--region hl-card--wide" aria-label={`Call ${h.label}: ${h.number}`}>
+              <span class="hl-card__icon" aria-hidden="true">{h.icon}</span>
+              <span class="hl-card__number">{h.number}</span>
+              <span class="hl-card__label">{h.label}</span>
+              <span class="hl-card__desc">{h.desc}</span>
+            </a>
+          ))}
+        </div>
+        <div class="hl-legal-note">
+          <strong>Racial slurs are illegal:</strong> BNS Sections 196 & 353 (formerly IPC 153A/505) criminalise promoting enmity between groups, including racial and regional epithets. File an FIR at any station.
+        </div>
+      </section>
+
+      <!-- Legal Aid Orgs -->
+      <section class="hl-section orgs-section" aria-label="Legal aid and support organisations">
+        <div class="hl-section__heading">
+          <span class="hl-section__icon" aria-hidden="true">🏛️</span>
+          <h2>Legal Aid & Support Organisations</h2>
+        </div>
+        <p class="orgs-sub">Verified organisations offering legal aid, community support, and counselling across India.</p>
+        <div class="orgs-grid">
+          {legalOrgs.map(org => (
+            <a href={org.href} target="_blank" rel="noopener noreferrer" class="org-card">
+              <span class="org-card__icon" aria-hidden="true">{org.icon}</span>
+              <div class="org-card__body">
+                <span class="org-card__city">{org.city}</span>
+                <h3 class="org-card__name">{org.name}</h3>
+                <p class="org-card__focus">{org.focus}</p>
+              </div>
+              <svg class="org-card__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Footer share -->
+      <div class="hl-footer">
+        <p>Share this page — it may reach someone who needs it.</p>
+        <ShareButtons title="Emergency Helplines India - Paras Activist" url="https://parasactivist.in/helplines/" />
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .helplines-page { padding-block: var(--space-8) var(--space-20); }
+  .helplines-header { max-width: 720px; margin-bottom: var(--space-12); display: flex; flex-direction: column; gap: var(--space-4); }
+  .breadcrumb-back { font-size: 0.875rem; color: var(--clr-text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: var(--space-1); transition: color var(--duration-fast) var(--ease-out); }
+  .breadcrumb-back:hover { color: var(--clr-just); }
+  .helplines-header h1 { margin: 0; }
+  .helplines-sub { color: var(--clr-text-muted); font-size: 1rem; max-width: 60ch; line-height: 1.7; margin: 0; }
+  .helplines-share { display: flex; }
+
+  /* ── Section ── */
+  .hl-section { margin-bottom: var(--space-12); }
+  .hl-section__heading { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5); }
+  .hl-section__icon { font-size: 1.25rem; line-height: 1; }
+  .hl-section__heading h2 { margin: 0; font-size: 1.25rem; }
+
+  /* ── Grids ── */
+  .hl-grid--3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  .hl-grid--2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+  .hl-grid--1 { display: grid; grid-template-columns: 1fr; gap: var(--space-3); }
+  @media (max-width: 768px) { .hl-grid--3 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .hl-grid--3, .hl-grid--2 { grid-template-columns: 1fr; } }
+
+  /* ── Cards ── */
+  .hl-card {
+    display: flex; flex-direction: column; gap: var(--space-1);
+    padding: var(--space-5); background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border); border-radius: var(--radius-xl);
+    text-decoration: none; transition: all var(--duration-fast) var(--ease-out);
+  }
+  .hl-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .hl-card--wide { flex-direction: row; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+  .hl-card__icon { font-size: 1.5rem; line-height: 1; }
+  .hl-card__number { font-size: clamp(1.25rem, 3vw, 1.75rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+  .hl-card__label { font-size: 0.78rem; font-weight: 700; margin-top: var(--space-1); }
+  .hl-card__desc { font-size: 0.72rem; color: var(--clr-text-muted); line-height: 1.4; }
+
+  /* Colour themes */
+  .hl-card--danger { border-top: 3px solid var(--clr-danger); }
+  .hl-card--danger .hl-card__number { color: var(--clr-danger); }
+  .hl-card--women { border-top: 3px solid var(--clr-just); }
+  .hl-card--women .hl-card__number { color: var(--clr-just); }
+  .hl-card--trans { border-top: 3px solid #a78bfa; }
+  .hl-card--trans .hl-card__number { color: #a78bfa; }
+  .hl-card--animal { border-top: 3px solid var(--clr-food); }
+  .hl-card--animal .hl-card__number { color: var(--clr-food); }
+  .hl-card--region { border-top: 3px solid var(--clr-foot); }
+  .hl-card--region .hl-card__number { color: var(--clr-foot); }
+  .hl-card--neutral { border-top: 3px solid var(--clr-accent); }
+  .hl-card--neutral .hl-card__number { color: var(--clr-accent); }
+
+  /* Legal notes */
+  .hl-legal-note {
+    margin-top: var(--space-4); font-size: 0.82rem; color: var(--clr-text-muted);
+    line-height: 1.6; padding: var(--space-4) var(--space-5);
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-left: 3px solid var(--clr-just); border-radius: var(--radius-md);
+  }
+  .hl-legal-note strong { color: var(--clr-just); }
+  .hl-legal-note em { color: var(--clr-accent); font-style: normal; }
+  .hl-legal-note a { color: var(--clr-accent); }
+
+  /* ── Orgs ── */
+  .orgs-sub { font-size: 0.9rem; color: var(--clr-text-muted); margin-bottom: var(--space-6); line-height: 1.7; }
+  .orgs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  @media (max-width: 700px) { .orgs-grid { grid-template-columns: 1fr; } }
+
+  .org-card {
+    display: flex; align-items: flex-start; gap: var(--space-4);
+    padding: var(--space-5); background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border); border-radius: var(--radius-lg);
+    text-decoration: none; transition: all var(--duration-normal) var(--ease-out);
+  }
+  .org-card:hover { border-color: var(--clr-just); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .org-card__icon { font-size: 1.25rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+  .org-card__body { flex: 1; display: flex; flex-direction: column; gap: var(--space-1); }
+  .org-card__city { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-text-muted); }
+  .org-card__name { font-size: 0.9rem; font-weight: 800; color: var(--clr-just); margin: 0; line-height: 1.3; }
+  .org-card__focus { font-size: 0.78rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+  .org-card__arrow { flex-shrink: 0; color: var(--clr-text-subtle); margin-top: 3px; }
+
+  /* ── Footer ── */
+  .hl-footer { margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--clr-border); display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+  .hl-footer p { font-weight: 600; color: var(--clr-text-muted); margin: 0; font-size: 0.875rem; }
+</style>

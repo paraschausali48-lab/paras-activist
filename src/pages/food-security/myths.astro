@@ -1,4 +1,4 @@
-﻿---
+---
 // src/pages/food-security/myths.astro - Myth vs. Fact page
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MythFact from '../../components/MythFact.astro';
@@ -29,8 +29,8 @@ import EvidenceCard from '../../components/EvidenceCard.astro';
 
       <!-- Evidence Card -->
       <EvidenceCard
-        primarySources="4 government reports, 2 NGO impact reports, 1 peer-reviewed text"
-        lastVerified="August 2025"
+        primarySources="4 government reports (MoFPI, FCI, NFSA, CACP), 2 NGO impact reports (Robin Hood Army, No Food Waste), 1 peer-reviewed text, 1 international index (GHI)"
+        lastVerified="September 2026"
         corrections={0}
       />
 
@@ -42,6 +42,8 @@ import EvidenceCard from '../../components/EvidenceCard.astro';
       />
 
       <StatHighlight number="111th" label="India's Global Hunger Index 2023 rank - despite being the world's 2nd largest food producer" source="Welthungerhilfe, Global Hunger Index 2023" color="food" />
+
+      <StatHighlight number="15–30%" label="of fruits, vegetables and perishables lost post-harvest due to cold-chain gaps and poor warehousing — directly inflating consumer prices" source="Ministry of Food Processing Industries (MoFPI) & ICAR, 2022" color="food" />
 
       <!-- Myth 2 -->
       <MythFact
@@ -59,13 +61,32 @@ import EvidenceCard from '../../components/EvidenceCard.astro';
         sources="National Food Security Act 2013; Parliamentary Standing Committee on Food Report (2022); Jean Drèze and Amartya Sen, An Uncertain Glory: India and its Contradictions."
       />
 
+      <!-- Myth 4: Price inflation -->
+      <MythFact
+        myth="Rising food prices mean farmers are getting richer."
+        fact="The supply chain tells the opposite story. When 25–30% of fresh produce spoils in transit, retailers mark up prices on the remaining stock to absorb the losses of rotten inventory. Farmers in India frequently receive a fraction of the final retail price — sometimes less than the cost of production, leading to distress dumping. The inflated margin accrues to intermediaries who benefit from cold-chain failure and multiple middle layers, not to the farmer. MoFPI data shows post-harvest losses alone cost farmers and the economy over Rs 92,000 crore annually."
+        sources="Ministry of Food Processing Industries (MoFPI), Annual Report 2023-24; ICAR Post-Harvest Loss Assessment (2022); CACP Price Policy for Kharif Crops; FAO Food Loss and Waste Database."
+      />
+
+      <StatHighlight number="10–15%" label="of catered event food in India is thrown away unused — while 1 in 7 people cannot get two square meals a day" source="Industry estimates, Robin Hood Army operational data" color="food" />
+
+      <!-- Myth 5: Wedding feast / event waste inevitability -->
+      <MythFact
+        myth="Food wasted at weddings and events can't realistically be redirected — it would be logistically impossible."
+        fact="Organisations like Robin Hood Army (operating in 300+ cities across 15 countries), Feeding India (Zomato-backed), and No Food Waste have demonstrated at operational scale that surplus food from restaurants, wedding caterers, hotels, and corporate events can be safely packaged and redistributed within 2–4 hours of a meal. Industry estimates suggest 10–15% of catered event food in India is discarded unused. The logistical barrier is not real — it is the absence of a legal mandate for venues to partner with food rescue organisations, and the absence of social pressure to do so."
+        sources="Robin Hood Army Annual Impact Report; Feeding India (Zomato) operational data; No Food Waste NGO Reports; FAO Food Wastage Footprint (2013)."
+      />
+
       <!-- Sources Section -->
       <section class="sources-section" aria-label="Full source list">
         <h2>Full Source List</h2>
         <ol class="source-list">
+          <li><strong>Ministry of Food Processing Industries (MoFPI) Annual Report 2023-24</strong> - Post-harvest loss estimates, cold-chain infrastructure gaps, and food processing sector data. <a href="https://mofpi.gov.in" target="_blank" rel="noopener noreferrer">mofpi.gov.in</a></li>
           <li><strong>Global Hunger Index 2023</strong> - Welthungerhilfe & Concern Worldwide. <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer">globalhungerindex.org</a></li>
           <li><strong>Food Corporation of India Annual Report 2022-23</strong> - Government of India, Ministry of Consumer Affairs. <a href="https://fci.gov.in" target="_blank" rel="noopener noreferrer">fci.gov.in</a></li>
           <li><strong>ICAR Report on Food Wastage, 2022</strong> - Indian Council of Agricultural Research. Available via <a href="https://icar.org.in" target="_blank" rel="noopener noreferrer">icar.org.in</a></li>
+          <li><strong>Robin Hood Army Annual Impact Report</strong> - Operational data on urban food rescue scale and turnaround time. <a href="https://robinhoodarmy.com" target="_blank" rel="noopener noreferrer">robinhoodarmy.com</a></li>
+          <li><strong>No Food Waste NGO Reports</strong> - Community fridge and food redistribution data. <a href="https://nofoodwaste.org" target="_blank" rel="noopener noreferrer">nofoodwaste.org</a></li>
           <li><strong>FAO Food Wastage Footprint</strong> - Food and Agriculture Organisation of the United Nations. <a href="https://www.fao.org/food-loss-and-food-waste/flw-data/en" target="_blank" rel="noopener noreferrer">fao.org</a></li>
           <li><strong>National Food Security Act, 2013</strong> - Government of India. <a href="https://dfpd.gov.in/nfsa.htm" target="_blank" rel="noopener noreferrer">dfpd.gov.in</a></li>
           <li><strong>Swaminathan M. (2000)</strong> - Weakening Welfare: The Public Distribution of Food in India. LeftWord Books.</li>

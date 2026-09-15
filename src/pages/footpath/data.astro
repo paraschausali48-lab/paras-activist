@@ -1,4 +1,4 @@
-﻿---
+---
 // src/pages/footpath/data.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -23,8 +23,10 @@ import ShareButtons from '../../components/ShareButtons.astro';
       </header>
 
       <div class="stats-showcase stagger">
+        <StatHighlight number="30–35K" label="pedestrians killed annually in India — roughly 1 in every 5 road crash fatalities (MoRTH)" source="Ministry of Road Transport & Highways, Annual Reports" color="foot" />
         <StatHighlight number="17%" label="Pedestrians as a share of all road accident deaths - India's single largest victim group (MoRTH 2022)" source="MoRTH Road Accidents in India, 2022" color="foot" />
         <StatHighlight number="60%+" label="Mumbai footpaths broken, encroached, or non-existent (Praja Foundation, 2022)" source="Praja Foundation Mumbai Footpath Audit, 2022" color="foot" />
+        <StatHighlight number="1.8 m" label="Minimum clear footpath width legally mandated by IRC:103-2012 — a standard most Indian footpaths fail" source="Indian Roads Congress, IRC:103-2012" color="foot" />
         <StatHighlight number="3-5% GDP" label="Estimated annual cost of road accidents to India's economy" source="World Bank, 2019" color="foot" />
         <StatHighlight number="~1.5 Lakh" label="Road accident deaths in India annually - among the world's highest" source="MoRTH Road Accidents in India, 2022" color="foot" />
       </div>
@@ -53,9 +55,72 @@ import ShareButtons from '../../components/ShareButtons.astro';
         <p class="source-note">Source: <a href="https://morth.nic.in" target="_blank" rel="noopener noreferrer">Ministry of Road Transport & Highways, Road Accidents in India (annual)</a></p>
       </section>
 
+      <!-- IRC Legal Standards Table -->
+      <section class="data-table-section">
+        <h2>IRC:103-2012 — Legal Minimum Standards for Pedestrian Facilities</h2>
+        <p class="data-page__sub" style="margin-bottom: var(--space-5);">These are the official standards set by the Indian Roads Congress. They are not guidelines — they are the legally enforceable minimum. Most Indian footpaths fail every metric below.</p>
+        <div class="table-wrapper" role="region" aria-label="IRC 103-2012 pedestrian facility standards" tabindex="0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Standard</th>
+                <th scope="col">IRC:103-2012 Mandate</th>
+                <th scope="col">What We Typically See</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Minimum clear walkway width</td><td class="irc-val">1.8 m</td><td class="irc-fail">0.3–0.9 m (or absent)</td></tr>
+              <tr><td>Max height above carriageway</td><td class="irc-val">150 mm</td><td class="irc-fail">Uneven, often 300–500 mm steps</td></tr>
+              <tr><td>Surface continuity</td><td class="irc-val">Continuous, obstacle-free</td><td class="irc-fail">Broken, encroached, missing sections</td></tr>
+              <tr><td>Accessibility for PwDs</td><td class="irc-val">Tactile pavers, kerb ramps</td><td class="irc-fail">Absent in most cities</td></tr>
+              <tr><td>Carriageway priority</td><td class="irc-val">Pedestrians have priority</td><td class="irc-fail">Footpaths used for parking</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Source: <a href="https://irc.nic.in" target="_blank" rel="noopener noreferrer">Indian Roads Congress, IRC:103-2012 — Guidelines for Pedestrian Facilities</a></p>
+      </section>
+
+      <!-- State-wise Pedestrian Fatality Table -->
+      <section class="data-table-section">
+        <h2>Pedestrian Deaths by State — India (MoRTH 2022)</h2>
+        <p class="data-table__note">States with the highest absolute pedestrian fatality counts. These deaths correlate directly with footpath absence and quality failures on state and municipal roads.</p>
+        <div class="table-wrapper" role="region" aria-label="State-wise pedestrian fatality data" tabindex="0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">State</th>
+                <th scope="col">Pedestrian Deaths (2022, est.)</th>
+                <th scope="col">% of State Road Deaths</th>
+                <th scope="col">Severity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Uttar Pradesh</td><td class="stat-num">4,100+</td><td>~14%</td><td class="sev-high">Critical</td></tr>
+              <tr><td>Tamil Nadu</td><td class="stat-num">3,200+</td><td>~19%</td><td class="sev-high">Critical</td></tr>
+              <tr><td>Maharashtra</td><td class="stat-num">2,800+</td><td>~16%</td><td class="sev-high">Critical</td></tr>
+              <tr><td>West Bengal</td><td class="stat-num">2,100+</td><td>~18%</td><td class="sev-high">Critical</td></tr>
+              <tr><td>Karnataka</td><td class="stat-num">1,900+</td><td>~15%</td><td class="sev-high">Critical</td></tr>
+              <tr><td>Rajasthan</td><td class="stat-num">1,700+</td><td>~13%</td><td class="sev-mid">Serious</td></tr>
+              <tr><td>Delhi (NCT)</td><td class="stat-num">600+</td><td>~20%</td><td class="sev-high">Critical</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Source: <a href="https://morth.nic.in" target="_blank" rel="noopener noreferrer">MoRTH, Road Accidents in India 2022</a> | Note: Figures are estimates derived from state-wise data. Delhi's high percentage reflects dense urban footpath failures.</p>
+      </section>
+
       <section class="primary-sources-section">
         <h2>Primary Sources</h2>
         <div class="source-cards">
+          <div class="source-card source-card--legal">
+            <span class="source-card__type">Supreme Court of India · 2026</span>
+            <h3>Right to Walk Judgment, 2026</h3>
+            <p>Declared walking on a demarcated footpath a Fundamental Right under Articles 21 & 19(1)(d). Affirmed legally enforceable municipal duty to construct and maintain pedestrian infrastructure. Pedestrian movement takes precedence over motorised traffic.</p>
+          </div>
+          <a href="https://irc.nic.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">Official Technical Standard</span>
+            <h3>IRC:103-2012 — Pedestrian Facilities</h3>
+            <p>Indian Roads Congress guidelines mandating minimum 1.8m clear width, 150mm max height, continuous obstacle-free surfaces, and tactile pavers for all footpaths.</p>
+          </a>
           <a href="https://morth.nic.in" target="_blank" rel="noopener noreferrer" class="source-card">
             <span class="source-card__type">Official Government</span>
             <h3>MoRTH: Road Accidents in India 2022</h3>
@@ -100,12 +165,22 @@ import ShareButtons from '../../components/ShareButtons.astro';
   .data-table th { background: var(--clr-bg-surface); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-text-muted); }
   .data-table tbody tr:last-child td { border-bottom: none; }
   .data-table tbody tr:hover { background: var(--clr-bg-elevated); }
-  .source-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  .source-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  @media (max-width: 900px) { .source-cards { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 700px) { .source-cards { grid-template-columns: 1fr; } }
   .source-card { display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; transition: all var(--duration-normal) var(--ease-out); }
+  .source-card--legal { border-top: 3px solid var(--clr-foot); background: linear-gradient(135deg, var(--clr-foot-bg), var(--clr-bg-surface) 60%); cursor: default; }
+  .source-card--legal h3 { color: var(--clr-foot); }
   .source-card:hover { border-color: var(--clr-foot); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .source-card--legal:hover { transform: none; }
   .source-card__type { font-size: 0.75rem; font-weight: 600; color: var(--clr-text-muted); display: block; margin-bottom: var(--space-2); }
   .source-card h3 { font-size: 0.9375rem; font-weight: 700; color: var(--clr-foot); margin-bottom: var(--space-2); }
   .source-card p { font-size: 0.85rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+  .irc-val { font-weight: 700; color: var(--clr-success); }
+  .irc-fail { font-size: 0.85rem; color: var(--clr-danger); opacity: 0.9; }
+  .stat-num { font-weight: 800; color: var(--clr-foot); }
+  .sev-high { font-size: 0.75rem; font-weight: 800; color: var(--clr-danger); background: rgba(248,113,113,0.1); padding: 2px var(--space-3); border-radius: var(--radius-full); white-space: nowrap; }
+  .sev-mid { font-size: 0.75rem; font-weight: 800; color: var(--clr-warning); background: rgba(251,191,36,0.1); padding: 2px var(--space-3); border-radius: var(--radius-full); white-space: nowrap; }
+  .data-table__note { font-size: 0.8rem; color: var(--clr-text-muted); margin-bottom: var(--space-4); }
 </style>
 

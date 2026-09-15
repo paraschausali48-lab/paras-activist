@@ -1,0 +1,243 @@
+---
+// CampaignCard.astro - Interactive campaign challenge card
+interface Props {
+  number: string;
+  title: string;
+  description: string;
+  iconEmoji: string;
+  hashtags?: string[];
+  ctaLabel: string;
+  ctaType: 'copy' | 'link' | 'modal';
+  copyContent?: string;
+  href?: string;
+  modalId?: string;
+}
+
+const { number, title, description, iconEmoji, hashtags = [], ctaLabel, ctaType, copyContent, href, modalId } = Astro.props;
+const cardId = `campaign-card-${number.replace(/\s+/g, '-').toLowerCase()}`;
+const btnId = `campaign-btn-${number.replace(/\s+/g, '-').toLowerCase()}`;
+---
+
+<div class="campaign-card reveal" id={cardId} role="article">
+  <div class="campaign-card__header">
+    <span class="campaign-card__number" aria-hidden="true">{number}</span>
+    <span class="campaign-card__icon" aria-hidden="true">{iconEmoji}</span>
+  </div>
+  <h3 class="campaign-card__title">{title}</h3>
+  <p class="campaign-card__description">{description}</p>
+
+  {hashtags.length > 0 && (
+    <div class="campaign-card__hashtags" aria-label="Campaign hashtags">
+      {hashtags.map(tag => (
+        <span class="hashtag-chip">#{tag}</span>
+      ))}
+    </div>
+  )}
+
+  {ctaType === 'copy' && copyContent && (
+    <div class="campaign-card__copy-block">
+      <pre class="campaign-card__copy-text" aria-label="Template to copy">{copyContent}</pre>
+      <button
+        class="btn btn-outline campaign-card__cta"
+        id={btnId}
+        data-copy={copyContent}
+        aria-label={`Copy ${title} template to clipboard`}
+        type="button"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        {ctaLabel}
+      </button>
+    </div>
+  )}
+
+  {ctaType === 'link' && href && (
+    <a class="btn btn-outline campaign-card__cta" id={btnId} href={href} target="_blank" rel="noopener noreferrer">
+      {ctaLabel} →
+    </a>
+  )}
+
+  {ctaType === 'modal' && modalId && (
+    <button
+      class="btn btn-outline campaign-card__cta"
+      id={btnId}
+      data-modal={modalId}
+      aria-haspopup="dialog"
+      type="button"
+    >
+      {ctaLabel} →
+    </button>
+  )}
+</div>
+
+<style>
+  .campaign-card {
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border);
+    border-top: 3px solid var(--clr-foot);
+    border-radius: var(--radius-xl);
+    padding: var(--space-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .campaign-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--clr-foot-bg) 0%, transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .campaign-card:hover {
+    border-color: var(--clr-foot);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .campaign-card:hover::before {
+    opacity: 1;
+  }
+
+  .campaign-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .campaign-card__number {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clr-foot);
+    background: var(--clr-foot-bg);
+    border: 1px solid var(--clr-foot);
+    padding: 3px var(--space-3);
+    border-radius: var(--radius-full);
+  }
+
+  .campaign-card__icon {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+
+  .campaign-card__title {
+    font-size: 1.0625rem;
+    font-weight: 800;
+    color: var(--clr-text);
+    margin: 0;
+    line-height: 1.3;
+    position: relative;
+  }
+
+  .campaign-card__description {
+    font-size: 0.9rem;
+    color: var(--clr-text-muted);
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+  }
+
+  .campaign-card__hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    position: relative;
+  }
+
+  .hashtag-chip {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--clr-foot);
+    background: var(--clr-foot-bg);
+    border: 1px solid rgba(var(--clr-foot-rgb, 99, 179, 237), 0.25);
+    padding: 3px var(--space-3);
+    border-radius: var(--radius-full);
+    letter-spacing: 0.02em;
+    user-select: all;
+  }
+
+  .campaign-card__cta {
+    align-self: flex-start;
+    font-size: 0.85rem;
+    padding: var(--space-2) var(--space-5);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    position: relative;
+    cursor: pointer;
+    border-color: var(--clr-foot);
+    color: var(--clr-foot);
+  }
+
+  .campaign-card__cta:hover {
+    background: var(--clr-foot-bg);
+  }
+
+  .campaign-card__copy-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    position: relative;
+  }
+
+  .campaign-card__copy-text {
+    background: var(--clr-bg-elevated);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    font-size: 0.78rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+    font-family: inherit;
+    max-height: 140px;
+    overflow-y: auto;
+  }
+
+  .campaign-card__cta.copied {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: var(--clr-success);
+    color: var(--clr-success);
+  }
+</style>
+
+<script>
+  // Copy-to-clipboard logic for all campaign cards
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy || '';
+      try {
+        await navigator.clipboard.writeText(text);
+        const original = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = original;
+        }, 2500);
+      } catch {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+    });
+  });
+</script>

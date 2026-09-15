@@ -1,4 +1,4 @@
-﻿---
+---
 // src/pages/food-security/data.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StatHighlight from '../../components/StatHighlight.astro';
@@ -24,8 +24,10 @@ import ShareButtons from '../../components/ShareButtons.astro';
 
       <div class="stats-showcase stagger">
         <StatHighlight number="111th" label="India's Global Hunger Index rank in 2023 out of 125 nations" source="Welthungerhilfe, GHI 2023" color="food" />
+        <StatHighlight number="15–30%" label="of fruits, vegetables & perishables lost post-harvest — creating artificial scarcity and driving up prices (MoFPI / ICAR)" source="Ministry of Food Processing Industries & ICAR, 2022" color="food" />
         <StatHighlight number="61 MT" label="Grain held in FCI central storage in 2022 - 2.9x the buffer norm of 21 MT" source="FCI Annual Report 2022-23" color="food" />
         <StatHighlight number="Rs 92,000 Cr" label="Annual food wastage value in India" source="ICAR, 2022" color="food" />
+        <StatHighlight number="10–15%" label="of catered event food in India is discarded unused while millions face food insecurity" source="Industry estimates, Robin Hood Army operational data" color="food" />
         <StatHighlight number="67%" label="Population covered under NFSA 2013 - but exclusion errors remain widespread" source="National Food Security Act, 2013" color="food" />
         <StatHighlight number="189.2M" label="People undernourished in India (2022-24 estimate)" source="FAO State of Food Security Report 2024" color="food" />
       </div>
@@ -57,10 +59,41 @@ import ShareButtons from '../../components/ShareButtons.astro';
         <p class="source-note">Source: <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer">Global Hunger Index - India</a></p>
       </section>
 
+      <!-- Post-Harvest Loss Table -->
+      <section class="data-table-section">
+        <h2>Post-Harvest Losses by Food Category — India</h2>
+        <p class="data-table__note">Data from MoFPI and ICAR estimates. These losses create artificial scarcity, reduce farm income, and directly inflate consumer prices.</p>
+        <div class="table-wrapper" role="region" aria-label="Post-harvest loss by food category" tabindex="0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Food Category</th>
+                <th scope="col">Estimated Loss (%)</th>
+                <th scope="col">Primary Cause</th>
+                <th scope="col">Price Impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Fruits & Vegetables</td><td class="loss-high">15–30%</td><td>Cold-chain gaps, rough handling</td><td class="impact-high">High ↑ retail markup</td></tr>
+              <tr><td>Fish & Meat</td><td class="loss-high">25–30%</td><td>Absence of cold-chain infrastructure</td><td class="impact-high">High ↑ protein costs</td></tr>
+              <tr><td>Dairy Products</td><td class="loss-med">3–4%</td><td>Poor last-mile logistics</td><td class="impact-med">Moderate ↑ prices</td></tr>
+              <tr><td>Grain & Cereals</td><td class="loss-med">5–10%</td><td>Inadequate warehousing, rodents</td><td class="impact-med">Moderate ↑ prices</td></tr>
+              <tr><td>Pulses & Legumes</td><td class="loss-med">6–10%</td><td>Storage and transit losses</td><td class="impact-med">Moderate ↑ prices</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Source: <a href="https://mofpi.gov.in" target="_blank" rel="noopener noreferrer">Ministry of Food Processing Industries (MoFPI)</a> & <a href="https://icar.org.in" target="_blank" rel="noopener noreferrer">ICAR Post-Harvest Loss Assessment, 2022</a></p>
+      </section>
+
       <!-- Source Links -->
       <section class="primary-sources-section">
         <h2>Primary Sources</h2>
         <div class="source-cards">
+          <a href="https://mofpi.gov.in" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">Official Government Ministry</span>
+            <h3>MoFPI Annual Report 2023-24</h3>
+            <p>Ministry of Food Processing Industries. Post-harvest loss data, cold-chain infrastructure gaps, and food processing sector policy.</p>
+          </a>
           <a href="https://www.globalhungerindex.org/india.html" target="_blank" rel="noopener noreferrer" class="source-card">
             <span class="source-card__type">Official International Index</span>
             <h3>Global Hunger Index 2023</h3>
@@ -75,6 +108,16 @@ import ShareButtons from '../../components/ShareButtons.astro';
             <span class="source-card__type">Official Government Research</span>
             <h3>ICAR Food Wastage Report 2022</h3>
             <p>Indian Council of Agricultural Research. Comprehensive food loss estimates across value chain stages.</p>
+          </a>
+          <a href="https://robinhoodarmy.com" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">NGO Impact Report</span>
+            <h3>Robin Hood Army — Annual Impact Data</h3>
+            <p>Operational data on urban food rescue at scale: turnaround time, cities covered, meals redistributed from caterers and restaurants.</p>
+          </a>
+          <a href="https://nofoodwaste.org" target="_blank" rel="noopener noreferrer" class="source-card">
+            <span class="source-card__type">NGO Impact Report</span>
+            <h3>No Food Waste — Community Fridge Data</h3>
+            <p>Community fridge pilots, food redistribution volumes, and impact assessments across Indian cities.</p>
           </a>
           <a href="https://www.fao.org/publications/sofi" target="_blank" rel="noopener noreferrer" class="source-card">
             <span class="source-card__type">Official UN Agency</span>
@@ -156,11 +199,13 @@ import ShareButtons from '../../components/ShareButtons.astro';
   .category--serious { background: rgba(251,191,36,0.15); color: var(--clr-warning); }
   .category--alarming { background: rgba(248,113,113,0.15); color: var(--clr-danger); }
 
-  .source-cards {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4);
-  }
+  .source-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  @media (max-width: 960px) { .source-cards { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 700px) { .source-cards { grid-template-columns: 1fr; } }
+  .loss-high { font-weight: 700; color: var(--clr-danger); }
+  .loss-med { font-weight: 700; color: var(--clr-warning); }
+  .impact-high { font-size: 0.82rem; color: var(--clr-danger); font-weight: 600; }
+  .impact-med { font-size: 0.82rem; color: var(--clr-warning); font-weight: 600; }
 
   .source-card {
     display: block;

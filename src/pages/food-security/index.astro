@@ -8,11 +8,86 @@ import { getCollection } from 'astro:content';
 const articles = (await getCollection('food-security')).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
+
+const carouselSlides = [
+  {
+    label: 'Slide 1 — The Hook',
+    text: `If farmers are dumping vegetables on roads and you are paying high prices at supermarkets — where is the money going?\n\n#StopFoodWastage #AffordableFood #FoodForAll`
+  },
+  {
+    label: 'Slide 2 — The Problem',
+    text: `The culprit: SUPPLY CHAIN BLEED.\n\nUp to 30% of fresh produce spoils in transit due to broken cold chains and delays.\n\nYou are literally paying for food that nobody ate.\n\n#ZeroFoodWaste #SaveFoodSaveMoney`
+  },
+  {
+    label: 'Slide 3 — The Mechanism',
+    text: `Here is how waste drives your grocery bill up:\n\n🌽 Farmer harvests 100 kg of tomatoes\n🚛 30 kg spoils in transit — no cold storage\n🏪 Retailer marks up the remaining 70 kg to recover losses\n💸 You pay the price for 100 kg, but only 70 kg exists\n\n#FoodRescueIndia #AffordableFood`
+  },
+  {
+    label: 'Slide 4 — The Fix',
+    text: `How we fix it:\n\n✅ Decentralised cold-storage hubs at farm gates\n✅ Dynamic pricing: 50–70% markdowns on expiring produce\n✅ Farm-to-table cooperatives cutting out intermediaries\n✅ Mandate surplus food redistribution to NGOs\n\n#ZeroFoodWaste #FoodForAll`
+  },
+  {
+    label: 'Slide 5 — The CTA',
+    text: `Food security isn't just about growing more.\nIt's about NOT WASTING what we already harvest.\n\nIndia wastes Rs 92,000 crore worth of food every year.\nThat is enough to feed every undernourished person in the country.\n\nShare this. Demand change.\n📍 parasactivist.in/food-security/\n\n#StopFoodWastage #RespectTheHarvest`
+  },
+  {
+    label: 'Wedding Feast Caption',
+    text: `🍛 10–15% of catered event food in India is tossed out.\nMeanwhile, 1 in 7 people struggles to get two square meals a day.\n\nBefore your next wedding, birthday, or corporate party — partner with Robin Hood Army, Feeding India, or No Food Waste.\n\nOne phone call redirects surplus meals to families in need within hours. Save food, save money, feed people.\n\n#StopFoodWastage #FoodRescueIndia #ZeroFoodWaste`
+  }
+];
+
+const consumerTips = [
+  {
+    icon: '🧊',
+    title: 'First-In, First-Out (FIFO)',
+    tip: 'Place newly bought dairy and produce behind older items in the fridge. Older stock gets used first — before it spoils. This single habit eliminates most household food waste.',
+    copyText: '💡 FIFO Fridge Hack: Place new groceries BEHIND older ones so you always use the older stock first. Stops 80% of household fridge waste.\n\n#SaveFoodSaveMoney #ZeroFoodWaste'
+  },
+  {
+    icon: '🥕',
+    title: 'Buy "Ugly" Produce',
+    tip: 'Misshapen, bruised, or oddly-sized vegetables have identical nutritional value. Supermarkets reject 20–40% of farm produce on cosmetic grounds alone. Buying "seconds" lowers farm-gate losses and reduces retail prices for everyone.',
+    copyText: '🥕 That ugly tomato? Same taste. Same nutrition. Half the waste.\n\nSupermarkets reject up to 40% of farm produce on looks alone — which is why grocery prices stay high and farmers lose money.\n\nBuy imperfect produce. Save money. Reduce waste.\n\n#StopFoodWastage #AffordableFood'
+  },
+  {
+    icon: '🍲',
+    title: 'Batch Cook & Freeze',
+    tip: 'Freeze leftover gravies and curries in portions. Blanch and freeze wilting greens before they spoil. Turn stale bread into croutons or breadcrumbs. A full freezer is a food rescue system built into your kitchen.',
+    copyText: '❄️ Your freezer is your most underused food-saving tool.\n\n→ Leftover curry? Freeze it in portions.\n→ Wilting spinach? Blanch and freeze.\n→ Stale bread? Croutons or breadcrumbs.\n\nCut your grocery bill by 15–20% just by using what you already bought.\n\n#SaveFoodSaveMoney #ZeroFoodWaste'
+  }
+];
+
+const policyReforms = [
+  {
+    icon: '🤝',
+    number: '01',
+    title: 'Mandate Surplus Redistribution',
+    description: 'Commercial kitchens, banquet halls, and large supermarket chains should be legally required to partner with verified food rescue NGOs — rather than disposing of surplus food. Organisations like Robin Hood Army and No Food Waste have already proved the model works at scale.',
+    hashtags: ['FoodRescueIndia', 'StopFoodWastage', 'FoodForAll'],
+    copyText: '📢 POLICY DEMAND: Mandate that commercial kitchens, banquet halls, and supermarkets partner with food rescue NGOs instead of dumping surplus food.\n\nRobin Hood Army and No Food Waste have already proved this works at scale.\n\nTag your local MLA/MP and demand this become law.\n\n#FoodRescueIndia #StopFoodWastage #FoodForAll\n\nSource: parasactivist.in/food-security/'
+  },
+  {
+    icon: '🏷️',
+    number: '02',
+    title: 'Dynamic Markdowns on Expiring Food',
+    description: 'Demand that grocery chains and quick-commerce apps introduce 50–70% end-of-day discounts on produce nearing expiry — a model standard across Europe (Lidl, Marks & Spencer, Too Good To Go) that dramatically cuts household costs and eliminates retail food waste.',
+    hashtags: ['AffordableFood', 'ZeroFoodWaste', 'SaveFoodSaveMoney'],
+    copyText: '📢 POLICY DEMAND: Grocery chains and quick-commerce apps should offer 50–70% markdowns on food nearing expiry.\n\nThis is already standard in Europe — it cuts household grocery bills AND eliminates retail food waste.\n\nTag @BigBasket @Blinkit @Swiggy @Zepto and demand end-of-day price drops.\n\n#AffordableFood #ZeroFoodWaste #SaveFoodSaveMoney'
+  },
+  {
+    icon: '🧺',
+    number: '03',
+    title: 'Community Fridges',
+    description: 'Encourage installation of public "pantry fridges" outside restaurants and offices where clean, packed excess food can be collected by anyone — without registration, stigma, or paperwork. Several Indian cities have successful pilots. This needs to scale.',
+    hashtags: ['FoodForAll', 'ZeroFoodWaste', 'FoodRescueIndia'],
+    copyText: '📢 COMMUNITY ASK: Install public "community fridges" outside restaurants and offices in our city.\n\nAnyone can deposit clean, packed surplus food. Anyone can take what they need — no registration, no stigma.\n\nTag your local restaurant association, RWA, or municipality and ask them to start one.\n\n#FoodForAll #ZeroFoodWaste #FoodRescueIndia'
+  }
+];
 ---
 
 <BaseLayout
   title="Food Security"
-  description="India is the world's second-largest food producer yet ranks 111th on the Global Hunger Index. This is not a production crisis - it is a distribution and political will crisis. Evidence-based analysis."
+  description="India is the world's second-largest food producer yet ranks 111th on the Global Hunger Index. 15-30% of perishables rot in transit, driving up grocery bills. This is not a production crisis — it is a distribution and political will crisis."
   ogImage="/og/food-security.png"
   causeColor="food"
 >
@@ -21,7 +96,7 @@ const articles = (await getCollection('food-security')).sort(
     <div class="container">
       <div class="cause-hero__inner">
         <div class="cause-hero__label">
-          <span class="tag tag--food">Food Food Security</span>
+          <span class="tag tag--food">Food Security</span>
         </div>
         <h1 class="cause-hero__heading">
           India wastes food.<br />
@@ -29,7 +104,7 @@ const articles = (await getCollection('food-security')).sort(
           These facts coexist.
         </h1>
         <p class="cause-hero__sub">
-          The Global Hunger Index 2023 ranks India 111th out of 125 nations. In the same year, the Food Corporation of India held over <strong>61 million metric tonnes</strong> of grain in central storage - nearly three times the buffer norm. This is not a production problem. It is a system problem.
+          The Global Hunger Index 2023 ranks India 111th out of 125 nations. In the same year, the Food Corporation of India held over <strong>61 million metric tonnes</strong> of grain in central storage — nearly three times the buffer norm. Meanwhile, 15–30% of fresh produce rots in transit before reaching consumers. This is not a production problem. It is a system problem — and it is making your grocery bill more expensive.
         </p>
         <div class="cause-hero__actions">
           <a href="/food-security/myths/" class="btn btn-primary" id="food-myths-cta">
@@ -46,6 +121,13 @@ const articles = (await getCollection('food-security')).sort(
             @stopfoodwastagein
           </a>
         </div>
+
+        <!-- Hashtag strip -->
+        <div class="hashtag-strip" aria-label="Campaign hashtags">
+          {['StopFoodWastage','ZeroFoodWaste','AffordableFood','FoodForAll','SaveFoodSaveMoney','FoodRescueIndia'].map(tag => (
+            <span class="hashtag-strip__chip">#{tag}</span>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -55,13 +137,360 @@ const articles = (await getCollection('food-security')).sort(
     <div class="container">
       <div class="stats-grid">
         <StatHighlight number="111th" label="India's rank on the Global Hunger Index 2023 (out of 125 nations)" source="Welthungerhilfe / Global Hunger Index 2023" color="food" />
-        <StatHighlight number="Rs 92,000 Cr" label="Estimated annual food wastage in India (ICAR 2022)" source="Indian Council of Agricultural Research, 2022" color="food" />
-        <StatHighlight number="61 MT" label="Grain held in FCI central storage in 2022 - nearly 3x the buffer norm" source="Food Corporation of India Annual Report 2022-23" color="food" />
+        <StatHighlight number="15–30%" label="of fruits, vegetables & perishables spoil before reaching consumers — driving up grocery prices (MoFPI / ICAR)" source="Ministry of Food Processing Industries & ICAR, 2022" color="food" />
+        <StatHighlight number="Rs 92,000 Cr" label="Estimated annual food wastage in India — enough to address chronic undernutrition" source="Indian Council of Agricultural Research, 2022" color="food" />
       </div>
     </div>
   </section>
 
-  <!-- Articles -->
+  <!-- ── Section 1: Supply Chain Bleed ── -->
+  <section class="section--sm supply-chain" aria-label="How supply chain waste drives food prices up">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">📦 The Hidden Tax on Your Grocery Bill</span>
+        <h2>How Wasted Food Makes Food Expensive</h2>
+        <p class="section-sub">
+          Food inflation is not just about demand. It is about how much food disappears between the farm and your table.
+        </p>
+      </div>
+
+      <div class="supply-chain__grid">
+        <!-- Left: The Paradox Explainer -->
+        <div class="supply-card supply-card--paradox reveal">
+          <div class="supply-card__badge">The Paradox</div>
+          <h3>World's 2nd largest food producer. 111th on Global Hunger Index.</h3>
+          <p>India grows more grain, milk, fruits, and vegetables than almost any country on earth. Yet millions face chronic undernutrition — not because we don't produce enough, but because up to <strong>30% of what we produce never reaches anyone.</strong></p>
+          <blockquote class="supply-card__quote">
+            "Wasted food creates artificial scarcity. Artificial scarcity drives prices up. High prices make food unaffordable. You pay the cost of the waste."
+          </blockquote>
+        </div>
+
+        <!-- Right: The Price Flow -->
+        <div class="reveal reveal-delay-1">
+          <div class="supply-card supply-card--flow">
+            <div class="supply-card__badge">How Your Price Gets Inflated</div>
+            <div class="price-flow">
+              <div class="price-flow__step price-flow__step--farm">
+                <span class="price-flow__icon">🌾</span>
+                <div>
+                  <strong>Farm Gate</strong>
+                  <span>100 kg tomatoes harvested</span>
+                </div>
+              </div>
+              <div class="price-flow__arrow" aria-hidden="true">↓</div>
+              <div class="price-flow__step price-flow__step--loss">
+                <span class="price-flow__icon">🚛</span>
+                <div>
+                  <strong>Transit Loss</strong>
+                  <span>25–30 kg rots — no cold storage</span>
+                </div>
+              </div>
+              <div class="price-flow__arrow" aria-hidden="true">↓</div>
+              <div class="price-flow__step price-flow__step--retail">
+                <span class="price-flow__icon">🏪</span>
+                <div>
+                  <strong>Retail Markup</strong>
+                  <span>70 kg priced to recover 100 kg costs</span>
+                </div>
+              </div>
+              <div class="price-flow__arrow" aria-hidden="true">↓</div>
+              <div class="price-flow__step price-flow__step--consumer">
+                <span class="price-flow__icon">💸</span>
+                <div>
+                  <strong>You Pay</strong>
+                  <span>For food that nobody ate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="supply-card supply-card--methane reveal reveal-delay-2">
+            <div class="supply-card__badge">The Climate Cost</div>
+            <p>Wasted food in municipal dumps decomposes anaerobically, generating <strong>methane</strong> — a greenhouse gas over 25× more potent than CO₂. India's food waste is not just an economic crisis. It is a climate emergency.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Section 2: Social Media Toolkit ── -->
+  <section class="section--sm social-toolkit" aria-label="Social media content toolkit for food security">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">📱 Share Toolkit</span>
+        <h2>Ready-to-Post Social Media Copy</h2>
+        <p class="section-sub">
+          Six pre-formatted posts for WhatsApp, Instagram, and Twitter. Copy in one tap. No editing needed.
+        </p>
+      </div>
+
+      <div class="social-slides">
+        {carouselSlides.map((slide, i) => (
+          <div class={`social-slide reveal reveal-delay-${(i % 3) + 1}`}>
+            <div class="social-slide__header">
+              <span class="social-slide__label">{slide.label}</span>
+            </div>
+            <pre class="social-slide__text">{slide.text}</pre>
+            <button
+              class="btn btn-outline social-slide__copy"
+              id={`food-copy-slide-${i}`}
+              data-copy={slide.text}
+              type="button"
+              aria-label={`Copy ${slide.label} to clipboard`}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Section 3: Consumer Action Guide ── -->
+  <section class="section--sm consumer-guide" aria-label="Consumer tips to cut grocery bill and reduce food waste">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">🛒 Take Action at Home</span>
+        <h2>Cut Your Grocery Bill by 20% — Starting Today</h2>
+        <p class="section-sub">
+          Individual action and systemic change are not in conflict. Here is what you can do right now — with a shareable tip for each.
+        </p>
+      </div>
+
+      <div class="consumer-guide__grid">
+        {consumerTips.map((tip, i) => (
+          <div class={`consumer-card reveal reveal-delay-${i + 1}`}>
+            <div class="consumer-card__icon" aria-hidden="true">{tip.icon}</div>
+            <h3 class="consumer-card__title">{tip.title}</h3>
+            <p class="consumer-card__body">{tip.tip}</p>
+            <button
+              class="btn btn-outline consumer-card__copy"
+              id={`consumer-tip-${i}`}
+              data-copy={tip.copyText}
+              type="button"
+              aria-label={`Copy ${tip.title} tip to clipboard`}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy & Share Tip
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Section 4: Policy Reforms ── -->
+  <section class="section--sm policy-hub" aria-label="Policy reforms to advocate for food security">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">🏛️ Advocate for Change</span>
+        <h2>Three Systemic Reforms — Champion Them</h2>
+        <p class="section-sub">
+          Consumer tips matter. But the scale of India's food waste requires structural solutions. Here is what to demand from your elected representatives and corporations.
+        </p>
+      </div>
+
+      <div class="policy-hub__grid">
+        {policyReforms.map((policy, i) => (
+          <div class={`policy-card reveal reveal-delay-${i + 1}`}>
+            <div class="policy-card__header">
+              <span class="policy-card__number">{policy.number}</span>
+              <span class="policy-card__icon" aria-hidden="true">{policy.icon}</span>
+            </div>
+            <h3 class="policy-card__title">{policy.title}</h3>
+            <p class="policy-card__body">{policy.description}</p>
+            <div class="policy-card__hashtags" aria-label="Relevant hashtags">
+              {policy.hashtags.map(tag => (
+                <span class="hashtag-chip">#{tag}</span>
+              ))}
+            </div>
+            <button
+              class="btn btn-outline policy-card__copy"
+              id={`policy-copy-${i}`}
+              data-copy={policy.copyText}
+              type="button"
+              aria-label={`Copy ${policy.title} advocacy post`}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Advocacy Post
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <div class="food-ngos reveal">
+        <span class="food-ngos__label">Food Rescue Organisations to Support & Contact</span>
+        <div class="food-ngos__list">
+          <a href="https://robinhoodarmy.com" target="_blank" rel="noopener noreferrer" class="ngo-chip">🤝 Robin Hood Army</a>
+          <a href="https://feedingindia.org" target="_blank" rel="noopener noreferrer" class="ngo-chip">🍱 Feeding India</a>
+          <a href="https://nofoodwaste.org" target="_blank" rel="noopener noreferrer" class="ngo-chip">🌱 No Food Waste</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 📅 Seasonal Produce Calendar ── -->
+  <section class="section--sm seasonal" aria-label="Seasonal produce calendar for India">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">📅 Buy Smart, Save More</span>
+        <h2>India Seasonal Produce Calendar</h2>
+        <p class="section-sub">
+          Buying in-season costs 40–60% less than out-of-season produce and eliminates cold-chain transit waste. This is your most practical tool against food inflation.
+        </p>
+      </div>
+      <div class="season-grid">
+        <div class="season-card season-card--winter reveal reveal-delay-1">
+          <div class="season-card__header">
+            <span class="season-card__icon">❄️</span>
+            <div>
+              <h3 class="season-card__title">Winter</h3>
+              <span class="season-card__months">October – February</span>
+            </div>
+          </div>
+          <ul class="season-card__list">
+            <li>🥕 Carrots, radishes, beetroot</li>
+            <li>🌱 Peas, beans, fenugreek</li>
+            <li>🥦 Spinach, mustard leaves, cabbage</li>
+            <li>🦔 Cauliflower, broccoli</li>
+            <li>🍊 Oranges, guava, amla</li>
+            <li>🍯 Jaggery, sesame (til)</li>
+          </ul>
+          <div class="season-card__tip">💡 Peak supply = lowest prices. Stock up on winter vegetables for batch cooking and freezing.</div>
+        </div>
+        <div class="season-card season-card--summer reveal reveal-delay-2">
+          <div class="season-card__header">
+            <span class="season-card__icon">☀️</span>
+            <div>
+              <h3 class="season-card__title">Summer</h3>
+              <span class="season-card__months">March – June</span>
+            </div>
+          </div>
+          <ul class="season-card__list">
+            <li>🥭 Mangoes (600+ varieties in India)</li>
+            <li>🍉 Watermelon, muskmelon</li>
+            <li>🍆 Bottle gourd, ridge gourd, tinda</li>
+            <li>🥑 Raw jackfruit, drumstick (moringa)</li>
+            <li>🍅 Tomatoes (peak, cheapest season)</li>
+            <li>🧅 Cucumber, ash gourd</li>
+          </ul>
+          <div class="season-card__tip">💡 Make mango pulp and freeze it. Buy tomatoes in bulk and sun-dry them to avoid buying at off-season prices.</div>
+        </div>
+        <div class="season-card season-card--monsoon reveal reveal-delay-3">
+          <div class="season-card__header">
+            <span class="season-card__icon">🌧️</span>
+            <div>
+              <h3 class="season-card__title">Monsoon</h3>
+              <span class="season-card__months">July – September</span>
+            </div>
+          </div>
+          <ul class="season-card__list">
+            <li>🌽 Sweet corn (peak season)</li>
+            <li>🫐 Bitter gourd, snake gourd</li>
+            <li>🍏 Jamun, litchi</li>
+            <li>🌿 Colocasia (arbi), yam</li>
+            <li>🥑 Ripe jackfruit</li>
+            <li>🍅 Brinjal, lady's finger</li>
+          </ul>
+          <div class="season-card__tip">💡 Avoid leafy greens in peak monsoon (contamination risk is higher). Focus on gourds and root vegetables.</div>
+        </div>
+      </div>
+      <div class="seasonal-share reveal">
+        <button class="btn btn-outline" id="copy-seasonal" data-copy="📅 INDIA SEASONAL PRODUCE CALENDAR — Buy in-season = 40-60% cheaper + zero transit waste\n\n❄️ WINTER (Oct–Feb): Carrots, peas, spinach, cauliflower, oranges, guava\n☀️ SUMMER (Mar–Jun): Mangoes, watermelon, bottle gourd, tomatoes (cheapest), drumstick\n🌧️ MONSOON (Jul–Sep): Corn, bitter gourd, jamun, jackfruit, brinjal\n\nPro tip: Buy at peak, batch cook and freeze. Your grocery bill drops 15-20% immediately.\n\n#SaveFoodSaveMoney #AffordableFood #ZeroFoodWaste #StopFoodWastage" type="button" aria-label="Copy seasonal calendar">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy & Share Calendar
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 🏦 PDS Gap Explainer ── -->
+  <section class="section--sm pds-section" aria-label="PDS and NFSA rights explainer">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">🏦 Know Your Entitlements</span>
+        <h2>The PDS Gap — Who Falls Through the Net</h2>
+        <p class="section-sub">
+          The National Food Security Act (NFSA) 2013 covers 81 crore people. But the gap between who is entitled and who actually receives is enormous.
+        </p>
+      </div>
+      <div class="pds-grid">
+        <div class="pds-card pds-card--covered reveal reveal-delay-1">
+          <div class="pds-card__badge">✔️ Covered</div>
+          <h3>Who NFSA Covers</h3>
+          <ul>
+            <li>~81 crore people (67% of India's population)</li>
+            <li>5 kg grain/person/month at subsidised rates</li>
+            <li>Antodaya Anna Yojana (AAY) households: 35 kg/month</li>
+            <li>Access via state-issued ration card (NPHH / PHH)</li>
+          </ul>
+        </div>
+        <div class="pds-card pds-card--excluded reveal reveal-delay-2">
+          <div class="pds-card__badge">❌ Falls Through</div>
+          <h3>Who Gets Excluded</h3>
+          <ul>
+            <li>Migrant workers without a local ration card</li>
+            <li>Families rejected due to Aadhaar biometric mismatch</li>
+            <li>Households in states that update beneficiary lists infrequently</li>
+            <li>Homeless individuals without address proof</li>
+            <li>Newly married women / students away from home state</li>
+          </ul>
+        </div>
+        <div class="pds-card pds-card--action reveal reveal-delay-3">
+          <div class="pds-card__badge">📢 Take Action</div>
+          <h3>How to Claim / Escalate</h3>
+          <ul>
+            <li><strong>Apply for ration card:</strong> Your State's Food & Civil Supplies portal or <a href="https://mera.nic.in" target="_blank" rel="noopener noreferrer">mera.nic.in</a></li>
+            <li><strong>ONORC portability:</strong> Use your ration card in any state via One Nation One Ration Card</li>
+            <li><strong>Denied / excluded?</strong> File grievance at <a href="https://pgportal.gov.in" target="_blank" rel="noopener noreferrer">pgportal.gov.in</a> under Ministry of Consumer Affairs</li>
+            <li><strong>Supreme Court order:</strong> The SC has repeatedly held that denial of PDS entitlement is a violation of the right to life under Article 21</li>
+          </ul>
+          <button class="btn btn-outline pds-card__copy" id="copy-pds" data-copy="Know your PDS / NFSA food rights in India:\n\n✔️ You are ENTITLED to: 5 kg grain/month/person at subsidised rate under NFSA 2013\n✔️ ONORC: Use your ration card in ANY Indian state\n\nDenied? Excluded?\n💻 Apply: mera.nic.in (state food portal)\n📝 File grievance: pgportal.gov.in (Ministry of Consumer Affairs)\n🏛️ SC ruling: Denial of PDS is a violation of Article 21 (Right to Life)\n\n#FoodForAll #NFSA #AffordableFood #FoodSecurity" type="button" aria-label="Copy PDS rights info">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy Rights Info
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 📈 Food Inflation Tracker ── -->
+  <section class="section--sm inflation-tracker" aria-label="Food inflation tracker India">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">📈 Price Tracking</span>
+        <h2>Food Inflation Tracker — Key Staples (2020–2026)</h2>
+        <p class="section-sub">
+          These are the items every Indian household buys. The price rises are not random — they are driven by supply chain waste, cold-chain failure, and policy gaps.
+        </p>
+      </div>
+      <div class="table-wrapper reveal" role="region" aria-label="Food price trend table" tabindex="0">
+        <table class="inflation-table">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">2020 Avg ₹/kg</th>
+              <th scope="col">2023 Avg ₹/kg</th>
+              <th scope="col">2026 Avg ₹/kg</th>
+              <th scope="col">Change (2020…2026)</th>
+              <th scope="col">Key Driver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="item-name">🍅 Tomato</td><td>₹25</td><td>₹80+ (peak)</td><td>₹40</td><td class="change-high">↑2026 +60%</td><td>Cold-chain failure, transit losses</td></tr>
+            <tr><td class="item-name">🧅 Onion</td><td>₹30</td><td>₹60</td><td>₹45</td><td class="change-high">↑2026 +50%</td><td>Storage losses, export bans</td></tr>
+            <tr><td class="item-name">🌾 Atta (Wheat Flour)</td><td>₹28</td><td>₹35</td><td>₹40</td><td class="change-high">↑2026 +43%</td><td>Global wheat prices + FCI policy</td></tr>
+            <tr><td class="item-name">🫈 Dal (Toor)</td><td>₹80</td><td>₹120</td><td>₹140</td><td class="change-crit">↑2026 +75%</td><td>Monsoon failures, import delays</td></tr>
+            <tr><td class="item-name">🍬 Edible Oil</td><td>₹90</td><td>₹180</td><td>₹150</td><td class="change-high">↑2026 +67%</td><td>Global palm oil prices, import dependency</td></tr>
+            <tr><td class="item-name">🥛 Eggs (per dozen)</td><td>₹60</td><td>₹75</td><td>₹85</td><td class="change-mid">↑2026 +42%</td><td>Feed cost increases</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="inflation-note reveal">Source: <a href="https://fcainfoweb.nic.in" target="_blank" rel="noopener noreferrer">DPIIT / Ministry of Consumer Affairs Price Monitoring</a> | Figures are indicative averages; actual prices vary by city and market. <strong>The direction of change is consistent across all sources.</strong></p>
+    </div>
+  </section>
+
   {articles.length > 0 && (
     <section class="section--sm" aria-label="Articles on food security">
       <div class="container">
@@ -90,17 +519,17 @@ const articles = (await getCollection('food-security')).sort(
       <h2>Explore Food Security</h2>
       <div class="cause-nav__grid">
         <a href="/food-security/myths/" class="cause-nav__card" id="nav-food-myths">
-          <span class="cause-nav__icon" aria-hidden="true">Media vs Yes</span>
+          <span class="cause-nav__icon" aria-hidden="true">⚖️</span>
           <h3>Myth vs. Fact</h3>
           <p>Counter the most common misinformation about India's hunger crisis with verified data.</p>
         </a>
         <a href="/food-security/data/" class="cause-nav__card" id="nav-food-data">
-          <span class="cause-nav__icon" aria-hidden="true">Data</span>
+          <span class="cause-nav__icon" aria-hidden="true">📊</span>
           <h3>Data & Statistics</h3>
-          <p>Government reports, GHI rankings, FCI data, and ICAR estimates - all cited and sourced.</p>
+          <p>Government reports, GHI rankings, FCI data, post-harvest loss estimates — all cited and sourced.</p>
         </a>
         <a href="/share-toolkit" class="cause-nav__card" id="nav-food-share">
-          <span class="cause-nav__icon" aria-hidden="true">Share</span>
+          <span class="cause-nav__icon" aria-hidden="true">📲</span>
           <h3>Share Toolkit</h3>
           <p>WhatsApp and Telegram-ready image cards for every key fact on food security.</p>
         </a>
@@ -110,97 +539,370 @@ const articles = (await getCollection('food-security')).sort(
 </BaseLayout>
 
 <style>
+  /* ── Hero ── */
   .cause-hero {
     padding-block: var(--space-16) var(--space-12);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
-
   .cause-hero::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
+    content: ''; position: absolute; top: 0; right: 0;
     width: 40vw; height: 40vw;
     background: radial-gradient(circle, var(--clr-food-bg) 0%, transparent 60%);
     pointer-events: none;
   }
-
   .cause-hero__inner { position: relative; z-index: 1; max-width: 720px; }
   .cause-hero__label { margin-bottom: var(--space-5); }
-
-  .cause-hero__heading {
-    margin-bottom: var(--space-5);
-    font-size: clamp(2rem, 5vw, 3.25rem);
-  }
-
+  .cause-hero__heading { margin-bottom: var(--space-5); font-size: clamp(2rem, 5vw, 3.25rem); }
   .cause-hero__accent { color: var(--clr-food); }
-
-  .cause-hero__sub {
-    color: var(--clr-text-muted);
-    font-size: 1.0625rem;
-    max-width: 60ch;
-    margin-bottom: var(--space-8);
-    line-height: 1.7;
-  }
-
+  .cause-hero__sub { color: var(--clr-text-muted); font-size: 1.0625rem; max-width: 60ch; margin-bottom: var(--space-8); line-height: 1.7; }
   .cause-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8); }
   .cause-hero__share { display: flex; flex-direction: column; align-items: flex-start; }
 
   .insta-handle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: var(--space-4);
-    padding: 6px var(--space-4);
-    border-radius: var(--radius-full);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid currentColor;
-    transition: all var(--duration-fast) var(--ease-out);
-    opacity: 0.85;
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: var(--space-4); padding: 6px var(--space-4);
+    border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; border: 1px solid currentColor;
+    transition: all var(--duration-fast) var(--ease-out); opacity: 0.85;
   }
   .insta-handle:hover { opacity: 1; transform: translateY(-1px); }
   .insta-handle--food { color: var(--clr-food); background: var(--clr-food-bg); border-color: var(--clr-food); }
 
+  .hashtag-strip { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); }
+  .hashtag-strip__chip {
+    font-size: 0.72rem; font-weight: 700; color: var(--clr-food);
+    background: var(--clr-food-bg); border: 1px solid rgba(245,166,35,0.25);
+    padding: 4px var(--space-3); border-radius: var(--radius-full);
+    cursor: default; user-select: all;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+  .hashtag-strip__chip:hover { opacity: 0.8; }
+
+  /* ── Stats ── */
   .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
   @media (max-width: 768px) { .stats-grid { grid-template-columns: 1fr; } }
 
-  .article-list { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-6); }
+  /* ── Shared section header ── */
+  .section-eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clr-accent); margin-bottom: var(--space-3); }
+  .section-header { text-align: center; margin-bottom: var(--space-12); }
+  .section-sub { color: var(--clr-text-muted); max-width: 55ch; margin-inline: auto; font-size: 1.0625rem; margin-top: var(--space-4); line-height: 1.75; }
 
+  /* ── Supply Chain Section ── */
+  .supply-chain__grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: start;
+  }
+  @media (max-width: 860px) { .supply-chain__grid { grid-template-columns: 1fr; } }
+
+  .supply-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-7);
+    display: flex; flex-direction: column; gap: var(--space-5);
+    transition: box-shadow var(--duration-normal) var(--ease-out);
+  }
+  .supply-card + .supply-card { margin-top: var(--space-5); }
+  .supply-card:hover { box-shadow: var(--shadow-lg); }
+
+  .supply-card--paradox {
+    border-left: 4px solid var(--clr-food);
+    background: linear-gradient(135deg, var(--clr-food-bg), var(--clr-bg-surface) 60%);
+  }
+  .supply-card--flow { border-top: 3px solid var(--clr-danger); }
+  .supply-card--methane { border-top: 3px solid rgba(74,222,128,0.5); }
+
+  .supply-card__badge {
+    display: inline-flex; align-self: flex-start;
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--clr-food); background: var(--clr-food-bg);
+    border: 1px solid var(--clr-food); padding: 4px var(--space-3); border-radius: var(--radius-full);
+  }
+  .supply-card--flow .supply-card__badge { color: var(--clr-danger); background: rgba(248,113,113,0.08); border-color: var(--clr-danger); }
+  .supply-card--methane .supply-card__badge { color: var(--clr-success); background: rgba(74,222,128,0.08); border-color: var(--clr-success); }
+
+  .supply-card h3 { font-size: 1.0625rem; font-weight: 800; color: var(--clr-text); margin: 0; line-height: 1.35; }
+  .supply-card p { font-size: 0.9rem; color: var(--clr-text-muted); line-height: 1.7; margin: 0; }
+
+  .supply-card__quote {
+    font-size: 0.9375rem; font-style: italic; font-weight: 600; color: var(--clr-text);
+    border-left: 3px solid var(--clr-food); padding-left: var(--space-4); margin: 0; line-height: 1.6;
+  }
+
+  /* Price flow diagram */
+  .price-flow { display: flex; flex-direction: column; gap: 0; }
+  .price-flow__step {
+    display: flex; align-items: center; gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+  .price-flow__step:hover { background: var(--clr-bg-elevated); }
+  .price-flow__step span:first-child { font-size: 1.25rem; flex-shrink: 0; }
+  .price-flow__step div { display: flex; flex-direction: column; gap: 2px; }
+  .price-flow__step strong { font-size: 0.875rem; font-weight: 700; color: var(--clr-text); }
+  .price-flow__step span:not(:first-child) { font-size: 0.78rem; color: var(--clr-text-muted); line-height: 1.4; }
+
+  .price-flow__step--loss { background: rgba(248,113,113,0.06); border: 1px solid rgba(248,113,113,0.15); }
+  .price-flow__step--loss strong { color: var(--clr-danger); }
+  .price-flow__step--consumer { background: rgba(248,113,113,0.04); }
+  .price-flow__step--consumer strong { color: var(--clr-danger); }
+
+  .price-flow__arrow {
+    text-align: center; color: var(--clr-text-subtle); font-size: 1rem;
+    padding-block: 2px; line-height: 1;
+  }
+
+  /* ── Social Toolkit ── */
+  .social-slides { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  @media (max-width: 960px) { .social-slides { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .social-slides { grid-template-columns: 1fr; } }
+
+  .social-slide {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-5);
+    display: flex; flex-direction: column; gap: var(--space-3);
+    transition: border-color var(--duration-normal) var(--ease-out);
+  }
+  .social-slide:hover { border-color: var(--clr-food); }
+  .social-slide__label {
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--clr-text-muted);
+  }
+  .social-slide__text {
+    font-family: inherit; font-size: 0.82rem; color: var(--clr-text); line-height: 1.7;
+    white-space: pre-wrap; word-break: break-word; margin: 0; flex: 1;
+    background: var(--clr-bg-elevated); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md); padding: var(--space-3);
+  }
+  .social-slide__copy {
+    align-self: flex-start; font-size: 0.82rem; padding: var(--space-2) var(--space-4);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    border-color: var(--clr-food); color: var(--clr-food); cursor: pointer;
+  }
+  .social-slide__copy:hover { background: var(--clr-food-bg); }
+  .social-slide__copy.copied { border-color: var(--clr-success); color: var(--clr-success); background: rgba(74,222,128,0.08); }
+
+  /* ── Consumer Guide ── */
+  .consumer-guide__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+  @media (max-width: 860px) { .consumer-guide__grid { grid-template-columns: 1fr; } }
+
+  .consumer-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-top: 3px solid var(--clr-food);
+    border-radius: var(--radius-xl); padding: var(--space-7);
+    display: flex; flex-direction: column; gap: var(--space-4);
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative; overflow: hidden;
+  }
+  .consumer-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--clr-food-bg) 0%, transparent 70%);
+    opacity: 0; transition: opacity var(--duration-normal) var(--ease-out); pointer-events: none;
+  }
+  .consumer-card:hover { border-color: var(--clr-food); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .consumer-card:hover::before { opacity: 1; }
+
+  .consumer-card__icon { font-size: 2rem; line-height: 1; position: relative; }
+  .consumer-card__title { font-size: 1rem; font-weight: 800; color: var(--clr-text); margin: 0; position: relative; }
+  .consumer-card__body { font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.7; margin: 0; flex: 1; position: relative; }
+
+  .consumer-card__copy {
+    align-self: flex-start; font-size: 0.82rem; padding: var(--space-2) var(--space-4);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    border-color: var(--clr-food); color: var(--clr-food); cursor: pointer; position: relative;
+  }
+  .consumer-card__copy:hover { background: var(--clr-food-bg); }
+  .consumer-card__copy.copied { border-color: var(--clr-success); color: var(--clr-success); }
+
+  /* ── Policy Hub ── */
+  .policy-hub__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-bottom: var(--space-8); }
+  @media (max-width: 960px) { .policy-hub__grid { grid-template-columns: 1fr; } }
+
+  .policy-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-7);
+    display: flex; flex-direction: column; gap: var(--space-4);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+  .policy-card:hover { border-color: var(--clr-food); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+  .policy-card__header { display: flex; align-items: center; justify-content: space-between; }
+  .policy-card__number {
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--clr-food); background: var(--clr-food-bg);
+    border: 1px solid var(--clr-food); padding: 3px var(--space-3); border-radius: var(--radius-full);
+  }
+  .policy-card__icon { font-size: 1.75rem; line-height: 1; }
+  .policy-card__title { font-size: 1rem; font-weight: 800; color: var(--clr-text); margin: 0; line-height: 1.3; }
+  .policy-card__body { font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.7; margin: 0; flex: 1; }
+
+  .policy-card__hashtags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .hashtag-chip {
+    font-size: 0.72rem; font-weight: 700; color: var(--clr-food);
+    background: var(--clr-food-bg); border: 1px solid rgba(245,166,35,0.25);
+    padding: 3px var(--space-3); border-radius: var(--radius-full);
+    user-select: all;
+  }
+
+  .policy-card__copy {
+    align-self: flex-start; font-size: 0.82rem; padding: var(--space-2) var(--space-4);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    border-color: var(--clr-food); color: var(--clr-food); cursor: pointer;
+  }
+  .policy-card__copy:hover { background: var(--clr-food-bg); }
+  .policy-card__copy.copied { border-color: var(--clr-success); color: var(--clr-success); }
+
+  /* NGO callout */
+  .food-ngos {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-left: 3px solid var(--clr-food);
+    border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6);
+    display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap;
+  }
+  .food-ngos__label { font-size: 0.82rem; font-weight: 700; color: var(--clr-text-muted); flex-shrink: 0; }
+  .food-ngos__list { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+  .ngo-chip {
+    font-size: 0.82rem; font-weight: 700; color: var(--clr-food);
+    background: var(--clr-food-bg); border: 1px solid var(--clr-food);
+    padding: var(--space-2) var(--space-4); border-radius: var(--radius-full);
+    text-decoration: none; transition: all var(--duration-fast) var(--ease-out);
+  }
+  .ngo-chip:hover { opacity: 0.8; transform: translateY(-1px); }
+
+  /* ── Articles ── */
+  .article-list { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-6); }
   .article-card {
-    display: block;
-    background: var(--clr-bg-surface);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6);
-    text-decoration: none;
+    display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg); padding: var(--space-6); text-decoration: none;
     transition: all var(--duration-normal) var(--ease-out);
   }
   .article-card:hover { border-color: var(--clr-food); transform: translateX(4px); }
-
   .article-card__date { font-size: 0.8rem; color: var(--clr-text-subtle); margin-bottom: var(--space-2); }
   .article-card__title { font-size: 1.125rem; font-weight: 700; margin-bottom: var(--space-2); color: var(--clr-text); }
   .article-card__description { font-size: 0.9rem; color: var(--clr-text-muted); margin-bottom: var(--space-3); }
   .article-card__read { font-size: 0.85rem; font-weight: 600; color: var(--clr-food); }
 
+  /* ── Cause nav ── */
   .cause-nav h2 { margin-bottom: var(--space-6); }
   .cause-nav__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
   @media (max-width: 768px) { .cause-nav__grid { grid-template-columns: 1fr; } }
-
   .cause-nav__card {
-    display: block;
-    background: var(--clr-bg-surface);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6);
-    text-decoration: none;
+    display: block; background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg); padding: var(--space-6); text-decoration: none;
     transition: all var(--duration-normal) var(--ease-out);
   }
   .cause-nav__card:hover { border-color: var(--clr-food); transform: translateY(-4px); box-shadow: var(--shadow-md); }
   .cause-nav__icon { font-size: 1.5rem; display: block; margin-bottom: var(--space-3); }
   .cause-nav__card h3 { font-size: 1rem; margin-bottom: var(--space-2); color: var(--clr-text); }
   .cause-nav__card p { font-size: 0.875rem; color: var(--clr-text-muted); margin: 0; line-height: 1.5; }
+
+  /* ── Seasonal Calendar ── */
+  .season-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-bottom: var(--space-6); }
+  @media (max-width: 860px) { .season-grid { grid-template-columns: 1fr; } }
+  .season-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-6);
+    display: flex; flex-direction: column; gap: var(--space-4);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+  .season-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .season-card--winter { border-top: 3px solid #60a5fa; }
+  .season-card--summer { border-top: 3px solid var(--clr-warning); }
+  .season-card--monsoon { border-top: 3px solid #6ee7b7; }
+  .season-card__header { display: flex; align-items: center; gap: var(--space-3); }
+  .season-card__icon { font-size: 1.5rem; line-height: 1; }
+  .season-card__title { font-size: 1rem; font-weight: 800; color: var(--clr-text); margin: 0; }
+  .season-card__months { font-size: 0.72rem; color: var(--clr-text-muted); font-weight: 600; }
+  .season-card__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-2); font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.5; flex: 1; }
+  .season-card__tip {
+    font-size: 0.78rem; background: var(--clr-bg-elevated); border: 1px solid var(--clr-border);
+    border-left: 3px solid var(--clr-food); border-radius: var(--radius-md);
+    padding: var(--space-3); color: var(--clr-text-muted); line-height: 1.5;
+  }
+  .seasonal-share { display: flex; justify-content: center; }
+  .seasonal-share .btn { border-color: var(--clr-food); color: var(--clr-food); display: inline-flex; align-items: center; gap: var(--space-2); font-size: 0.85rem; cursor: pointer; }
+  .seasonal-share .btn:hover { background: var(--clr-food-bg); }
+  .seasonal-share .btn.copied { border-color: var(--clr-success); color: var(--clr-success); }
+
+  /* ── PDS Section ── */
+  .pds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+  @media (max-width: 860px) { .pds-grid { grid-template-columns: 1fr; } }
+  .pds-card {
+    background: var(--clr-bg-surface); border: 1px solid var(--clr-border);
+    border-radius: var(--radius-xl); padding: var(--space-6);
+    display: flex; flex-direction: column; gap: var(--space-4);
+  }
+  .pds-card--covered { border-top: 3px solid var(--clr-success); }
+  .pds-card--excluded { border-top: 3px solid var(--clr-danger); }
+  .pds-card--action { border-top: 3px solid var(--clr-food); }
+  .pds-card__badge {
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--clr-food); background: var(--clr-food-bg);
+    border: 1px solid var(--clr-food); padding: 3px var(--space-3); border-radius: var(--radius-full);
+    align-self: flex-start;
+  }
+  .pds-card--covered .pds-card__badge { color: var(--clr-success); background: rgba(74,222,128,0.1); border-color: var(--clr-success); }
+  .pds-card--excluded .pds-card__badge { color: var(--clr-danger); background: rgba(248,113,113,0.1); border-color: var(--clr-danger); }
+  .pds-card h3 { font-size: 0.9375rem; font-weight: 800; color: var(--clr-text); margin: 0; }
+  .pds-card ul { list-style: disc; padding-left: var(--space-5); margin: 0; display: flex; flex-direction: column; gap: var(--space-2); font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.6; flex: 1; }
+  .pds-card ul a { color: var(--clr-accent); }
+  .pds-card ul strong { color: var(--clr-text); }
+  .pds-card__copy {
+    align-self: flex-start; font-size: 0.82rem; padding: var(--space-2) var(--space-4);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    border-color: var(--clr-food); color: var(--clr-food); cursor: pointer;
+  }
+  .pds-card__copy:hover { background: var(--clr-food-bg); }
+  .pds-card__copy.copied { border-color: var(--clr-success); color: var(--clr-success); }
+
+  /* ── Inflation Tracker ── */
+  .inflation-table {
+    width: 100%; border-collapse: collapse; font-size: 0.88rem;
+  }
+  .inflation-table th, .inflation-table td {
+    padding: var(--space-4) var(--space-5); text-align: left;
+    border-bottom: 1px solid var(--clr-border);
+  }
+  .inflation-table th {
+    background: var(--clr-bg-surface); font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-text-muted);
+  }
+  .inflation-table tbody tr:hover { background: var(--clr-bg-elevated); }
+  .inflation-table tbody tr:last-child td { border-bottom: none; }
+  .item-name { font-weight: 700; color: var(--clr-text); }
+  .change-crit { font-weight: 800; color: var(--clr-danger); }
+  .change-high { font-weight: 700; color: var(--clr-warning); }
+  .change-mid { font-weight: 600; color: var(--clr-text-muted); }
+  .inflation-note {
+    font-size: 0.78rem; color: var(--clr-text-muted); line-height: 1.6;
+    margin-top: var(--space-4); padding: var(--space-4);
+    background: var(--clr-bg-surface); border-radius: var(--radius-md);
+    border: 1px solid var(--clr-border);
+  }
+  .inflation-note a { color: var(--clr-accent); }
 </style>
 
-
+<script>
+  // Generic copy-to-clipboard for all [data-copy] buttons on this page
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy || '';
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const originalHTML = btn.innerHTML;
+      btn.classList.add('copied');
+      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = originalHTML;
+      }, 2500);
+    });
+  });
+</script>

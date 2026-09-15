@@ -1,4 +1,4 @@
-﻿---
+---
 // src/pages/intersectional-justice/myths.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MythFact from '../../components/MythFact.astro';
@@ -25,8 +25,8 @@ import EvidenceCard from '../../components/EvidenceCard.astro';
       </header>
 
       <EvidenceCard
-        primarySources="3 government sources (NCRB, Supreme Court), 1 UN agency, 2 academic texts, 1 Oxfam report"
-        lastVerified="August 2025"
+        primarySources="3 government sources (NCRB, Supreme Court, BNS), 1 UN agency, 2 Acts of Parliament (PCA Act, ABC Rules 2023), 1 Parliamentary committee report (Bezbaruah), 2 academic texts, 1 Oxfam report"
+        lastVerified="September 2026"
         corrections={0}
       />
 
@@ -52,9 +52,27 @@ import EvidenceCard from '../../components/EvidenceCard.astro';
         sources="Adams C.J. (1990), The Sexual Politics of Meat; Flynn C.P. (2011), 'Examining the Link Between Animal Abuse and Human Violence,' Crime, Law and Social Change; Pew Research on co-occurrence of abuse."
       />
 
+      <!-- Myth 4: Racial slurs -->
+      <MythFact
+        myth="Racial slurs and derogatory regional names aren't really illegal in India. It's just offensive speech."
+        fact="Using racial slurs or derogatory regional epithets is a punishable criminal offence under Bharatiya Nyaya Sanhita (BNS) Sections 196 and 353 — formerly IPC Sections 153A and 505 — which criminalise promoting enmity between groups and making statements prejudicial to national integration. The Bezbaruah Committee, constituted in 2014 after widespread incidents of discrimination against people from Northeast India in Delhi, specifically recommended stiffening penal action. Delhi Police operates a dedicated North-East Helpline at 1093. Perpetrators can be prosecuted; victims can file an FIR at any police station."
+        sources="Bharatiya Nyaya Sanhita, 2023, Sections 196 & 353 (formerly IPC 153A/505); Report of the Committee on Welfare of Students from the North Eastern Region — Bezbaruah Committee, 2014; Delhi Police North East Helpline (1093)."
+      />
+
+      <!-- Myth 5: RWA community dogs -->
+      <MythFact
+        myth="RWAs have the right to ban or relocate community (stray) dogs from their premises."
+        fact="This is explicitly illegal. The Animal Birth Control (ABC) Rules, 2023 — framed under the Prevention of Cruelty to Animals Act, 1960 — explicitly prohibit RWAs, local bodies, or any individual from relocating, chasing away, or harming community dogs. Multiple High Courts (Delhi, Bombay, Madras, Kerala) have upheld the right of community dog feeders and struck down RWA bans on feeding. The sole lawful response to stray dog concerns is sterilisation and vaccination through the local municipal authority. Harming, poisoning, or relocating a community dog is a cognizable offence under Section 11 of the PCA Act, 1960."
+        sources="Animal Birth Control (ABC) Rules, 2023 (Ministry of Fisheries, Animal Husbandry and Dairying); Prevention of Cruelty to Animals Act, 1960, Section 11; Delhi High Court, Writ Petition (C) 5798/2022 — Community Feeders judgment; Animal Welfare Board of India guidelines."
+      />
+
       <section class="sources-section">
         <h2>Full Source List</h2>
         <ol class="source-list">
+          <li><strong>Bharatiya Nyaya Sanhita (BNS), 2023 — Sections 196 & 353</strong> - Formerly IPC Sections 153A and 505. Criminalises promoting enmity between groups and statements prejudicial to national integration, including racial slurs.</li>
+          <li><strong>Bezbaruah Committee Report, 2014</strong> - Report of the Committee on Welfare of Students from the North Eastern Region. Recommended stiffened penal action against discrimination in metro cities.</li>
+          <li><strong>Animal Birth Control (ABC) Rules, 2023</strong> - Ministry of Fisheries, Animal Husbandry and Dairying. Explicitly prohibits relocation or harm to community dogs; mandates sterilisation and vaccination. <a href="https://dahd.gov.in" target="_blank" rel="noopener noreferrer">dahd.gov.in</a></li>
+          <li><strong>Prevention of Cruelty to Animals (PCA) Act, 1960</strong> - Section 11 criminalises abandonment, starvation, and cruelty to animals. <a href="https://legislative.gov.in" target="_blank" rel="noopener noreferrer">legislative.gov.in</a></li>
           <li><strong>NCRB Crime in India 2021</strong> - National Crime Records Bureau, Ministry of Home Affairs, Government of India. <a href="https://ncrb.gov.in" target="_blank" rel="noopener noreferrer">ncrb.gov.in</a></li>
           <li><strong>Oxfam India Inequality Report 2022</strong> - India Inequality Report: Digital Divide. <a href="https://oxfamindia.org" target="_blank" rel="noopener noreferrer">oxfamindia.org</a></li>
           <li><strong>NALSA v. Union of India (2014)</strong> - Supreme Court of India. Landmark judgment affirming legal recognition of third gender. Available via <a href="https://main.sci.gov.in" target="_blank" rel="noopener noreferrer">main.sci.gov.in</a></li>
