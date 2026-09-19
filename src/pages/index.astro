@@ -2,7 +2,7 @@
 // src/pages/index.astro - Homepage
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CauseCard from '../components/CauseCard.astro';
-import ShareButtons from '../components/ShareButtons.astro';
+
 
 const causes = [
   {
@@ -84,25 +84,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
           </a>
         </div>
 
-        <div class="hero__share-note">
-          <span class="hero__share-label">Share this site</span>
-          <ShareButtons title="Paras Activist - Evidence over propaganda" url="https://parasactivist.in" />
-        </div>
 
-        <div class="hero__stat-chips" aria-label="Key statistics">
-          <div class="hero__stat-chip hero__stat-chip--food">
-            <span class="hero__stat-chip-value" data-count="111" data-suffix="th">111th</span>
-            <span class="hero__stat-chip-label">Global Hunger Index</span>
-          </div>
-          <div class="hero__stat-chip hero__stat-chip--foot">
-            <span class="hero__stat-chip-value" data-count="17" data-suffix="%">17%</span>
-            <span class="hero__stat-chip-label">Pedestrian deaths</span>
-          </div>
-          <div class="hero__stat-chip hero__stat-chip--just">
-            <span class="hero__stat-chip-value">57K+</span>
-            <span class="hero__stat-chip-label">SC crimes reported</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -110,7 +92,6 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
   <section class="causes section" aria-label="Three causes">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-eyebrow">The Platform</span>
         <h2>The Three Movements</h2>
         <p class="section-sub">
           Each cause stands independently. Together they represent a vision of a more just, accessible, and equitable India.
@@ -134,14 +115,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
           <span class="section-eyebrow">Our Purpose</span>
           <h2>Why this site exists</h2>
           <p>
-            Propaganda thrives in information vacuums. When people lack access to verified, citable, shareable data, misinformation fills the gap.
-          </p>
-          <p>
-            This platform is built on one principle: <strong>an ordinary person in India should be able to share an evidence-based fact in under 10 seconds.</strong>
-            Every article is structured for WhatsApp, every claim is cited, and every statistic points to its primary source.
-          </p>
-          <p>
-            We receive no corporate or political funding. We use no trackers. We sell nothing.
+            Propaganda thrives in information vacuums. When people lack access to verified, citable, shareable data, misinformation fills the gap. Every article is structured for WhatsApp, every claim is cited, and every statistic points to its primary source.
           </p>
           <a href="/about#pledge" class="btn btn-outline" id="why-pledge-btn">
             Read the Zero Propaganda Pledge <span aria-hidden="true">-&gt;</span>
@@ -153,7 +127,6 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
             <div class={`pillar reveal reveal-delay-${i + 1}`}>
               <div class="pillar__number" aria-hidden="true">{p.n}</div>
               <div class="pillar__body">
-                <div class="pillar__icon" aria-hidden="true">{p.code}</div>
                 <h3 class="pillar__title">{p.title}</h3>
                 <p class="pillar__text">{p.text}</p>
               </div>
@@ -219,18 +192,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
   .hero__sub { font-size: clamp(1rem, 2.2vw, 1.1875rem); color: var(--clr-text-muted); max-width: 58ch; line-height: 1.75; margin-bottom: var(--space-8); }
   .hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8); align-items: center; }
   .hero__cta-primary { font-size: 0.95rem; padding: var(--space-3) var(--space-7, 1.75rem); }
-  .hero__share-note { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-12); }
-  .hero__share-label { font-size: 0.82rem; color: var(--clr-text-muted); font-weight: 600; white-space: nowrap; }
-  .hero__stat-chips { display: flex; gap: var(--space-3); flex-wrap: wrap; }
-  .hero__stat-chip { display: flex; flex-direction: column; gap: 2px; background: var(--clr-bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4); min-width: 120px; }
-  .hero__stat-chip--food { border-left: 3px solid var(--clr-food); }
-  .hero__stat-chip--foot { border-left: 3px solid var(--clr-foot); }
-  .hero__stat-chip--just { border-left: 3px solid var(--clr-just); }
-  .hero__stat-chip-value { font-size: 1.375rem; font-weight: 900; letter-spacing: 0; line-height: 1; }
-  .hero__stat-chip--food .hero__stat-chip-value { color: var(--clr-food); }
-  .hero__stat-chip--foot .hero__stat-chip-value { color: var(--clr-foot); }
-  .hero__stat-chip--just .hero__stat-chip-value { color: var(--clr-just); }
-  .hero__stat-chip-label { font-size: 0.7rem; color: var(--clr-text-subtle); font-weight: 500; line-height: 1.3; }
+
 
   .section-eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clr-accent); margin-bottom: var(--space-3); }
   .section-header { text-align: center; margin-bottom: var(--space-12); }
@@ -249,7 +211,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
   .pillar:hover { background: var(--clr-bg-surface); border-color: var(--clr-border); transform: translateX(4px); }
   .pillar__number { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.08em; color: var(--clr-accent); padding-top: 4px; font-variant-numeric: tabular-nums; }
   .pillar__body { display: flex; flex-direction: column; gap: var(--space-1); }
-  .pillar__icon { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-md); color: var(--clr-accent); background: var(--clr-accent-glow-sm); border: 1px solid rgba(245,166,35,0.18); font-size: 0.72rem; font-weight: 900; margin-bottom: var(--space-2); }
+
   .pillar__title { font-size: 0.9375rem; font-weight: 700; margin-bottom: var(--space-1); color: var(--clr-text); }
   .pillar__text { font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.6; margin: 0; }
 
