@@ -71,8 +71,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
         </h1>
 
         <p class="hero__sub">
-          This site exists to counter propaganda with evidence. No advertising, no political funding, no data collection.
-          Just rigorously cited facts, formatted for WhatsApp and Telegram sharing across India.
+          This site brings together the content of three different Instagram accounts, all in one place.
         </p>
 
         <div class="hero__actions">
@@ -108,58 +107,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
     </div>
   </section>
 
-  <section class="why section--sm" aria-label="Why this site exists">
-    <div class="container">
-      <div class="why__inner">
-        <div class="why__text reveal">
-          <span class="section-eyebrow">Our Purpose</span>
-          <h2>Why this site exists</h2>
-          <p>
-            Propaganda thrives in information vacuums. When people lack access to verified, citable, shareable data, misinformation fills the gap. Every article is structured for WhatsApp, every claim is cited, and every statistic points to its primary source.
-          </p>
-          <a href="/about#pledge" class="btn btn-outline" id="why-pledge-btn">
-            Read the Zero Propaganda Pledge <span aria-hidden="true">-&gt;</span>
-          </a>
-        </div>
 
-        <div class="why__pillars">
-          {pillars.map((p, i) => (
-            <div class={`pillar reveal reveal-delay-${i + 1}`}>
-              <div class="pillar__number" aria-hidden="true">{p.n}</div>
-              <div class="pillar__body">
-                <h3 class="pillar__title">{p.title}</h3>
-                <p class="pillar__text">{p.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="share-cta" aria-label="Download share cards">
-    <div class="share-cta__bg" aria-hidden="true">
-      <div class="share-cta__bg-glow"></div>
-    </div>
-    <div class="container">
-      <div class="share-cta__inner reveal">
-        <div class="share-cta__left">
-          <span class="tag tag--accent">Share Toolkit</span>
-          <h2>Arm yourself with shareable evidence</h2>
-          <p>
-            Download pre-formatted WhatsApp image cards for every myth-buster, statistic, and fact sheet.
-            Designed for Indian mobile screens. One tap to share.
-          </p>
-        </div>
-        <div class="share-cta__right">
-          <a href="/share-toolkit" class="btn btn-primary share-cta__btn" id="share-toolkit-cta">
-            View Share Toolkit <span aria-hidden="true">-&gt;</span>
-          </a>
-          <span class="share-cta__note">Free / No sign-up / No tracking</span>
-        </div>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
 
 <style>
@@ -202,30 +150,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
   .causes__grid > div > :global(.cause-card) { flex: 1; }
   @media (max-width: 960px) { .causes__grid { grid-template-columns: 1fr; } }
 
-  .why__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: start; }
-  @media (max-width: 860px) { .why__inner { grid-template-columns: 1fr; gap: var(--space-10); } }
-  .why__text h2 { margin-bottom: var(--space-5); }
-  .why__text p { color: var(--clr-text-muted); margin-bottom: var(--space-4); }
-  .why__pillars { display: flex; flex-direction: column; gap: var(--space-2); }
-  .pillar { display: grid; grid-template-columns: 40px 1fr; gap: var(--space-4); align-items: start; padding: var(--space-5); border-radius: var(--radius-lg); border: 1px solid transparent; transition: all var(--duration-normal) var(--ease-out); }
-  .pillar:hover { background: var(--clr-bg-surface); border-color: var(--clr-border); transform: translateX(4px); }
-  .pillar__number { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.08em; color: var(--clr-accent); padding-top: 4px; font-variant-numeric: tabular-nums; }
-  .pillar__body { display: flex; flex-direction: column; gap: var(--space-1); }
 
-  .pillar__title { font-size: 0.9375rem; font-weight: 700; margin-bottom: var(--space-1); color: var(--clr-text); }
-  .pillar__text { font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.6; margin: 0; }
-
-  .share-cta { position: relative; padding-block: var(--space-16); margin-top: var(--space-20); overflow: hidden; }
-  .share-cta__bg { position: absolute; inset: 0; background: var(--clr-bg-surface); border-top: 1px solid var(--clr-border); border-bottom: 1px solid var(--clr-border); }
-  .share-cta__bg-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(245,166,35,0.06) 0%, transparent 70%); }
-  .share-cta__inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap; }
-  .share-cta__left { display: flex; flex-direction: column; gap: var(--space-4); max-width: 520px; }
-  .share-cta__left h2, .share-cta__left p { margin: 0; }
-  .share-cta__left p { color: var(--clr-text-muted); line-height: 1.7; }
-  .share-cta__right { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); flex-shrink: 0; }
-  .share-cta__btn { font-size: 0.95rem; padding: var(--space-3) var(--space-8); }
-  .share-cta__note { font-size: 0.75rem; color: var(--clr-text-subtle); font-weight: 500; letter-spacing: 0.02em; }
-  @media (max-width: 640px) { .share-cta__inner { flex-direction: column; } .share-cta__right, .share-cta__btn { width: 100%; } .share-cta__btn { justify-content: center; } }
 </style>
 
 
