@@ -2,7 +2,6 @@
 // Footer.astro
 const causes = [
   { label: 'Food Security', href: '/food-security/', code: 'FS', tag: 'food' },
-  { label: 'Footpath Movement', href: '/footpath/', code: 'FM', tag: 'foot' },
   { label: 'Intersectional Justice', href: '/intersectional-justice/', code: 'IJ', tag: 'just' },
 ];
 ---
@@ -58,12 +57,7 @@ const causes = [
       <div class="footer__col">
         <h3 class="footer__col-title">Follow on Instagram</h3>
         <ul role="list">
-          <li>
-            <a href="https://www.instagram.com/footpathmovement" class="footer__link footer__link--foot footer__insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @footpathmovement">
-              <svg class="footer__insta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              @footpathmovement
-            </a>
-          </li>
+
           <li>
             <a href="https://www.instagram.com/stopfoodwastagein" class="footer__link footer__link--food footer__insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @stopfoodwastagein">
               <svg class="footer__insta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -223,12 +217,10 @@ const causes = [
   }
 
   .footer__code--food { color: var(--clr-food); background: var(--clr-food-bg); }
-  .footer__code--foot { color: var(--clr-foot); background: var(--clr-foot-bg); }
   .footer__code--just { color: var(--clr-just); background: var(--clr-just-bg); }
 
   .footer__link:hover { color: var(--clr-accent); }
   .footer__link--food:hover { color: var(--clr-food); }
-  .footer__link--foot:hover { color: var(--clr-foot); }
   .footer__link--just:hover { color: var(--clr-just); }
 
   .footer__bottom {

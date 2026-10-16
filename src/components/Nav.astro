@@ -5,7 +5,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const causes = [
   { label: "Food Security", href: "/food-security/", tag: "food", code: "FS" },
-  { label: "Footpath Movement", href: "/footpath/", tag: "foot", code: "FM" },
   {
     label: "Intersectional Justice",
     href: "/intersectional-justice/",
@@ -280,10 +279,7 @@ function isActive(href: string) {
     background: var(--clr-food);
     box-shadow: 0 0 10px var(--clr-food-glow);
   }
-  .nav__cause-dot--foot {
-    background: var(--clr-foot);
-    box-shadow: 0 0 10px var(--clr-foot-glow);
-  }
+
   .nav__cause-dot--just {
     background: var(--clr-just);
     box-shadow: 0 0 10px var(--clr-just-glow);
@@ -315,14 +311,7 @@ function isActive(href: string) {
   .nav__link--food.nav__link--active::after {
     background: var(--clr-food);
   }
-  .nav__link--foot:hover,
-  .nav__link--foot.nav__link--active {
-    color: var(--clr-foot);
-    background: var(--clr-foot-bg);
-  }
-  .nav__link--foot.nav__link--active::after {
-    background: var(--clr-foot);
-  }
+
   .nav__link--just:hover,
   .nav__link--just.nav__link--active {
     color: var(--clr-just);
@@ -448,10 +437,7 @@ function isActive(href: string) {
     color: var(--clr-food);
     background: var(--clr-food-bg);
   }
-  .mobile-menu__link-icon--foot {
-    color: var(--clr-foot);
-    background: var(--clr-foot-bg);
-  }
+
   .mobile-menu__link-icon--just {
     color: var(--clr-just);
     background: var(--clr-just-bg);
@@ -466,11 +452,7 @@ function isActive(href: string) {
     background: var(--clr-food-bg);
     border-color: rgba(74, 222, 128, 0.2);
   }
-  .mobile-menu__link--foot:hover {
-    color: var(--clr-foot);
-    background: var(--clr-foot-bg);
-    border-color: rgba(96, 165, 250, 0.2);
-  }
+
   .mobile-menu__link--just:hover {
     color: var(--clr-just);
     background: var(--clr-just-bg);

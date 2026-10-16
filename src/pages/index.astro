@@ -1,60 +1,14 @@
 ---
 // src/pages/index.astro - Homepage
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CauseCard from '../components/CauseCard.astro';
 
-
-const causes = [
-  {
-    title: 'Food Security',
-    href: '/food-security/',
-    mythsHref: '/food-security/myths/',
-    dataHref: '/food-security/data/',
-    description: 'India ranks 111th on the Global Hunger Index — yet 15–30% of fresh produce rots in transit before reaching consumers. This waste creates artificial scarcity, inflates grocery prices, and funds nobody. It is a distribution and political will crisis.',
-    stat: '15–30%',
-    statLabel: 'of perishables rot in transit — driving up your grocery bill (MoFPI/ICAR)',
-    code: 'FS',
-    tag: 'food' as const,
-  },
-  {
-    title: 'Footpath Movement',
-    href: '/footpath/',
-    mythsHref: '/footpath/myths/',
-    dataHref: '/footpath/data/',
-    description: 'In 2026, the Supreme Court declared walking a Fundamental Right under Article 21. Yet 30–35,000 pedestrians are killed annually — 1 in every 5 road deaths. Cities have a legally enforceable duty to build safe footpaths. Most don\'t.',
-    stat: '30–35K',
-    statLabel: 'pedestrians killed annually — a Fundamental Right violated daily',
-    code: 'FM',
-    tag: 'foot' as const,
-  },
-  {
-    title: 'Intersectional Justice',
-    href: '/intersectional-justice/',
-    mythsHref: '/intersectional-justice/myths/',
-    dataHref: '/intersectional-justice/data/',
-    description: 'Five legal verticals — Women\'s Rights, Queer & Trans Justice, Caste Annihilation, Anti-Racism, and Animal Welfare — backed by constitutional law, landmark judgments, and emergency helplines. Know your rights. File your complaint. Protect them.',
-    stat: '5 Verticals',
-    statLabel: 'of constitutional rights — with emergency helplines, FAQ accordions & legal templates',
-    code: 'IJ',
-    tag: 'just' as const,
-  },
-];
-
-const pillars = [
-  { n: '01', code: 'EV', title: 'Evidence First', text: 'Every claim links to a government report, peer-reviewed paper, or independently verified NGO data. No exceptions.' },
-  { n: '02', code: 'MO', title: 'Mobile Native', text: 'Designed for 4G India. Fast loading, WhatsApp-optimised link previews, and downloadable share cards.' },
-  { n: '03', code: 'PR', title: 'Zero Tracking', text: 'No cookies, no analytics, no fingerprinting. This is a strictly read-only educational resource.' },
-  { n: '04', code: 'CO', title: 'Open Corrections', text: 'All factual errors are corrected publicly, with a correction log and update date on every article.' },
-];
-
-const pageDescription = 'Three grassroots movements. One commitment: evidence over propaganda. Food security, safe pedestrian infrastructure, and intersectional justice - rigorously cited, freely shareable.';
+const pageDescription = 'Two grassroots movements. One commitment: evidence over propaganda. Food security and intersectional justice - rigorously cited, freely shareable.';
 ---
 
 <BaseLayout title="Home" description={pageDescription} ogImage="/og/home.png">
   <section class="hero" aria-label="Site introduction">
     <div class="hero__mesh" aria-hidden="true">
       <div class="hero__mesh-panel hero__mesh-panel--1"></div>
-      <div class="hero__mesh-panel hero__mesh-panel--2"></div>
       <div class="hero__grid"></div>
     </div>
 
@@ -82,32 +36,9 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
             Read our Pledge
           </a>
         </div>
-
-
       </div>
     </div>
   </section>
-
-  <section class="causes section" aria-label="Three causes">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>The Three Movements</h2>
-        <p class="section-sub">
-          Each cause stands independently. Together they represent a vision of a more just, accessible, and equitable India.
-        </p>
-      </div>
-
-      <div class="causes__grid">
-        {causes.map((cause, i) => (
-          <div class={`reveal reveal-delay-${i + 1}`}>
-            <CauseCard {...cause} />
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
 </BaseLayout>
 
 <style>
@@ -122,8 +53,7 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
 
   .hero__mesh { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
   .hero__mesh-panel { position: absolute; border: 1px solid var(--clr-border); border-radius: var(--radius-lg); opacity: 0.38; }
-  .hero__mesh-panel--1 { width: 420px; height: 260px; top: 70px; right: -90px; transform: rotate(-8deg); background: var(--clr-foot-bg); }
-  .hero__mesh-panel--2 { width: 300px; height: 220px; bottom: 20px; left: -80px; transform: rotate(10deg); background: var(--clr-food-bg); }
+  .hero__mesh-panel--1 { width: 420px; height: 260px; top: 70px; right: -90px; transform: rotate(-8deg); background: var(--clr-food-bg); }
   .hero__grid {
     position: absolute;
     inset: 0;
@@ -140,17 +70,4 @@ const pageDescription = 'Three grassroots movements. One commitment: evidence ov
   .hero__sub { font-size: clamp(1rem, 2.2vw, 1.1875rem); color: var(--clr-text-muted); max-width: 58ch; line-height: 1.75; margin-bottom: var(--space-8); }
   .hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8); align-items: center; }
   .hero__cta-primary { font-size: 0.95rem; padding: var(--space-3) var(--space-7, 1.75rem); }
-
-
-  .section-eyebrow { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clr-accent); margin-bottom: var(--space-3); }
-  .section-header { text-align: center; margin-bottom: var(--space-12); }
-  .section-sub { color: var(--clr-text-muted); max-width: 55ch; margin-inline: auto; font-size: 1.0625rem; margin-top: var(--space-4); line-height: 1.75; }
-  .causes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
-  .causes__grid > div { display: flex; flex-direction: column; }
-  .causes__grid > div > :global(.cause-card) { flex: 1; }
-  @media (max-width: 960px) { .causes__grid { grid-template-columns: 1fr; } }
-
-
 </style>
-
-
